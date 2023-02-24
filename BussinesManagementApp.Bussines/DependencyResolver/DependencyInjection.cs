@@ -16,7 +16,7 @@ namespace BussinesManagementApp.Bussines.DependencyResolver
     {
         public static void DependencyExtension(this IServiceCollection services)
         {
-            services.AddDbContext<BussinesManagementDb>(x => x.UseSqlServer("server=.;Database=BussinesManagementDb; integrated security=true;")); //TODO appconfig
+            services.AddDbContext<BussinesManagementDb>(x => x.UseSqlServer("server=.;Database=BussinesManagementDb; integrated security=true;")); //TODO appconfig 
 
             //services.AddIdentityCore<AppUser>().AddEntityFrameworkStores<IdentityDb>();
             services.AddDbContext<IdentityDb>(x => x.UseSqlServer("server=.;Database=IdentityDb; integrated security=true;"));

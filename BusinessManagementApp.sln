@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessManagementApp.UI", "BusinessManagementApp.UI\BusinessManagementApp.UI.csproj", "{90416EE1-FA52-42F1-AA02-28392C1239A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessManagementApp.UI", "BusinessManagementApp.UI\BusinessManagementApp.UI.csproj", "{90416EE1-FA52-42F1-AA02-28392C1239A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BussinessManagementApp.Entities", "BussinessManagementApp.Entity\BussinessManagementApp.Entities.csproj", "{91B8C979-4308-4D5E-8A2E-1790AAA6CF78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BussinessManagementApp.Entities", "BussinessManagementApp.Entity\BussinessManagementApp.Entities.csproj", "{91B8C979-4308-4D5E-8A2E-1790AAA6CF78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BussinessManagementApp.DataAccess", "BussinessManagementApp.DataAccess\BussinessManagementApp.DataAccess.csproj", "{5C7E0FE7-A04C-43B2-BDFE-446B0801E6C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BussinessManagementApp.DataAccess", "BussinessManagementApp.DataAccess\BussinessManagementApp.DataAccess.csproj", "{5C7E0FE7-A04C-43B2-BDFE-446B0801E6C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BussinesManagementApp.Bussines", "BussinesManagementApp.Bussines\BussinesManagementApp.Bussines.csproj", "{EC75C59B-CF45-4712-97A2-E41FF73CA22F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BussinesManagementApp.Bussines", "BussinesManagementApp.Bussines\BussinesManagementApp.Bussines.csproj", "{EC75C59B-CF45-4712-97A2-E41FF73CA22F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessManagementApp.Common", "BusinessManagementApp.Common\BusinessManagementApp.Common.csproj", "{C2E4A49D-0126-42B3-AD7F-CAC512EF7297}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessManagementApp.Common", "BusinessManagementApp.Common\BusinessManagementApp.Common.csproj", "{C2E4A49D-0126-42B3-AD7F-CAC512EF7297}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BussinesManagementApp.Dtos", "BussinesManagementApp.Dtos\BussinesManagementApp.Dtos.csproj", "{94B0FCB3-E3D4-48E8-841B-95C323C68E56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{C2E4A49D-0126-42B3-AD7F-CAC512EF7297}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2E4A49D-0126-42B3-AD7F-CAC512EF7297}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2E4A49D-0126-42B3-AD7F-CAC512EF7297}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94B0FCB3-E3D4-48E8-841B-95C323C68E56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94B0FCB3-E3D4-48E8-841B-95C323C68E56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94B0FCB3-E3D4-48E8-841B-95C323C68E56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94B0FCB3-E3D4-48E8-841B-95C323C68E56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

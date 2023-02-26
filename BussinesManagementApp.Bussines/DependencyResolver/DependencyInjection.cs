@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using BussinessManagementApp.Entities.IdentityEntities;
+using BussinesManagementApp.Bussines.Services;
 
 namespace BussinesManagementApp.Bussines.DependencyResolver
 {
@@ -18,9 +19,24 @@ namespace BussinesManagementApp.Bussines.DependencyResolver
         {
             services.AddDbContext<BussinesManagementDb>(x => x.UseSqlServer("server=.;Database=BussinesManagementDb; integrated security=true;")); //TODO appconfig 
 
-            //services.AddIdentityCore<AppUser>().AddEntityFrameworkStores<IdentityDb>();
+            //sanal server ile bahsedilen kavramın detylandırılmasını iste !
+
             services.AddDbContext<IdentityDb>(x => x.UseSqlServer("server=.;Database=IdentityDb; integrated security=true;"));
-            services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<IdentityDb>();
+            services.AddIdentity<AppUser, AppRole>(opt =>
+            {
+                //password Options
+                opt.Password.RequiredLength = 6;
+                opt.Password.RequireDigit = true;
+                opt.Password.RequireNonAlphanumeric= false;
+                //Lockout Options
+                opt.Lockout.MaxFailedAccessAttempts = 5;
+                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                opt.Lockout.AllowedForNewUsers = false;
+                //Sıgin Options
+                opt.SignIn.RequireConfirmedPhoneNumber = false;
+            }).AddEntityFrameworkStores<IdentityDb>();
+
+            services.AddScoped<IdentityService>();
         }
     }
 }

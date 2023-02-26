@@ -1,4 +1,8 @@
-﻿using BussinesManagementApp.Bussines.Services;
+﻿using Accessibility;
+using BusinessManagementApp.Common.Enums;
+using BussinesManagementApp.Bussines.Services;
+using BussinesManagementApp.Dtos;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,22 +30,33 @@ namespace BusinessManagementApp.UI
 
 
         }
-        public async Task doit()
+        public async Task Login(string username , string password)
         {
             var user = new BussinessManagementApp.Entities.IdentityEntities.AppUser()
             {
                 UserName = "Admin",
                 Email = "admin@gmail.com"
             };
-            //var result = await _identityService.CreateAsync(user);
-            //var resultPassword = await _identityService.AddPasswordAsync(user, "Admin123");
-            var result = await _identityService.CheckPasswordAsync(user, "Admin1234");
-            var x = 10;
+            //password Admin123
+            var response = await _identityService.LoginCheck(new AppUserLoginModel { Username = username, Password = password });
+            if (response.ResponseType == ResponseType.Success)
+            {
+                //logic 
+                MessageBox.Show("Giriş Başarılı");
+                var form2 = new Form2();
+                form2.Show();
+                this.Close();
+                
+            }
+            else
+            {
+                MessageBox.Show(response.Message);
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {
 
-            Task x = doit();
+            Task x = Login(textBox1.Text , textBox2.Text);
         }
     }
 }

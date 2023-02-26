@@ -7,13 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BussinessManagementApp.DataAccess\BussinessManagementApp.DataAccess.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Mapper\" />
     <Folder Include="Validations\FluentValidation\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessManagementApp.Common\BusinessManagementApp.Common.csproj" />
+    <ProjectReference Include="..\BussinesManagementApp.Dtos\BussinesManagementApp.Dtos.csproj" />
+    <ProjectReference Include="..\BussinessManagementApp.DataAccess\BussinessManagementApp.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

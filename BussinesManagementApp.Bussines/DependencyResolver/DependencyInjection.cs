@@ -30,8 +30,9 @@ namespace BussinesManagementApp.Bussines.DependencyResolver
                 opt.Password.RequireNonAlphanumeric= false;
                 //Lockout Options
                 opt.Lockout.MaxFailedAccessAttempts = 5;
-                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
-                opt.Lockout.AllowedForNewUsers = false;
+                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(3);
+                opt.Lockout.AllowedForNewUsers = true;
+
                 //Sıgin Options
                 opt.SignIn.RequireConfirmedPhoneNumber = false;
             }).AddEntityFrameworkStores<IdentityDb>();

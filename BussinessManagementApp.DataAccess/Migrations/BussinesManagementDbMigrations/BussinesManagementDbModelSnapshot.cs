@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigrations
 {
-    [DbContext(typeof(BussinesManagementDb))]
+    [DbContext(typeof(BussinesManagementDbContext))]
     partial class BussinesManagementDbModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

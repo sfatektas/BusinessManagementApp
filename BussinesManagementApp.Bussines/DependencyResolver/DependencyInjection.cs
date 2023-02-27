@@ -17,7 +17,7 @@ namespace BussinesManagementApp.Bussines.DependencyResolver
     {
         public static void DependencyExtension(this IServiceCollection services)
         {
-            services.AddDbContext<BussinesManagementDb>(x => x.UseSqlServer("server=.;Database=BussinesManagementDb; integrated security=true;")); //TODO appconfig 
+            services.AddDbContext<BussinesManagementDbContext>(x => x.UseSqlServer("server=.;Database=BussinesManagementDb; integrated security=true;")); //TODO appconfig 
 
             //sanal server ile bahsedilen kavramın detylandırılmasını iste !
 

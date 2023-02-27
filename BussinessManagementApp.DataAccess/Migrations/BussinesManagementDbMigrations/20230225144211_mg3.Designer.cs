@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigrations
 {
-    [DbContext(typeof(BussinesManagementDb))]
+    [DbContext(typeof(BussinesManagementDbContext))]
     [Migration("20230225144211_mg3")]
     partial class mg3
     {

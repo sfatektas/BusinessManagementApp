@@ -35,7 +35,7 @@ namespace BussinesManagementApp.Bussines.Services
                 if (result.IsLockedOut)
                 {
                     var date = await _userManager.GetLockoutEndDateAsync(user); // türkiye utc 3 saat zamanı eklendi.
-                    return new Response<AppUserLoginModel>(ResponseType.Error, $"Hesabınız {date.Value.AddHours(3)}  kadar kitlenmiştir ", model);
+                    return new Response<AppUserLoginModel>(ResponseType.Error, $"Hesabınız {date.Value.AddHours(3)} tarihine kadar kitlenmiştir ", model);
                 }
                 else if (result.Succeeded)
                 {

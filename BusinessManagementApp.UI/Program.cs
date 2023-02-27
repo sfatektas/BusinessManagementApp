@@ -13,6 +13,8 @@ namespace BusinessManagementApp.UI
         [STAThread]
         static void Main()
         {
+            int x = 2;
+            MessageBox.Show(typeof(double).ToString());
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BussinesManagementApp.Bussi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessManagementApp.Common", "BusinessManagementApp.Common\BusinessManagementApp.Common.csproj", "{C2E4A49D-0126-42B3-AD7F-CAC512EF7297}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BussinesManagementApp.Dtos", "BussinesManagementApp.Dtos\BussinesManagementApp.Dtos.csproj", "{94B0FCB3-E3D4-48E8-841B-95C323C68E56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BussinesManagementApp.Dtos", "BussinesManagementApp.Dtos\BussinesManagementApp.Dtos.csproj", "{94B0FCB3-E3D4-48E8-841B-95C323C68E56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

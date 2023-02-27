@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BussinessManagementApp.DataAccess.Contexts
 {
-    public class BussinesManagementDb : DbContext
+    public class BussinesManagementDbContext : DbContext
     {
         public DbSet<SingleCustomer> SingleCustomers { get; set; }
         public DbSet<CorporateCustomer> CorporateCustomers { get; set; }
@@ -22,7 +22,7 @@ namespace BussinessManagementApp.DataAccess.Contexts
         public DbSet<MoneyType> MoneyTypes { get; set; }
         public DbSet<OrderStatusType> OrderStatusTypes { get; set; }
 
-        public BussinesManagementDb(DbContextOptions<BussinesManagementDb> opt) : base(opt)
+        public BussinesManagementDbContext(DbContextOptions<BussinesManagementDbContext> opt) : base(opt)
         {
         }
 

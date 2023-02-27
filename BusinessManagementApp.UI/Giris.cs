@@ -15,11 +15,11 @@ using System.Windows.Forms;
 
 namespace BusinessManagementApp.UI
 {
-    public partial class Form1 : Form
+    public partial class Giris : Form
     {
         readonly IdentityService _identityService;
 
-        public Form1(IdentityService identityService)
+        public Giris(IdentityService identityService)
         {
             _identityService = identityService;
             InitializeComponent();
@@ -45,7 +45,7 @@ namespace BusinessManagementApp.UI
                 MessageBox.Show("Giriş Başarılı");
                 var form2 = new Form2();
                 form2.Show();
-                this.Close();
+                this.Hide();
                 
             }
             else

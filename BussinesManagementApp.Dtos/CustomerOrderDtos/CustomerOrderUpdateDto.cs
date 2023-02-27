@@ -18,6 +18,5 @@ namespace BussinesManagementApp.Dtos
         public double TotalPrice { get; set; }
         public int OrderStatusTypeId { get; set; }
         public bool IsActive { get; set; }
-
     }
 }

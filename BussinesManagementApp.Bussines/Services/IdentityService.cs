@@ -5,11 +5,14 @@ using BussinesManagementApp.Dtos;
 using BussinessManagementApp.DataAccess.Constants;
 using BussinessManagementApp.Entities.IdentityEntities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Server.HttpSys;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,7 +22,6 @@ namespace BussinesManagementApp.Bussines.Services
     {
         readonly UserManager<AppUser> _userManager;
         readonly SignInManager<AppUser> _signInManager;
-
         public IdentityService(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
             _userManager = userManager;
@@ -39,6 +41,9 @@ namespace BussinesManagementApp.Bussines.Services
                 }
                 else if (result.Succeeded)
                 {
+                    var claims = new List<Claim>();
+                    claims.Add(new Claim(ClaimTypes.NameIdentifier, model.Username));
+                    await _signInManager.SignInWithClaimsAsync(user, false, claims);
                     return new Response<AppUserLoginModel>(ResponseType.Success, model);
 
                 }
@@ -47,5 +52,10 @@ namespace BussinesManagementApp.Bussines.Services
             }
             return new Response<AppUserLoginModel>(ResponseType.NotFound, "İlgili kullanıcıya ait bir hesap bulunmamaktadır.", model);
         }
+        public void signInDetail()
+        {
+            
+        }
+
     }
 }

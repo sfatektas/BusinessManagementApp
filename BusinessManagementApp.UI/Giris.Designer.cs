@@ -1,6 +1,6 @@
 ﻿namespace BusinessManagementApp.UI
 {
-    partial class Form1
+    partial class Giris : Form
     {
         /// <summary>
         /// Required designer variable.

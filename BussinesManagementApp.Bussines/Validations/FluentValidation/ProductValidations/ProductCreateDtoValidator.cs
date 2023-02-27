@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace BussinesManagementApp.Bussines.Validations.FluentValidation.ProductValidations
 {
-    public class ProductCreateValidator : AbstractValidator<ProductCreateDto>
+    public class ProductCreateDtoValidator : AbstractValidator<ProductCreateDto>
     {
-        public ProductCreateValidator()
+        public ProductCreateDtoValidator()
         {
             RuleFor(x => x.Name).NotEmpty();
-            RuleFor(x=>x.SupplierId).NotEmpty();
+            RuleFor(x=>x.SupplierId).NotEqual(0);
             RuleFor(x=>x.Origin).NotEmpty();
-            RuleFor(x=>x.UnitPrice).NotEmpty();
+            RuleFor(x=>x.UnitPrice).GreaterThan(0);
         }
     }
 }

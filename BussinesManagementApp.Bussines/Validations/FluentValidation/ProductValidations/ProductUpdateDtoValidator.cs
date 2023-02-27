@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace BussinesManagementApp.Bussines.Validations.FluentValidation.ProductValidations
 {
-    public class ProductUpdateValidator : AbstractValidator<ProductUpdateDto>
+    public class ProductUpdateDtoValidator : AbstractValidator<ProductUpdateDto>
     {
-        public ProductUpdateValidator()
+        public ProductUpdateDtoValidator()
         {
             RuleFor(x => x.Name).NotEmpty();
             RuleFor(x => x.SupplierId).NotEqual(0);

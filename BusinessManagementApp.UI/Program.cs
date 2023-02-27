@@ -13,8 +13,7 @@ namespace BusinessManagementApp.UI
         [STAThread]
         static void Main()
         {
-            int x = 2;
-            MessageBox.Show(typeof(double).ToString());
+
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -22,7 +21,7 @@ namespace BusinessManagementApp.UI
             var host = CreateHostBuilder().Build();
             ServiceProvider = host.Services;
 
-            Application.Run(ServiceProvider.GetRequiredService<Form1>());
+            Application.Run(ServiceProvider.GetRequiredService<Giris>());
         }
         public static IServiceProvider ServiceProvider { get; private set; }
         static IHostBuilder CreateHostBuilder()
@@ -30,7 +29,7 @@ namespace BusinessManagementApp.UI
             return Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) => {
                     //services.AddTransient<IHelloService, HelloService>();
-                    services.AddTransient<Form1>();
+                    services.AddTransient<Giris>();
                     services.DependencyExtension();
                 });
         }

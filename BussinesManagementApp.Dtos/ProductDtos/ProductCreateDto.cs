@@ -14,7 +14,5 @@ namespace BussinesManagementApp.Dtos
         public string Origin { get; set; }
         public int SupplierId { get; set; }
         public double UnitPrice { get; set; }
-
-
     }
 }

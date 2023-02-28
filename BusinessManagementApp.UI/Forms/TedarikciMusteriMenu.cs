@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BusinessManagementApp.UI
+namespace BusinessManagementApp.UI.Forms
 {
-    public partial class Form2 : Form
+    public partial class TedarikciMusteriMenu : Form
     {
-        public Form2()
+        public TedarikciMusteriMenu()
         {
             InitializeComponent();
         }

@@ -29,7 +29,10 @@ namespace BusinessManagementApp.UI
             return Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) => {
                     //services.AddTransient<IHelloService, HelloService>();
+                    //Forms DI
                     services.AddTransient<Giris>();
+                    services.AddTransient<AnaMenu>();
+
                     services.DependencyExtension();
                 });
         }

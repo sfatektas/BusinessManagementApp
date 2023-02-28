@@ -41,9 +41,11 @@ namespace BussinesManagementApp.Bussines.Services
                 }
                 else if (result.Succeeded)
                 {
-                    var claims = new List<Claim>();
-                    claims.Add(new Claim(ClaimTypes.NameIdentifier, model.Username));
-                    await _signInManager.SignInWithClaimsAsync(user, false, claims);
+                    var claims = new List<Claim>()
+                    {
+                        new Claim(ClaimTypes.NameIdentifier, model.Username)
+                    };
+                    //await _signInManager.SignInWithClaimsAsync(user, false, claims);// TODO oturuma giriş yapan kullanıcı bilgileribi ekle
                     return new Response<AppUserLoginModel>(ResponseType.Success, model);
 
                 }
@@ -54,7 +56,7 @@ namespace BussinesManagementApp.Bussines.Services
         }
         public void signInDetail()
         {
-            
+            //var claims = _signInManager.ClaimsFactory;
         }
 
     }

@@ -1,27 +1,19 @@
-﻿using Accessibility;
-using BusinessManagementApp.Common.Enums;
+﻿using BusinessManagementApp.Common.Enums;
 using BussinesManagementApp.Bussines.Services;
 using BussinesManagementApp.Dtos;
-using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BusinessManagementApp.UI
 {
     public partial class Giris : Form
     {
         readonly IdentityService _identityService;
+        readonly IServiceProvider _serviceProvider;
 
-        public Giris(IdentityService identityService)
+        public Giris(IdentityService identityService,IServiceProvider serviceProvider)
         {
             _identityService = identityService;
+            _serviceProvider = serviceProvider;
             InitializeComponent();
 
         }
@@ -43,10 +35,8 @@ namespace BusinessManagementApp.UI
             {
                 //logic 
                 MessageBox.Show("Giriş Başarılı");
-                var form2 = new Form2();
-                form2.Show();
+                var form = _serviceProvider.GetRequiredService<AnaMenu>();
                 this.Hide();
-                
             }
             else
             {

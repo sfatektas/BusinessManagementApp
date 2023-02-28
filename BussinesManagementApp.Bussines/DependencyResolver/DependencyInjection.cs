@@ -80,6 +80,7 @@ namespace BussinesManagementApp.Bussines.DependencyResolver
             services.AddScoped<IUow, Uow>();
             //services
             services.AddScoped<IdentityService>();
+
         }
     }
 }

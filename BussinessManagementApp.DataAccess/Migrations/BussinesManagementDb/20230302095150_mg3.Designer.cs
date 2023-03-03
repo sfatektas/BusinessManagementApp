@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigrations
+namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDb
 {
     [DbContext(typeof(BussinesManagementDbContext))]
-    [Migration("20230226113936_mg4")]
-    partial class mg4
+    [Migration("20230302095150_mg3")]
+    partial class mg3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -45,7 +45,7 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("IsActive")
                         .ValueGeneratedOnAdd()
@@ -54,13 +54,17 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
 
                     b.Property<string>("TelNo")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
+                    b.HasAlternateKey("Email");
+
+                    b.HasAlternateKey("TelNo");
+
                     b.HasIndex("CustomerTypeId");
 
-                    b.ToTable("Customer");
+                    b.ToTable("Customers");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Customer");
                 });
@@ -248,9 +252,11 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
 
                     b.Property<string>("TelNo")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasAlternateKey("TelNo");
 
                     b.ToTable("Suppliers");
                 });

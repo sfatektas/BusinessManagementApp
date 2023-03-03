@@ -28,83 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.SupplierAdd_btn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Email_txtbox = new System.Windows.Forms.TextBox();
+            this.LogisticCompany_txtbox = new System.Windows.Forms.TextBox();
+            this.ContactPerson_txtbox = new System.Windows.Forms.TextBox();
+            this.TelNo_txtbox = new System.Windows.Forms.TextBox();
+            this.companyName_txtbox = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.comboboxUpdate = new System.Windows.Forms.ComboBox();
+            this.TelNoSearchBtnUpdate_btn = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.LogisticCompany_txt = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.emailUpdate_txt = new System.Windows.Forms.TextBox();
+            this.contactnameupdate_txt = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.telnoupdate_txt = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.companyInfoupdate_txt = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.TelnoUpdateSearch_txt = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.listBox1);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.textBox11);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Location = new System.Drawing.Point(799, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(488, 352);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Kayıtlı Tedarikçi Silme";
-            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.SupplierAdd_btn);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.Email_txtbox);
+            this.groupBox2.Controls.Add(this.LogisticCompany_txtbox);
+            this.groupBox2.Controls.Add(this.ContactPerson_txtbox);
+            this.groupBox2.Controls.Add(this.TelNo_txtbox);
+            this.groupBox2.Controls.Add(this.companyName_txtbox);
             this.groupBox2.ForeColor = System.Drawing.Color.DarkGreen;
             this.groupBox2.Location = new System.Drawing.Point(24, 12);
             this.groupBox2.Name = "groupBox2";
@@ -113,76 +86,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tedarikçi Ekle";
             // 
-            // textBox1
+            // SupplierAdd_btn
             // 
-            this.textBox1.Location = new System.Drawing.Point(199, 46);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(169, 27);
-            this.textBox1.TabIndex = 0;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(547, 46);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(190, 27);
-            this.textBox2.TabIndex = 0;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(199, 103);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(169, 27);
-            this.textBox3.TabIndex = 0;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(199, 162);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(169, 27);
-            this.textBox4.TabIndex = 0;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(547, 106);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(190, 27);
-            this.textBox5.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 46);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Şirket Bilgisi:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 106);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(163, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "İletişim Kurulacak Kişi  :";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(391, 46);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(132, 20);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Telefon Numarası :";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(391, 113);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 20);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Email :";
+            this.SupplierAdd_btn.Location = new System.Drawing.Point(547, 173);
+            this.SupplierAdd_btn.Name = "SupplierAdd_btn";
+            this.SupplierAdd_btn.Size = new System.Drawing.Size(115, 33);
+            this.SupplierAdd_btn.TabIndex = 2;
+            this.SupplierAdd_btn.Text = "Ekle";
+            this.SupplierAdd_btn.UseVisualStyleBackColor = true;
+            this.SupplierAdd_btn.Click += new System.EventHandler(this.SupplierAdd_btn_Click);
+            this.SupplierAdd_btn.Enter += new System.EventHandler(this.Ekle);
             // 
             // label5
             // 
@@ -193,52 +106,85 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "Lojistik Şirketi :";
             // 
-            // button1
+            // label4
             // 
-            this.button1.Location = new System.Drawing.Point(547, 173);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 33);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Ekle";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Enter += new System.EventHandler(this.Ekle);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(391, 113);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 20);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Email :";
             // 
-            // listBox1
+            // label3
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(149, 52);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(171, 24);
-            this.listBox1.TabIndex = 0;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(391, 46);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(132, 20);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Telefon Numarası :";
             // 
-            // label6
+            // label2
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 52);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(95, 20);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Tedarikçi Seç";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(22, 106);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(163, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "İletişim Kurulacak Kişi  :";
             // 
-            // button2
+            // label1
             // 
-            this.button2.Location = new System.Drawing.Point(185, 285);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(115, 33);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Sil";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Enter += new System.EventHandler(this.Ekle);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 46);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Şirket Bilgisi:";
+            // 
+            // Email_txtbox
+            // 
+            this.Email_txtbox.Location = new System.Drawing.Point(547, 106);
+            this.Email_txtbox.Name = "Email_txtbox";
+            this.Email_txtbox.Size = new System.Drawing.Size(190, 27);
+            this.Email_txtbox.TabIndex = 0;
+            // 
+            // LogisticCompany_txtbox
+            // 
+            this.LogisticCompany_txtbox.Location = new System.Drawing.Point(199, 162);
+            this.LogisticCompany_txtbox.Name = "LogisticCompany_txtbox";
+            this.LogisticCompany_txtbox.Size = new System.Drawing.Size(169, 27);
+            this.LogisticCompany_txtbox.TabIndex = 0;
+            // 
+            // ContactPerson_txtbox
+            // 
+            this.ContactPerson_txtbox.Location = new System.Drawing.Point(199, 103);
+            this.ContactPerson_txtbox.Name = "ContactPerson_txtbox";
+            this.ContactPerson_txtbox.Size = new System.Drawing.Size(169, 27);
+            this.ContactPerson_txtbox.TabIndex = 0;
+            // 
+            // TelNo_txtbox
+            // 
+            this.TelNo_txtbox.Location = new System.Drawing.Point(547, 46);
+            this.TelNo_txtbox.Name = "TelNo_txtbox";
+            this.TelNo_txtbox.Size = new System.Drawing.Size(190, 27);
+            this.TelNo_txtbox.TabIndex = 0;
+            // 
+            // companyName_txtbox
+            // 
+            this.companyName_txtbox.Location = new System.Drawing.Point(199, 46);
+            this.companyName_txtbox.Name = "companyName_txtbox";
+            this.companyName_txtbox.Size = new System.Drawing.Size(169, 27);
+            this.companyName_txtbox.TabIndex = 0;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button5);
+            this.groupBox3.Controls.Add(this.comboboxUpdate);
+            this.groupBox3.Controls.Add(this.TelNoSearchBtnUpdate_btn);
             this.groupBox3.Controls.Add(this.groupBox4);
-            this.groupBox3.Controls.Add(this.listBox2);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.textBox12);
+            this.groupBox3.Controls.Add(this.TelnoUpdateSearch_txt);
             this.groupBox3.ForeColor = System.Drawing.Color.SteelBlue;
             this.groupBox3.Location = new System.Drawing.Point(24, 248);
             this.groupBox3.Name = "groupBox3";
@@ -246,6 +192,46 @@
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tedarikçi Güncelle";
+            // 
+            // comboboxUpdate
+            // 
+            this.comboboxUpdate.FormattingEnabled = true;
+            this.comboboxUpdate.Location = new System.Drawing.Point(199, 33);
+            this.comboboxUpdate.Name = "comboboxUpdate";
+            this.comboboxUpdate.Size = new System.Drawing.Size(151, 28);
+            this.comboboxUpdate.TabIndex = 3;
+            this.comboboxUpdate.SelectionChangeCommitted += new System.EventHandler(this.comboboxUpdate_SelectionChangeCommitted);
+            // 
+            // TelNoSearchBtnUpdate_btn
+            // 
+            this.TelNoSearchBtnUpdate_btn.Location = new System.Drawing.Point(547, 83);
+            this.TelNoSearchBtnUpdate_btn.Name = "TelNoSearchBtnUpdate_btn";
+            this.TelNoSearchBtnUpdate_btn.Size = new System.Drawing.Size(115, 33);
+            this.TelNoSearchBtnUpdate_btn.TabIndex = 2;
+            this.TelNoSearchBtnUpdate_btn.Text = "Bul";
+            this.TelNoSearchBtnUpdate_btn.UseVisualStyleBackColor = true;
+            this.TelNoSearchBtnUpdate_btn.Click += new System.EventHandler(this.TelNoSearchBtnUpdate_btn_Click);
+            this.TelNoSearchBtnUpdate_btn.Enter += new System.EventHandler(this.Ekle);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.button3);
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.LogisticCompany_txt);
+            this.groupBox4.Controls.Add(this.label7);
+            this.groupBox4.Controls.Add(this.emailUpdate_txt);
+            this.groupBox4.Controls.Add(this.contactnameupdate_txt);
+            this.groupBox4.Controls.Add(this.label8);
+            this.groupBox4.Controls.Add(this.telnoupdate_txt);
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.label9);
+            this.groupBox4.Controls.Add(this.companyInfoupdate_txt);
+            this.groupBox4.Location = new System.Drawing.Point(6, 122);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(757, 200);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "groupBox4";
             // 
             // button3
             // 
@@ -257,6 +243,22 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Enter += new System.EventHandler(this.Ekle);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 33);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(93, 20);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Şirket Bilgisi:";
+            // 
+            // LogisticCompany_txt
+            // 
+            this.LogisticCompany_txt.Location = new System.Drawing.Point(183, 140);
+            this.LogisticCompany_txt.Name = "LogisticCompany_txt";
+            this.LogisticCompany_txt.Size = new System.Drawing.Size(169, 27);
+            this.LogisticCompany_txt.TabIndex = 0;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -265,6 +267,20 @@
             this.label7.Size = new System.Drawing.Size(107, 20);
             this.label7.TabIndex = 1;
             this.label7.Text = "Lojistik Şirketi :";
+            // 
+            // emailUpdate_txt
+            // 
+            this.emailUpdate_txt.Location = new System.Drawing.Point(541, 97);
+            this.emailUpdate_txt.Name = "emailUpdate_txt";
+            this.emailUpdate_txt.Size = new System.Drawing.Size(190, 27);
+            this.emailUpdate_txt.TabIndex = 0;
+            // 
+            // contactnameupdate_txt
+            // 
+            this.contactnameupdate_txt.Location = new System.Drawing.Point(183, 88);
+            this.contactnameupdate_txt.Name = "contactnameupdate_txt";
+            this.contactnameupdate_txt.Size = new System.Drawing.Size(169, 27);
+            this.contactnameupdate_txt.TabIndex = 0;
             // 
             // label8
             // 
@@ -275,14 +291,12 @@
             this.label8.TabIndex = 1;
             this.label8.Text = "Email :";
             // 
-            // label9
+            // telnoupdate_txt
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(375, 33);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(132, 20);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Telefon Numarası :";
+            this.telnoupdate_txt.Location = new System.Drawing.Point(541, 26);
+            this.telnoupdate_txt.Name = "telnoupdate_txt";
+            this.telnoupdate_txt.Size = new System.Drawing.Size(190, 27);
+            this.telnoupdate_txt.TabIndex = 0;
             // 
             // label10
             // 
@@ -293,122 +307,21 @@
             this.label10.TabIndex = 1;
             this.label10.Text = "İletişim Kurulacak Kişi  :";
             // 
-            // label11
+            // label9
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 33);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(93, 20);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "Şirket Bilgisi:";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(375, 33);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(132, 20);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Telefon Numarası :";
             // 
-            // textBox6
+            // companyInfoupdate_txt
             // 
-            this.textBox6.Location = new System.Drawing.Point(541, 97);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(190, 27);
-            this.textBox6.TabIndex = 0;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(183, 140);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(169, 27);
-            this.textBox7.TabIndex = 0;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(183, 88);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(169, 27);
-            this.textBox8.TabIndex = 0;
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(541, 26);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(190, 27);
-            this.textBox9.TabIndex = 0;
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(183, 30);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(169, 27);
-            this.textBox10.TabIndex = 0;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.button3);
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.textBox7);
-            this.groupBox4.Controls.Add(this.label7);
-            this.groupBox4.Controls.Add(this.textBox6);
-            this.groupBox4.Controls.Add(this.textBox8);
-            this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.textBox9);
-            this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Controls.Add(this.textBox10);
-            this.groupBox4.Location = new System.Drawing.Point(6, 122);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(757, 200);
-            this.groupBox4.TabIndex = 0;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "groupBox4";
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 20;
-            this.listBox2.Location = new System.Drawing.Point(153, 33);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(180, 24);
-            this.listBox2.TabIndex = 0;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(13, 127);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(99, 20);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Tel No ile Ara";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(13, 220);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(153, 20);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Seçilen Tedarikçi Adı :";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(264, 220);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(56, 20);
-            this.label14.TabIndex = 1;
-            this.label14.Text = "Seçilen";
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(149, 127);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(151, 27);
-            this.textBox11.TabIndex = 0;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(337, 124);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(115, 33);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Bul";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Enter += new System.EventHandler(this.Ekle);
+            this.companyInfoupdate_txt.Location = new System.Drawing.Point(183, 30);
+            this.companyInfoupdate_txt.Name = "companyInfoupdate_txt";
+            this.companyInfoupdate_txt.Size = new System.Drawing.Size(169, 27);
+            this.companyInfoupdate_txt.TabIndex = 0;
             // 
             // label15
             // 
@@ -419,13 +332,6 @@
             this.label15.TabIndex = 1;
             this.label15.Text = "Seç";
             // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(547, 26);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(151, 27);
-            this.textBox12.TabIndex = 0;
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -435,21 +341,18 @@
             this.label16.TabIndex = 1;
             this.label16.Text = "Tel No ile Ara";
             // 
-            // button5
+            // TelnoUpdateSearch_txt
             // 
-            this.button5.Location = new System.Drawing.Point(547, 83);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(115, 33);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "Bul";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Enter += new System.EventHandler(this.Ekle);
+            this.TelnoUpdateSearch_txt.Location = new System.Drawing.Point(547, 26);
+            this.TelnoUpdateSearch_txt.Name = "TelnoUpdateSearch_txt";
+            this.TelnoUpdateSearch_txt.Size = new System.Drawing.Size(151, 27);
+            this.TelnoUpdateSearch_txt.TabIndex = 0;
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(1103, 441);
+            this.button6.Location = new System.Drawing.Point(833, 348);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(148, 75);
+            this.button6.Size = new System.Drawing.Size(156, 75);
             this.button6.TabIndex = 2;
             this.button6.Text = "Geri Dön";
             this.button6.UseVisualStyleBackColor = true;
@@ -458,7 +361,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(857, 443);
+            this.button7.Location = new System.Drawing.Point(833, 230);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(156, 71);
             this.button7.TabIndex = 2;
@@ -471,17 +374,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1299, 582);
+            this.ClientSize = new System.Drawing.Size(1020, 582);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.Name = "TedarikciIslemler";
             this.Text = "Tedarikçi İşlemleri";
             this.Load += new System.EventHandler(this.TedarikciIslemler_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -493,47 +393,37 @@
         }
 
         #endregion
-
-        private GroupBox groupBox1;
         private GroupBox groupBox2;
-        private TextBox textBox1;
+        private TextBox companyName_txtbox;
         private Label label5;
         private Label label4;
         private Label label3;
         private Label label2;
         private Label label1;
-        private TextBox textBox5;
-        private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private Button button1;
-        private Button button2;
-        private ListBox listBox1;
-        private Label label13;
-        private Label label14;
-        private Label label6;
+        private TextBox Email_txtbox;
+        private TextBox LogisticCompany_txtbox;
+        private TextBox ContactPerson_txtbox;
+        private TextBox TelNo_txtbox;
+        private Button SupplierAdd_btn;
         private GroupBox groupBox3;
         private GroupBox groupBox4;
-        private ListBox listBox2;
-        private Label label12;
         private Button button3;
         private Label label7;
         private Label label8;
         private Label label9;
         private Label label10;
         private Label label11;
-        private TextBox textBox6;
-        private TextBox textBox7;
-        private TextBox textBox8;
-        private TextBox textBox9;
-        private TextBox textBox10;
-        private Button button4;
-        private TextBox textBox11;
-        private Button button5;
+        private TextBox emailUpdate_txt;
+        private TextBox LogisticCompany_txt;
+        private TextBox contactnameupdate_txt;
+        private TextBox telnoupdate_txt;
+        private TextBox companyInfoupdate_txt;
+        private Button TelNoSearchBtnUpdate_btn;
         private Label label15;
         private Label label16;
-        private TextBox textBox12;
+        private TextBox TelnoUpdateSearch_txt;
         private Button button6;
         private Button button7;
+        private ComboBox comboboxUpdate;
     }
 }

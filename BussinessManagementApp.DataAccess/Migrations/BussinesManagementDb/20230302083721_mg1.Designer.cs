@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigrations
+namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDb
 {
     [DbContext(typeof(BussinesManagementDbContext))]
-    [Migration("20230225122005_mg2")]
-    partial class mg2
+    [Migration("20230302083721_mg1")]
+    partial class mg1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,24 +33,38 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("CominicatePersonName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CustomerTypeId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<string>("TelNo")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customer");
+                    b.HasAlternateKey("Email");
+
+                    b.HasAlternateKey("TelNo");
+
+                    b.HasIndex("CustomerTypeId");
+
+                    b.ToTable("Customers");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Customer");
                 });
@@ -70,10 +84,14 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<double>("KdvPrice")
                         .HasColumnType("float");
@@ -101,6 +119,28 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
                     b.ToTable("CustomerOrders");
                 });
 
+            modelBuilder.Entity("BussinessManagementApp.Entities.CustomerType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Defination")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CustomerType");
+                });
+
             modelBuilder.Entity("BussinessManagementApp.Entities.MoneyType", b =>
                 {
                     b.Property<int>("Id")
@@ -110,9 +150,12 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Value")
@@ -132,10 +175,13 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Defination")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.HasKey("Id");
 
@@ -151,12 +197,16 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Origin")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SupplierId")
@@ -167,7 +217,7 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SupplierId");
+                    b.HasIndex("SupplierId", "Name");
 
                     b.ToTable("Products");
                 });
@@ -181,24 +231,32 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("CominicatePersonName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Info")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<string>("LogisticsCompany")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TelNo")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TelNo");
 
                     b.ToTable("Suppliers");
                 });
@@ -215,10 +273,14 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<int>("MoneyTypeId")
                         .HasColumnType("int");
@@ -273,12 +335,15 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
                     b.HasBaseType("BussinessManagementApp.Entities.Customer");
 
                     b.Property<string>("CompanyName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TaxNo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TradeRegisterNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("CorporateCustomer");
@@ -289,6 +354,17 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
                     b.HasBaseType("BussinessManagementApp.Entities.Customer");
 
                     b.HasDiscriminator().HasValue("SingleCustomer");
+                });
+
+            modelBuilder.Entity("BussinessManagementApp.Entities.Customer", b =>
+                {
+                    b.HasOne("BussinessManagementApp.Entities.CustomerType", "CustomerType")
+                        .WithMany("Customers")
+                        .HasForeignKey("CustomerTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CustomerType");
                 });
 
             modelBuilder.Entity("BussinessManagementApp.Entities.CustomerOrder", b =>
@@ -362,6 +438,11 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
             modelBuilder.Entity("BussinessManagementApp.Entities.Customer", b =>
                 {
                     b.Navigation("CustomerOrders");
+                });
+
+            modelBuilder.Entity("BussinessManagementApp.Entities.CustomerType", b =>
+                {
+                    b.Navigation("Customers");
                 });
 
             modelBuilder.Entity("BussinessManagementApp.Entities.MoneyType", b =>

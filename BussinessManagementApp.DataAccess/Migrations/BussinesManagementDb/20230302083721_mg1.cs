@@ -3,30 +3,24 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigrations
+namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDb
 {
-    public partial class InitialCreate : Migration
+    public partial class mg1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Customer",
+                name: "CustomerType",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CominicatePersonName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TelNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TaxNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TradeRegisterNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    Defination = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Customer", x => x.Id);
+                    table.PrimaryKey("PK_CustomerType", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -35,9 +29,9 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Value = table.Column<double>(type: "float", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -50,8 +44,8 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Defination = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    Defination = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -64,16 +58,45 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Info = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CominicatePersonName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TelNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Info = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CominicatePersonName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TelNo = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LogisticsCompany = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Suppliers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Customers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CominicatePersonName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TelNo = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CustomerTypeId = table.Column<int>(type: "int", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TaxNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TradeRegisterNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Customers", x => x.Id);
+                    table.UniqueConstraint("AK_Customers_Email", x => x.Email);
+                    table.UniqueConstraint("AK_Customers_TelNo", x => x.TelNo);
+                    table.ForeignKey(
+                        name: "FK_Customers_CustomerType_CustomerTypeId",
+                        column: x => x.CustomerTypeId,
+                        principalTable: "CustomerType",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -82,11 +105,11 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Origin = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Origin = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SupplierId = table.Column<int>(type: "int", nullable: false),
                     UnitPrice = table.Column<double>(type: "float", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -112,16 +135,16 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
                     KdvPrice = table.Column<double>(type: "float", nullable: false),
                     TotalPrice = table.Column<double>(type: "float", nullable: false),
                     OrderStatusTypeId = table.Column<int>(type: "int", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getdate()"),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CustomerOrders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CustomerOrders_Customer_CustomerId",
+                        name: "FK_CustomerOrders_Customers_CustomerId",
                         column: x => x.CustomerId,
-                        principalTable: "Customer",
+                        principalTable: "Customers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -149,8 +172,8 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
                     Amount = table.Column<int>(type: "int", nullable: false),
                     TotalPrice = table.Column<double>(type: "float", nullable: false),
                     MoneyTypeId = table.Column<int>(type: "int", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getdate()"),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -206,9 +229,14 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_SupplierId",
+                name: "IX_Customers_CustomerTypeId",
+                table: "Customers",
+                column: "CustomerTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Products_SupplierId_Name",
                 table: "Products",
-                column: "SupplierId");
+                columns: new[] { "SupplierId", "Name" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_SupplierOrders_MoneyTypeId",
@@ -219,6 +247,11 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
                 name: "IX_SupplierOrders_ProductId",
                 table: "SupplierOrders",
                 column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Suppliers_TelNo",
+                table: "Suppliers",
+                column: "TelNo");
 
             migrationBuilder.CreateIndex(
                 name: "IX_WarehouseProducts_ProductId",
@@ -239,7 +272,7 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
                 name: "WarehouseProducts");
 
             migrationBuilder.DropTable(
-                name: "Customer");
+                name: "Customers");
 
             migrationBuilder.DropTable(
                 name: "OrderStatusTypes");
@@ -249,6 +282,9 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDbMigra
 
             migrationBuilder.DropTable(
                 name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "CustomerType");
 
             migrationBuilder.DropTable(
                 name: "Suppliers");

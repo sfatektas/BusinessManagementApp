@@ -25,7 +25,7 @@ namespace BussinesManagementApp.Bussines.Interfaces
 
         Task<IResponse<ListDto>> GetByIdAsync(int id);
 
-        //Task<IResponse<ListDto>> GetByIdAsync<Dto>(int id) where Dto : ListDto;
+        Task<IResponse<ListDto>> GetByFilterAsync(Expression<Func<T, bool>> filter);
 
         Task<IResponse> Remove(ListDto dto);
 

@@ -12,6 +12,7 @@ namespace BussinessManagementApp.DataAccess.Contexts
 {
     public class BussinesManagementDbContext : DbContext
     {
+        public DbSet<Customer> Customers { get; set; }
         public DbSet<SingleCustomer> SingleCustomers { get; set; }
         public DbSet<CorporateCustomer> CorporateCustomers { get; set; }
         public DbSet<Product> Products { get; set; }

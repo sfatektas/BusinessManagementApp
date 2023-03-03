@@ -31,8 +31,6 @@ namespace BussinessManagementApp.DataAccess.Configurations
             builder.Property(x => x.CustomerTypeId).IsRequired();
             builder.Property(x => x.CominicatePersonName).IsRequired();
             builder.Property(x => x.TelNo).IsRequired();
-            builder.HasAlternateKey(x => x.Email);//Email ve Telefon numaraları müşteriler için uniq olmalı
-            builder.HasAlternateKey(x => x.TelNo);
         }
     }
     public class CorporateCustomerConfiguration : IEntityTypeConfiguration<CorporateCustomer>

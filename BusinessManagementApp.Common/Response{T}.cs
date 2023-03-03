@@ -14,6 +14,11 @@ namespace BusinessManagementApp.Common
         {
             Data = data;
         }
+        public Response(ResponseType responseType, T data, List<ValidationError> validationErrors) : base(responseType)
+        {
+            Data = data;
+            ValidationErrors = validationErrors;
+        }
 
         public Response(ResponseType responseType, string message, T data, List<ValidationError> validationErrors):base(responseType,message)
         {

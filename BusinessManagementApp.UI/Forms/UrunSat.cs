@@ -11,14 +11,16 @@ using System.Windows.Forms;
 
 namespace BusinessManagementApp.UI.Forms
 {
-    public partial class TedarikciMusteriMenu : Form, INodeable
+    public partial class UrunSat : Form, INodeable
     {
-        public TedarikciMusteriMenu()
+        public UrunSat()
         {
             InitializeComponent();
             this.Show();
         }
-
-        public Form _prev { get; set; }
+        public Form _prev
+        {
+            get; set;
+        }
     }
 }

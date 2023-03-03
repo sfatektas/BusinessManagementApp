@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace BusinessManagementApp.UI.Forms
 {
-    public partial class TedarikciMusteriMenu : Form, INodeable
+    public partial class TedarikciEkle : Form , INodeable
     {
-        public TedarikciMusteriMenu()
+        public TedarikciEkle()
         {
             InitializeComponent();
             this.Show();

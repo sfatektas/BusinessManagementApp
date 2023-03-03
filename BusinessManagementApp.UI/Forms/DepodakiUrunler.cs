@@ -11,14 +11,26 @@ using System.Windows.Forms;
 
 namespace BusinessManagementApp.UI.Forms
 {
-    public partial class TedarikciMusteriMenu : Form, INodeable
+    public partial class DepodakiUrunler : Form , INodeable
     {
-        public TedarikciMusteriMenu()
+        public DepodakiUrunler()
         {
             InitializeComponent();
             this.Show();
         }
 
         public Form _prev { get; set; }
+
+        private void DepodakiUrunler_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void TurnBack_btn_Click(object sender, EventArgs e)
+        {
+            _prev.Show();
+            this.Close();
+        }
     }
 }

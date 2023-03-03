@@ -1,3 +1,4 @@
+using BusinessManagementApp.UI.Forms;
 using BussinesManagementApp.Bussines.DependencyResolver;
 using BussinesManagementApp.Bussines.Services;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,17 +22,29 @@ namespace BusinessManagementApp.UI
             var host = CreateHostBuilder().Build();
             ServiceProvider = host.Services;
 
-            Application.Run(ServiceProvider.GetRequiredService<Giris>());
+            //Application.Run(ServiceProvider.GetRequiredService<Giris>()); // TODO iþlemler yapýldýktan sonra açýlacak.
+            Application.Run(ServiceProvider.GetRequiredService<AnaMenu>());
         }
         public static IServiceProvider ServiceProvider { get; private set; }
         static IHostBuilder CreateHostBuilder()
         {
             return Host.CreateDefaultBuilder()
-                .ConfigureServices((context, services) => {
+                .ConfigureServices((context, services) =>
+                {
                     //services.AddTransient<IHelloService, HelloService>();
+
                     //Forms DI
                     services.AddTransient<Giris>();
                     services.AddTransient<AnaMenu>();
+                    services.AddTransient<DepodakiUrunler>();
+                    services.AddTransient<MusteriIslemleri>();
+                    services.AddTransient<TedarikciEkle>();
+                    services.AddTransient<TedarikciIslemler>();
+                    services.AddTransient<TedarikciMusteriMenu>();
+                    services.AddTransient<UrunAlýmListeleme>();
+                    services.AddTransient<UrunAlýmý>();
+                    services.AddTransient<UrunIslemleri>();
+                    services.AddTransient<UrunSat>();
 
                     services.DependencyExtension();
                 });

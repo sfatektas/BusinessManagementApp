@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using FluentValidation;
+using BussinesManagementApp.Bussines.Helpers.Extension;
 
 namespace BussinesManagementApp.Bussines.Services
 {
@@ -27,36 +28,47 @@ namespace BussinesManagementApp.Bussines.Services
         private readonly IValidator<CreateDto> _createValidator;
         private readonly IValidator<UpdateDto> _updateValidator;
 
-        public Service(IUow uow, IMapper mapper, IValidator<CreateDto> createValidator)
+        public Service(IUow uow, IMapper mapper, IValidator<CreateDto> createValidator, IValidator<UpdateDto> updateValidator)
         {
             _uow = uow;
             _mapper = mapper;
             _createValidator = createValidator;
+            _updateValidator = updateValidator;
         }
 
-        public async Task<IResponse<CreateDto>> CreateAsync(CreateDto dto)
+        public virtual async Task<IResponse<CreateDto>> CreateAsync(CreateDto dto)
         {
             var result = await _createValidator.ValidateAsync(dto);
             if (result.IsValid)
             {
                 await _uow.GetRepository<T>().CreateAsync(_mapper.Map<T>(dto));
                 await _uow.SaveChangesAsync();
-                return new Response<CreateDto>(ResponseType.Success, dto);
+                return new Response<CreateDto>(ResponseType.Success,"Başarı ile Eklendi",dto);
             }
-            return new Response<CreateDto>(ResponseType.ValidationError, dto);
-
+            return new Response<CreateDto>(ResponseType.ValidationError, dto,result.GetValidationErrors());
         }
 
         public async Task<IResponse<List<ListDto>>> GetAllAsync()
         {
             var result = await _uow.GetRepository<T>().GetAllAsync();
-            return new Response<List<ListDto>>(ResponseType.Success, _mapper.Map<List<ListDto>>(result));
+            if(result != null)
+                return new Response<List<ListDto>>(ResponseType.Success, _mapper.Map<List<ListDto>>(result));
+            return new Response<List<ListDto>>(ResponseType.NotFound,"Herhangi bir kayıt bulunmamaktadır.", _mapper.Map<List<ListDto>>(result));
         }
 
         public async Task<IResponse<List<ListDto>>> GetAllAsync(Expression<Func<T, bool>> filter)
         {
             var result = await _uow.GetRepository<T>().GetAllAsync(filter);
-            return new Response<List<ListDto>>(ResponseType.Success, _mapper.Map<List<ListDto>>(result));
+            if (result != null)
+                return new Response<List<ListDto>>(ResponseType.Success, _mapper.Map<List<ListDto>>(result));
+            return new Response<List<ListDto>>(ResponseType.NotFound, "Herhangi bir kayıt bulunmamaktadır.", _mapper.Map<List<ListDto>>(result));
+        }
+        public async Task<IResponse<ListDto>> GetByFilterAsync(Expression<Func<T, bool>> filter)
+        {
+            var result = await _uow.GetRepository<T>().GetByFilterAsync(filter);
+            if (result != null)
+                return new Response<ListDto>(ResponseType.Success, _mapper.Map<ListDto>(result));
+            return new Response<ListDto>(ResponseType.NotFound, "Herhangi bir kayıt bulunmamaktadır.", _mapper.Map<ListDto>(result));
         }
 
         public async Task<IResponse<ListDto>> GetByIdAsync(int id)
@@ -71,23 +83,36 @@ namespace BussinesManagementApp.Bussines.Services
 
         public async Task<IResponse> Remove(ListDto dto)
         {
-            _uow.GetRepository<T>().Remove(_mapper.Map<T>(dto));
-            await _uow.SaveChangesAsync();
-            return new Response(ResponseType.Success);
+            try
+            {
+                _uow.GetRepository<T>().Remove(_mapper.Map<T>(dto));
+                await _uow.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                return new Response(ResponseType.Error, $"Bir Hata Oluştu \n{e.Message}");
+
+            }
+            return new Response(ResponseType.Success,"İlgili Veri Başarı ile silindi.");
         }
 
         public async Task<IResponse<UpdateDto>> UpdateAsync(UpdateDto dto)
         {
-            try
+            var result = await _updateValidator.ValidateAsync(dto);
+            if (result.IsValid)
             {
-                _uow.GetRepository<T>().Update(await _uow.GetRepository<T>().GetByFilterAsync(x => x.Id == dto.Id), _mapper.Map<T>(dto));
-                await _uow.SaveChangesAsync();
-                return new Response<UpdateDto>(ResponseType.Success, dto);
+                try
+                {
+                    _uow.GetRepository<T>().Update(await _uow.GetRepository<T>().GetByFilterAsync(x => x.Id == dto.Id), _mapper.Map<T>(dto));
+                    await _uow.SaveChangesAsync();
+                    return new Response<UpdateDto>(ResponseType.Success, dto);
+                }
+                catch (Exception e)
+                {
+                    return new Response<UpdateDto>(ResponseType.Error, $"Bir sorun oluştu Hata mesajı : {e.Message}", dto);
+                }
             }
-            catch (Exception e)
-            {
-                return new Response<UpdateDto>(ResponseType.Error, $"Bir sorun oluştu Hata mesajı : {e.Message}", dto);
-            }
+            return new Response<UpdateDto>(ResponseType.ValidationError,dto,result.GetValidationErrors());
         }
     }
 }

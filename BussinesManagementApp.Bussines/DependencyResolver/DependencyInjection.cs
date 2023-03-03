@@ -15,6 +15,7 @@ using BussinesManagementApp.Bussines.Validations.FluentValidation.WarehouseProdu
 using BussinesManagementApp.Bussines.Mapper.AutoMapper;
 using BussinessManagementApp.DataAccess.Interfaces;
 using BussinessManagementApp.DataAccess.UnitOfWork;
+using BussinesManagementApp.Bussines.Interfaces;
 
 namespace BussinesManagementApp.Bussines.DependencyResolver
 {
@@ -80,6 +81,7 @@ namespace BussinesManagementApp.Bussines.DependencyResolver
             services.AddScoped<IUow, Uow>();
             //services
             services.AddScoped<IdentityService>();
+            services.AddScoped<ISupplierService,SupplierService>();
 
         }
     }

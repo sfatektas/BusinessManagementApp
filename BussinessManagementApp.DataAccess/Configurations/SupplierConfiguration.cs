@@ -9,6 +9,7 @@ namespace BussinessManagementApp.DataAccess.Configurations
         public void Configure(EntityTypeBuilder<Supplier> builder)
         {
             builder.HasKey(x => x.Id);
+            builder.HasAlternateKey(x => x.TelNo); // aynı telefon numarasına sahip iki farklı kayıt olmamalı
             builder.Property(x => x.Info).IsRequired();
             builder.Property(x=>x.IsActive).HasDefaultValue(true);
             builder.Property(x=>x.CominicatePersonName).IsRequired();

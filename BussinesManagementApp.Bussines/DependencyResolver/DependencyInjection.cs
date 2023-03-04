@@ -56,11 +56,10 @@ namespace BussinesManagementApp.Bussines.DependencyResolver
                 conf.AddProfile(new WarehouseProductProfile());
             });
             //Fluent Validation
+
                 //Customer
-            services.AddTransient<IValidator<SingleCustomerCreateDto>, SingleCustomerCreateDtoValidator>();
-            services.AddTransient<IValidator<CorporateCustomerCreateDto>, CorporateCustomerCreateDtoValidator>();
-            services.AddTransient<IValidator<SingleCustomerUpdateDto>, SingleCustomerUpdateDtoValidator>();
-            services.AddTransient<IValidator<CorporateCustomerUpdateDto>, CorporateCustomerUpdateDtoValidator>();
+            services.AddTransient<IValidator<CustomerCreateDto>, CustomerCreateDtoValidator>();
+            services.AddTransient<IValidator<CustomerUpdateDto>, CustomerUpdateDtoValidator>();
                 //CustomerOrder
             services.AddTransient<IValidator<CustomerOrderCreateDto>, CustomerOrderCreateDtoValidator>();
             services.AddTransient<IValidator<CustomerOrderUpdateDto>, CustomerOrderUpdateDtoValidator>();
@@ -82,7 +81,8 @@ namespace BussinesManagementApp.Bussines.DependencyResolver
             //services
             services.AddScoped<IdentityService>();
             services.AddScoped<ISupplierService,SupplierService>();
-
+            services.AddScoped<ICustomerService,CustomerService>();
+            services.AddScoped<IProductService,ProductService>();
         }
     }
 }

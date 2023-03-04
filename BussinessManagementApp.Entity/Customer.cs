@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BussinessManagementApp.Entities
 {
-    public abstract class Customer : BaseEntity
+    public class Customer : BaseEntity
     {
         public string CominicatePersonName { get; set; }
         public string TelNo { get; set; }
@@ -16,16 +16,10 @@ namespace BussinessManagementApp.Entities
 
         public List<CustomerOrder> CustomerOrders { get; set; }
 
-
-    }
-    public class SingleCustomer : Customer
-    {
-
-    }
-    public class CorporateCustomer : Customer
-    {
         public string CompanyName { get; set; }
         public string TaxNo { get; set; }
         public string TradeRegisterNumber { get; set; }
+
+
     }
 }

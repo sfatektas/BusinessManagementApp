@@ -23,25 +23,4 @@ namespace BussinessManagementApp.DataAccess.Configurations
             builder.Property(x => x.IsActive).HasDefaultValue(true);
         }
     }
-    public class SingleCustomerConfiguration : IEntityTypeConfiguration<SingleCustomer>
-    {
-        public void Configure(EntityTypeBuilder<SingleCustomer> builder)
-        {
-            builder.Property(x => x.Email).IsRequired();
-            builder.Property(x => x.CustomerTypeId).IsRequired();
-            builder.Property(x => x.CominicatePersonName).IsRequired();
-            builder.Property(x => x.TelNo).IsRequired();
-        }
-    }
-    public class CorporateCustomerConfiguration : IEntityTypeConfiguration<CorporateCustomer>
-    {
-        public void Configure(EntityTypeBuilder<CorporateCustomer> builder)
-        { 
-            
-            builder.Property(x => x.TradeRegisterNumber).IsRequired();
-            builder.Property(x => x.CompanyName).IsRequired();
-            builder.Property(x => x.TaxNo).IsRequired();
-
-        }
-    }
 }

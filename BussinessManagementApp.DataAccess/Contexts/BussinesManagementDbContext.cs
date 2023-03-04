@@ -13,8 +13,6 @@ namespace BussinessManagementApp.DataAccess.Contexts
     public class BussinesManagementDbContext : DbContext
     {
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<SingleCustomer> SingleCustomers { get; set; }
-        public DbSet<CorporateCustomer> CorporateCustomers { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<SupplierOrder> SupplierOrders { get; set; }
@@ -30,8 +28,6 @@ namespace BussinessManagementApp.DataAccess.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CustomerConfiguration());
-            modelBuilder.ApplyConfiguration(new SingleCustomerConfiguration());
-            modelBuilder.ApplyConfiguration(new CorporateCustomerConfiguration());
             modelBuilder.ApplyConfiguration(new CustomerOrderConfiguration());
             modelBuilder.ApplyConfiguration(new CustomerTypeConfiguration());
             modelBuilder.ApplyConfiguration(new MoneyTypeConfiguration());

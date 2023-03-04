@@ -45,6 +45,7 @@ namespace BusinessManagementApp.UI
                     services.AddTransient<UrunAlýmý>();
                     services.AddTransient<UrunIslemleri>();
                     services.AddTransient<UrunSat>();
+                    services.AddTransient<UrunEkle>();
 
                     services.DependencyExtension();
                 });

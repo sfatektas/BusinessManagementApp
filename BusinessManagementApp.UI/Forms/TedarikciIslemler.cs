@@ -124,5 +124,11 @@ namespace BusinessManagementApp.UI.Forms
         {
             Task findtxtUpdate = UpdateTxtBind(0, TelnoUpdateSearch_txt.Text);
         }
+
+        private void returnBtnClick(object sender, EventArgs e)
+        {
+            _prev.Show();
+            this.Close();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using BussinesManagementApp.Dtos;
+﻿using BusinessManagementApp.Common.Enums;
+using BussinesManagementApp.Dtos;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -8,27 +9,17 @@ using System.Threading.Tasks;
 
 namespace BussinesManagementApp.Bussines.Validations.FluentValidation.CustomerValidations
 {
-    public class SingleCustomerCreateDtoValidator : AbstractValidator<SingleCustomerCreateDto>
+    public class CustomerCreateDtoValidator : AbstractValidator<CustomerCreateDto>
     {
-        public SingleCustomerCreateDtoValidator()
-        {
-            RuleFor(x=>x.Email).NotEmpty();
-            RuleFor(x=>x.TelNo).NotEmpty();
-            RuleFor(x=>x.CominicatePersonName).NotEmpty();
-            RuleFor(x=>x.CustomerTypeId).NotEqual(0);
-        }
-    }
-    public class CorporateCustomerCreateDtoValidator : AbstractValidator<CorporateCustomerCreateDto>
-    {
-        public CorporateCustomerCreateDtoValidator()
+        public CustomerCreateDtoValidator()
         {
             RuleFor(x => x.Email).NotEmpty().EmailAddress();
             RuleFor(x => x.TelNo).NotEmpty();
             RuleFor(x => x.CominicatePersonName).NotEmpty();
             RuleFor(x => x.CustomerTypeId).NotEqual(0);
-            RuleFor(x=>x.TradeRegisterNumber).NotEmpty();
-            RuleFor(x=>x.TaxNo).NotEmpty();
-            RuleFor(x=>x.CompanyName).NotEmpty();
+            RuleFor(x => x.TradeRegisterNumber).NotEmpty().When(x => x.CustomerTypeId != (int)CustomerType.Single);
+            RuleFor(x => x.TaxNo).NotEmpty().When(x => x.CustomerTypeId != (int)CustomerType.Single);
+            RuleFor(x => x.CompanyName).NotEmpty().When(x => x.CustomerTypeId != (int)CustomerType.Single);
         }
     }
 }

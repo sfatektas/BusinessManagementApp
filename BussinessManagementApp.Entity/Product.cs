@@ -15,7 +15,6 @@ namespace BussinessManagementApp.Entities
         [ForeignKey("Supplier")]
         public int SupplierId { get; set; }
         public Supplier Supplier { get; set; }
-
         public double UnitPrice { get; set; }
 
         //navigation prop

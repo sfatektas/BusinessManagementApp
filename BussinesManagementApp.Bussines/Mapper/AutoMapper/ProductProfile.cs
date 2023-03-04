@@ -13,10 +13,10 @@ namespace BussinesManagementApp.Bussines.Mapper.AutoMapper
     {
         public ProductProfile()
         {
-            CreateMap<Product,ProductCreateDto>();
-            CreateMap<Product,ProductListDto>();
-            CreateMap<Product,ProductUpdateDto>();
-            CreateMap<ProductListDto, ProductUpdateDto>();
+            CreateMap<Product,ProductCreateDto>().ReverseMap();
+            CreateMap<Product,ProductListDto>().ReverseMap();
+            CreateMap<Product,ProductUpdateDto>().ReverseMap();
+            CreateMap<ProductListDto, ProductUpdateDto>().ReverseMap();
         }
     }
 }

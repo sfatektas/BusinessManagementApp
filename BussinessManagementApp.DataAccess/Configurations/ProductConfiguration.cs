@@ -18,7 +18,8 @@ namespace BussinessManagementApp.DataAccess.Configurations
             builder.Property(x => x.Origin).IsRequired();
             builder.Property(x => x.SupplierId).IsRequired();
             builder.Property(x => x.IsActive).HasDefaultValue(true);
-            builder.Property(x => x.UnitPrice).IsRequired();
+            builder.Property(x => x.UnitPrice).HasDefaultValue(0); // Ürün Ekleme kısmında ürünün isim ve menşei bilgisini alacağım 
+            //daha sonra satış fiyatını belirleyeceğim
             builder.Property(x => x.Name).IsRequired();
         }
     }

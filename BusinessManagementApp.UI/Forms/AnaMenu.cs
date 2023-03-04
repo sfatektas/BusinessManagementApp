@@ -46,7 +46,7 @@ namespace BusinessManagementApp.UI
         {
             var urunsatısform = _serviceProvider.GetRequiredService<UrunSat>();
             urunsatısform._prev = this;
-            this.Show();
+            this.Hide();
         }
 
         private void ProductEdit_btn_Click(object sender, EventArgs e)

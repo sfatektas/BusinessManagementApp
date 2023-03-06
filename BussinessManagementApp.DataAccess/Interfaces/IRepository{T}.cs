@@ -22,7 +22,7 @@ namespace BussinessManagementApp.DataAccess.Interfaces
 
         void Remove(T entity);
 
-        void Update(T unchanged, T updated);
+        void Update(T updated);
 
         IQueryable<T> GetQueryable();
 

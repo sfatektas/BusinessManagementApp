@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace BussinesManagementApp.Bussines.Interfaces
 {
-    public interface IWarehouseService : IService<WarehouseProductCreateDto,WarehouseProductUpdateDto,WarehouseProductListDto,WarehouseProduct>
+    public interface IWarehouseProductService : IService<WarehouseProductCreateDto,WarehouseProductUpdateDto,WarehouseProductListDto,WarehouseProduct> , IQueryable<WarehouseProductListDto>
+        
     {
     }
 }

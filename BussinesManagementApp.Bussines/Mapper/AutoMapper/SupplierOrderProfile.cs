@@ -13,10 +13,10 @@ namespace BussinesManagementApp.Bussines.Mapper.AutoMapper
     {
         public SupplierOrderProfile()
         {
-            CreateMap<SupplierOrder, SupplierCreateDto>();
-            CreateMap<SupplierOrder, SupplierListDto>();
-            CreateMap<SupplierOrder, SupplierUpdateDto>();
-            CreateMap<SupplierListDto, SupplierUpdateDto>();
+            CreateMap<SupplierOrder, SupplierOrderCreateDto>().ReverseMap();
+            CreateMap<SupplierOrder, SupplierOrderListDto>().ReverseMap();
+            CreateMap<SupplierOrder, SupplierOrderUpdateDto>().ReverseMap();
+            CreateMap<SupplierOrderListDto, SupplierOrderUpdateDto>().ReverseMap();
         }
     }
 }

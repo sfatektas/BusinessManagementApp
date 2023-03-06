@@ -15,7 +15,7 @@ namespace BussinesManagementApp.Bussines.Validations.FluentValidation.ProductVal
             RuleFor(x => x.Name).NotEmpty();
             RuleFor(x=>x.SupplierId).NotEqual(0);
             RuleFor(x=>x.Origin).NotEmpty();
-            RuleFor(x=>x.UnitPrice).GreaterThan(0);
+            RuleFor(x=>x.UnitPrice).GreaterThanOrEqualTo(0);
         }
     }
 }

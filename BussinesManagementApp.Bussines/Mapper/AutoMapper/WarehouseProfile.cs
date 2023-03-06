@@ -13,9 +13,9 @@ namespace BussinesManagementApp.Bussines.Mapper.AutoMapper
     {
         public WarehouseProductProfile()
         {
-            CreateMap<WarehouseProduct, WarehouseProductCreateDto>();
-            CreateMap<WarehouseProduct, WarehouseProductListDto>();
-            CreateMap<WarehouseProductListDto, WarehouseProductUpdateDto>();
+            CreateMap<WarehouseProduct, WarehouseProductCreateDto>().ReverseMap();
+            CreateMap<WarehouseProduct, WarehouseProductListDto>().ReverseMap();
+            CreateMap<WarehouseProductListDto, WarehouseProductUpdateDto>().ReverseMap();
         }
     }
 }

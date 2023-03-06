@@ -1,4 +1,5 @@
 ﻿using BusinessManagementApp.Common;
+using BusinessManagementApp.Common.Consts;
 using BusinessManagementApp.Common.Enums;
 using BusinessManagementApp.UI.Helpers.Models;
 using BussinesManagementApp.Dtos.Interfaces;
@@ -62,18 +63,18 @@ namespace BusinessManagementApp.UI.Helpers
             }
             return true;
         }
-        public static bool IsNumberFormat(string text)
+        public static void BindToComboboxMoneyTypeAndValues(List<ComboBox> comboBoxes)
         {
-            text.All(x => x.Equals('0')
-            && x.Equals('1')
-            && x.Equals('1')
-            && x.Equals('1')
-            && x.Equals('1')
-            && x.Equals('1')
-            && x.Equals('1')
-            && x.Equals('1')
-            && x.Equals('1'));
-            return true;
+            var items = new List<ComboboxModel>();
+            items.Add(new ComboboxModel { Text = "TL", Value = (int)MoneyType.TL });
+            items.Add(new ComboboxModel { Text = "Euro", Value = (int)MoneyType.Euro });
+            items.Add(new ComboboxModel { Text = "Dolar" ,Value = (int)MoneyType.Dolar });
+            foreach (var item in comboBoxes)
+            {
+                item.DataSource = items;
+                item.ValueMember = "Value";
+                item.DisplayMember = "Text";
+            }
         }
         public static void IsOkPriceFormat(ref object sender, KeyPressEventArgs e)
         {
@@ -90,6 +91,11 @@ namespace BusinessManagementApp.UI.Helpers
             {
                 e.Handled = false;
             }
+        }
+        public static void IsOkNumberFormat(ref object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            // TODO : ilk sayı 0 ile başlamamalı.
         }
     }
 }

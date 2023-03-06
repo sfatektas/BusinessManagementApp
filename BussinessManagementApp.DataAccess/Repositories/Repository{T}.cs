@@ -54,7 +54,7 @@ namespace BussinessManagementApp.DataAccess.Repositories
             _context.Set<T>().Remove(entity);
         }
 
-        public void Update(T unchanged, T updated)
+        public void Update(T updated)
         {
             _context.Update(updated);
             //_context.Entry(unchanged).CurrentValues.SetValues(updated);

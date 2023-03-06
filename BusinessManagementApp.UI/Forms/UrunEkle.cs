@@ -54,7 +54,7 @@ namespace BusinessManagementApp.UI.Forms
 
         public async Task AddProductAsync()
         {
-            if (HelperMethods.IsNotNull(new List<TextBox> { AddOrigin_txt, AddProductName_txt, AddUnitPrice }) &&
+            if (HelperMethods.IsNotNull(new List<TextBox> { AddOrigin_txt, AddProductName_txt }) &&
     (int)SupplierSellect_combobox.SelectedValue != 0)
             {
                 var response = await _productService.CreateAsync(new()
@@ -62,7 +62,6 @@ namespace BusinessManagementApp.UI.Forms
                     Name = AddProductName_txt.Text,
                     Origin = AddOrigin_txt.Text,
                     SupplierId = (int)SupplierSellect_combobox.SelectedValue,
-                    UnitPrice = Double.Parse(AddUnitPrice.Text)
                 });
                 if (response.ResponseType == ResponseType.ValidationError)
                 {
@@ -71,7 +70,7 @@ namespace BusinessManagementApp.UI.Forms
                 else
                 {
                     MessageBox.Show(response.Message);
-                    HelperMethods.ClearTextBox(new() { AddProductName_txt, AddOrigin_txt, AddUnitPrice });
+                    HelperMethods.ClearTextBox(new() { AddProductName_txt, AddOrigin_txt });
                 }
             }
             else

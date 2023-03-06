@@ -40,12 +40,12 @@ namespace BusinessManagementApp.UI
                     services.AddTransient<MusteriIslemleri>();
                     services.AddTransient<TedarikciEkle>();
                     services.AddTransient<TedarikciIslemler>();
-                    services.AddTransient<TedarikciMusteriMenu>();
                     services.AddTransient<UrunAlýmListeleme>();
                     services.AddTransient<UrunAlýmý>();
                     services.AddTransient<UrunIslemleri>();
                     services.AddTransient<UrunSat>();
                     services.AddTransient<UrunEkle>();
+                    services.AddTransient<DepodakiUrunDetay>();
 
                     services.DependencyExtension();
                 });

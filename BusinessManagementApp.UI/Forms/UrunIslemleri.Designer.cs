@@ -31,32 +31,29 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.SupplierSellect_combobox = new System.Windows.Forms.ComboBox();
             this.button6 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.AddUnitPrice = new System.Windows.Forms.TextBox();
+            this.ProductAdd_ = new System.Windows.Forms.Button();
             this.AddOrigin_txt = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.AddProductName_txt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.SelectProductUpdateCombobox = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.SelectSupplierUpdate_cbmx = new System.Windows.Forms.ComboBox();
+            this.Update_btn = new System.Windows.Forms.Button();
+            this.UpdateProductName_txt = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.UnitPriceUpdate_txt = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.UpdateOrigin_txt = new System.Windows.Forms.TextBox();
+            this.ProductFind_btn = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.SelectProuductUpdate_txt = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.return_btn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -66,10 +63,8 @@
             // 
             this.groupBox1.Controls.Add(this.SupplierSellect_combobox);
             this.groupBox1.Controls.Add(this.button6);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.AddUnitPrice);
+            this.groupBox1.Controls.Add(this.ProductAdd_);
             this.groupBox1.Controls.Add(this.AddOrigin_txt);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.AddProductName_txt);
             this.groupBox1.Controls.Add(this.label3);
@@ -98,42 +93,27 @@
             this.button6.Text = "Yeni Tedarikçi Ekle";
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // ProductAdd_
             // 
-            this.button2.Location = new System.Drawing.Point(283, 133);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 29);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Ekle";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // AddUnitPrice
-            // 
-            this.AddUnitPrice.Location = new System.Drawing.Point(531, 92);
-            this.AddUnitPrice.Name = "AddUnitPrice";
-            this.AddUnitPrice.Size = new System.Drawing.Size(125, 27);
-            this.AddUnitPrice.TabIndex = 1;
+            this.ProductAdd_.Location = new System.Drawing.Point(368, 123);
+            this.ProductAdd_.Name = "ProductAdd_";
+            this.ProductAdd_.Size = new System.Drawing.Size(94, 29);
+            this.ProductAdd_.TabIndex = 3;
+            this.ProductAdd_.Text = "Ekle";
+            this.ProductAdd_.UseVisualStyleBackColor = true;
+            this.ProductAdd_.Click += new System.EventHandler(this.ProductAdd__Click);
             // 
             // AddOrigin_txt
             // 
-            this.AddOrigin_txt.Location = new System.Drawing.Point(113, 88);
+            this.AddOrigin_txt.Location = new System.Drawing.Point(107, 111);
             this.AddOrigin_txt.Name = "AddOrigin_txt";
             this.AddOrigin_txt.Size = new System.Drawing.Size(125, 27);
             this.AddOrigin_txt.TabIndex = 1;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(376, 95);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(139, 20);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Satış Birim Fiyat(TL)";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(45, 91);
+            this.label2.Location = new System.Drawing.Point(39, 114);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 20);
             this.label2.TabIndex = 0;
@@ -166,11 +146,11 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.SelectProductUpdateCombobox);
             this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.ProductFind_btn);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.textBox8);
+            this.groupBox2.Controls.Add(this.SelectProuductUpdate_txt);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Location = new System.Drawing.Point(12, 197);
             this.groupBox2.Name = "groupBox2";
@@ -179,53 +159,57 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ürün Güncelle";
             // 
-            // comboBox1
+            // SelectProductUpdateCombobox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(100, 45);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 28);
-            this.comboBox1.TabIndex = 3;
+            this.SelectProductUpdateCombobox.FormattingEnabled = true;
+            this.SelectProductUpdateCombobox.Location = new System.Drawing.Point(100, 45);
+            this.SelectProductUpdateCombobox.Name = "SelectProductUpdateCombobox";
+            this.SelectProductUpdateCombobox.Size = new System.Drawing.Size(151, 28);
+            this.SelectProductUpdateCombobox.TabIndex = 3;
+            this.SelectProductUpdateCombobox.SelectionChangeCommitted += new System.EventHandler(this.SelectProductUpdateCombobox_SelectionChangeCommitted);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.textBox7);
-            this.groupBox3.Controls.Add(this.textBox6);
+            this.groupBox3.Controls.Add(this.SelectSupplierUpdate_cbmx);
+            this.groupBox3.Controls.Add(this.Update_btn);
+            this.groupBox3.Controls.Add(this.UpdateProductName_txt);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.UnitPriceUpdate_txt);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.UpdateOrigin_txt);
             this.groupBox3.Location = new System.Drawing.Point(6, 80);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(641, 177);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
+            this.groupBox3.Visible = false;
             // 
-            // button1
+            // SelectSupplierUpdate_cbmx
             // 
-            this.button1.Location = new System.Drawing.Point(277, 133);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Güncelle";
-            this.button1.UseVisualStyleBackColor = true;
+            this.SelectSupplierUpdate_cbmx.FormattingEnabled = true;
+            this.SelectSupplierUpdate_cbmx.Location = new System.Drawing.Point(117, 32);
+            this.SelectSupplierUpdate_cbmx.Name = "SelectSupplierUpdate_cbmx";
+            this.SelectSupplierUpdate_cbmx.Size = new System.Drawing.Size(151, 28);
+            this.SelectSupplierUpdate_cbmx.TabIndex = 3;
             // 
-            // textBox7
+            // Update_btn
             // 
-            this.textBox7.Location = new System.Drawing.Point(117, 35);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(140, 27);
-            this.textBox7.TabIndex = 4;
+            this.Update_btn.Location = new System.Drawing.Point(277, 133);
+            this.Update_btn.Name = "Update_btn";
+            this.Update_btn.Size = new System.Drawing.Size(94, 29);
+            this.Update_btn.TabIndex = 3;
+            this.Update_btn.Text = "Güncelle";
+            this.Update_btn.UseVisualStyleBackColor = true;
+            this.Update_btn.Click += new System.EventHandler(this.Update_btn_Click);
             // 
-            // textBox6
+            // UpdateProductName_txt
             // 
-            this.textBox6.Location = new System.Drawing.Point(472, 35);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(140, 27);
-            this.textBox6.TabIndex = 1;
+            this.UpdateProductName_txt.Location = new System.Drawing.Point(472, 35);
+            this.UpdateProductName_txt.Name = "UpdateProductName_txt";
+            this.UpdateProductName_txt.Size = new System.Drawing.Size(140, 27);
+            this.UpdateProductName_txt.TabIndex = 1;
             // 
             // label6
             // 
@@ -254,12 +238,12 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Satış Birim Fiyat(TL)";
             // 
-            // textBox1
+            // UnitPriceUpdate_txt
             // 
-            this.textBox1.Location = new System.Drawing.Point(472, 80);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(140, 27);
-            this.textBox1.TabIndex = 1;
+            this.UnitPriceUpdate_txt.Location = new System.Drawing.Point(472, 80);
+            this.UnitPriceUpdate_txt.Name = "UnitPriceUpdate_txt";
+            this.UnitPriceUpdate_txt.Size = new System.Drawing.Size(140, 27);
+            this.UnitPriceUpdate_txt.TabIndex = 1;
             // 
             // label8
             // 
@@ -270,21 +254,22 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Tedarikçi Seç";
             // 
-            // textBox5
+            // UpdateOrigin_txt
             // 
-            this.textBox5.Location = new System.Drawing.Point(117, 83);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(137, 27);
-            this.textBox5.TabIndex = 1;
+            this.UpdateOrigin_txt.Location = new System.Drawing.Point(117, 83);
+            this.UpdateOrigin_txt.Name = "UpdateOrigin_txt";
+            this.UpdateOrigin_txt.Size = new System.Drawing.Size(137, 27);
+            this.UpdateOrigin_txt.TabIndex = 1;
             // 
-            // button3
+            // ProductFind_btn
             // 
-            this.button3.Location = new System.Drawing.Point(571, 45);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(76, 29);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Bul";
-            this.button3.UseVisualStyleBackColor = true;
+            this.ProductFind_btn.Location = new System.Drawing.Point(571, 45);
+            this.ProductFind_btn.Name = "ProductFind_btn";
+            this.ProductFind_btn.Size = new System.Drawing.Size(76, 29);
+            this.ProductFind_btn.TabIndex = 3;
+            this.ProductFind_btn.Text = "Bul";
+            this.ProductFind_btn.UseVisualStyleBackColor = true;
+            this.ProductFind_btn.Click += new System.EventHandler(this.ProductFind_btn_Click);
             // 
             // label9
             // 
@@ -295,12 +280,12 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Ürün Seç";
             // 
-            // textBox8
+            // SelectProuductUpdate_txt
             // 
-            this.textBox8.Location = new System.Drawing.Point(421, 45);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(125, 27);
-            this.textBox8.TabIndex = 1;
+            this.SelectProuductUpdate_txt.Location = new System.Drawing.Point(421, 45);
+            this.SelectProuductUpdate_txt.Name = "SelectProuductUpdate_txt";
+            this.SelectProuductUpdate_txt.Size = new System.Drawing.Size(125, 27);
+            this.SelectProuductUpdate_txt.TabIndex = 1;
             // 
             // label10
             // 
@@ -311,35 +296,27 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Ürün Id :";
             // 
-            // button4
+            // return_btn
             // 
-            this.button4.Location = new System.Drawing.Point(735, 123);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(163, 73);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Ana Sayfa";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(735, 245);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(163, 73);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "Geri Dön";
-            this.button5.UseVisualStyleBackColor = true;
+            this.return_btn.Location = new System.Drawing.Point(706, 210);
+            this.return_btn.Name = "return_btn";
+            this.return_btn.Size = new System.Drawing.Size(163, 73);
+            this.return_btn.TabIndex = 3;
+            this.return_btn.Text = "Geri Dön";
+            this.return_btn.UseVisualStyleBackColor = true;
+            this.return_btn.Click += new System.EventHandler(this.return_btn_Click);
             // 
             // UrunIslemleri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(926, 479);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.ClientSize = new System.Drawing.Size(906, 479);
+            this.Controls.Add(this.return_btn);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "UrunIslemleri";
             this.Text = "Ürün İşlemleri";
+            this.Load += new System.EventHandler(this.UrunIslemleri_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -353,34 +330,30 @@
         #endregion
 
         private GroupBox groupBox1;
-        private TextBox AddUnitPrice;
         private TextBox AddOrigin_txt;
-        private Label label4;
         private Label label2;
         private TextBox AddProductName_txt;
         private Label label3;
         private Label label1;
-        private Button button2;
+        private Button ProductAdd_;
         private GroupBox groupBox2;
         private GroupBox groupBox3;
-        private Button button1;
-        private TextBox textBox6;
+        private Button Update_btn;
+        private TextBox UpdateProductName_txt;
         private Label label6;
         private Label label7;
         private Label label5;
-        private TextBox textBox1;
+        private TextBox UnitPriceUpdate_txt;
         private Label label8;
-        private TextBox textBox5;
+        private TextBox UpdateOrigin_txt;
         private Label label9;
-        private Button button4;
-        private Button button5;
+        private Button return_btn;
         private ComboBox SupplierSellect_combobox;
         private Button button6;
-        private ComboBox comboBox1;
-        private TextBox textBox7;
-        private Button button3;
-        private TextBox textBox8;
+        private ComboBox SelectProductUpdateCombobox;
+        private Button ProductFind_btn;
+        private TextBox SelectProuductUpdate_txt;
         private Label label10;
-
+        private ComboBox SelectSupplierUpdate_cbmx;
     }
 }

@@ -35,11 +35,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.PreOreder_btn = new System.Windows.Forms.Button();
             this.ProductSell_btn = new System.Windows.Forms.Button();
             this.WarehouseProduct_btn = new System.Windows.Forms.Button();
             this.ProductEdit_btn = new System.Windows.Forms.Button();
             this.ProductTaken = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -54,7 +56,7 @@
             // SupplierTransactionBtn
             // 
             this.SupplierTransactionBtn.Image = ((System.Drawing.Image)(resources.GetObject("SupplierTransactionBtn.Image")));
-            this.SupplierTransactionBtn.Location = new System.Drawing.Point(17, 85);
+            this.SupplierTransactionBtn.Location = new System.Drawing.Point(6, 118);
             this.SupplierTransactionBtn.Name = "SupplierTransactionBtn";
             this.SupplierTransactionBtn.Size = new System.Drawing.Size(128, 86);
             this.SupplierTransactionBtn.TabIndex = 0;
@@ -70,7 +72,7 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Location = new System.Drawing.Point(25, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(334, 208);
+            this.groupBox1.Size = new System.Drawing.Size(344, 248);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tedarikçi - Müşteri İşlemleri";
@@ -78,7 +80,7 @@
             // CustomerTransactionsBtn
             // 
             this.CustomerTransactionsBtn.Image = ((System.Drawing.Image)(resources.GetObject("CustomerTransactionsBtn.Image")));
-            this.CustomerTransactionsBtn.Location = new System.Drawing.Point(181, 85);
+            this.CustomerTransactionsBtn.Location = new System.Drawing.Point(199, 118);
             this.CustomerTransactionsBtn.Name = "CustomerTransactionsBtn";
             this.CustomerTransactionsBtn.Size = new System.Drawing.Size(128, 86);
             this.CustomerTransactionsBtn.TabIndex = 0;
@@ -90,7 +92,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(181, 49);
+            this.label1.Location = new System.Drawing.Point(199, 82);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(138, 22);
             this.label1.TabIndex = 1;
@@ -100,7 +102,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(6, 49);
+            this.label6.Location = new System.Drawing.Point(-5, 82);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(154, 22);
             this.label6.TabIndex = 1;
@@ -108,25 +110,38 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.PreOreder_btn);
             this.groupBox2.Controls.Add(this.ProductSell_btn);
             this.groupBox2.Controls.Add(this.WarehouseProduct_btn);
             this.groupBox2.Controls.Add(this.ProductEdit_btn);
             this.groupBox2.Controls.Add(this.ProductTaken);
             this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Location = new System.Drawing.Point(392, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(367, 429);
+            this.groupBox2.Size = new System.Drawing.Size(532, 447);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ürün Alım - Satım - Düzeltme İşlemleri";
             // 
+            // PreOreder_btn
+            // 
+            this.PreOreder_btn.Image = ((System.Drawing.Image)(resources.GetObject("PreOreder_btn.Image")));
+            this.PreOreder_btn.Location = new System.Drawing.Point(197, 223);
+            this.PreOreder_btn.Name = "PreOreder_btn";
+            this.PreOreder_btn.Size = new System.Drawing.Size(136, 86);
+            this.PreOreder_btn.TabIndex = 0;
+            this.PreOreder_btn.Text = "PreOrder_Btn";
+            this.PreOreder_btn.UseVisualStyleBackColor = true;
+            this.PreOreder_btn.Click += new System.EventHandler(this.PreOreder_btn_Click);
+            // 
             // ProductSell_btn
             // 
             this.ProductSell_btn.Image = ((System.Drawing.Image)(resources.GetObject("ProductSell_btn.Image")));
-            this.ProductSell_btn.Location = new System.Drawing.Point(201, 85);
+            this.ProductSell_btn.Location = new System.Drawing.Point(373, 83);
             this.ProductSell_btn.Name = "ProductSell_btn";
             this.ProductSell_btn.Size = new System.Drawing.Size(136, 86);
             this.ProductSell_btn.TabIndex = 0;
@@ -137,7 +152,7 @@
             // WarehouseProduct_btn
             // 
             this.WarehouseProduct_btn.Image = ((System.Drawing.Image)(resources.GetObject("WarehouseProduct_btn.Image")));
-            this.WarehouseProduct_btn.Location = new System.Drawing.Point(201, 281);
+            this.WarehouseProduct_btn.Location = new System.Drawing.Point(373, 353);
             this.WarehouseProduct_btn.Name = "WarehouseProduct_btn";
             this.WarehouseProduct_btn.Size = new System.Drawing.Size(136, 88);
             this.WarehouseProduct_btn.TabIndex = 0;
@@ -148,7 +163,7 @@
             // ProductEdit_btn
             // 
             this.ProductEdit_btn.Image = ((System.Drawing.Image)(resources.GetObject("ProductEdit_btn.Image")));
-            this.ProductEdit_btn.Location = new System.Drawing.Point(40, 279);
+            this.ProductEdit_btn.Location = new System.Drawing.Point(31, 351);
             this.ProductEdit_btn.Name = "ProductEdit_btn";
             this.ProductEdit_btn.Size = new System.Drawing.Size(127, 90);
             this.ProductEdit_btn.TabIndex = 0;
@@ -171,17 +186,27 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(201, 233);
+            this.label3.Location = new System.Drawing.Point(373, 305);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(138, 22);
             this.label3.TabIndex = 1;
             this.label3.Text = "Stoktaki Ürünler";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(158, 182);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(231, 22);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Sipariş İşlemleri(Ön Sipariş)";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(222, 49);
+            this.label2.Location = new System.Drawing.Point(394, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 22);
             this.label2.TabIndex = 1;
@@ -191,7 +216,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(40, 233);
+            this.label10.Location = new System.Drawing.Point(31, 305);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(143, 22);
             this.label10.TabIndex = 1;
@@ -211,7 +236,7 @@
             // 
             this.groupBox4.Controls.Add(this.CreateReport_Btn);
             this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Location = new System.Drawing.Point(25, 248);
+            this.groupBox4.Location = new System.Drawing.Point(25, 266);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(327, 193);
             this.groupBox4.TabIndex = 2;
@@ -243,7 +268,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 460);
+            this.ClientSize = new System.Drawing.Size(936, 497);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
@@ -278,5 +303,7 @@
         private Label label9;
         private Button WarehouseProduct_btn;
         private Label label3;
+        private Button PreOreder_btn;
+        private Label label4;
     }
 }

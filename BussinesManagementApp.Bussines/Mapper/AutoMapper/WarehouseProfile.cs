@@ -15,6 +15,7 @@ namespace BussinesManagementApp.Bussines.Mapper.AutoMapper
         {
             CreateMap<WarehouseProduct, WarehouseProductCreateDto>().ReverseMap();
             CreateMap<WarehouseProduct, WarehouseProductListDto>().ReverseMap();
+            CreateMap<WarehouseProduct, WarehouseProductUpdateDto>().ReverseMap();
             CreateMap<WarehouseProductListDto, WarehouseProductUpdateDto>().ReverseMap();
         }
     }

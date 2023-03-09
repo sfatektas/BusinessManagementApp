@@ -12,8 +12,8 @@ namespace BussinesManagementApp.Bussines.Validations.FluentValidation.CustomerOr
             RuleFor(x=>x.ProductId).NotEqual(0);
             RuleFor(x=>x.UnitPrice).GreaterThan(0).WithMessage("Ürünün birim fiyatı sıfıra eşit olamaz.").Must(x => x.GetType() == typeof(double));
             RuleFor(x => x.TotalPrice).Equal(x => x.UnitPrice * x.Amount + x.KdvPrice);
-            RuleFor(x => x.Amount).NotEqual(0).Must(x => x.GetType() == typeof(double));
-            RuleFor(x => x.KdvPrice).NotEqual(0).Must(x => x.GetType() == typeof(double));
+            RuleFor(x => x.Amount).NotEqual(0);
+            RuleFor(x => x.KdvPrice).NotEqual(0);
             //RuleFor(x=>x.TotalPrice).
         }
     }

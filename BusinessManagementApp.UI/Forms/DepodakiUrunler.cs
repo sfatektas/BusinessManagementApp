@@ -69,7 +69,7 @@ namespace BusinessManagementApp.UI.Forms
             var Productid =(int)(sender as DataGridView).Rows[e.RowIndex].Cells[0].Value;
             var formdepodakiurundetay = _serviceProvider.GetRequiredService<DepodakiUrunDetay>(); 
             formdepodakiurundetay.ProductId = Productid;
-            Task detayLoad = formdepodakiurundetay.GetData();
+            Task detayLoad = formdepodakiurundetay.GetData(); //müq
         }
     }
 }

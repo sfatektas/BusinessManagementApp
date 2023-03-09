@@ -69,5 +69,12 @@ namespace BusinessManagementApp.UI
             raporolusturform._prev = this;
             this.Hide();
         }
+
+        private void PreOreder_btn_Click(object sender, EventArgs e)
+        {
+            var onsiparislerform = _serviceProvider.GetRequiredService<SiparisIslemleri>();
+            onsiparislerform._prev = this;
+            this.Hide();
+        }
     }
 }

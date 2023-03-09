@@ -94,8 +94,20 @@ namespace BusinessManagementApp.UI.Helpers
         }
         public static void IsOkNumberFormat(ref object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-            // TODO : ilk sayı 0 ile başlamamalı.
+            if (!char.IsDigit(e.KeyChar)&&!char.IsControl(e.KeyChar) && e.KeyChar!='\b')
+            {
+                e.Handled = true;
+            }
+            else
+                e.Handled = false;
+        }
+        public static double GetDoubleMoneyFormat(this double value)
+        {
+            return double.Parse(value.ToString("0.##"));
+        }
+        public static string GetStringMoneyFormat(this double value)
+        {
+            return value.ToString("0.##");
         }
     }
 }

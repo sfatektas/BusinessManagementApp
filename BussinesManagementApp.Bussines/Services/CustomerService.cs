@@ -16,6 +16,7 @@ namespace BussinesManagementApp.Bussines.Services
     {
         public CustomerService(IUow uow, IMapper mapper, IValidator<CustomerCreateDto> createValidator, IValidator<CustomerUpdateDto> updateValidator) : base(uow, mapper, createValidator, updateValidator)
         {
+
         }
     }
 }

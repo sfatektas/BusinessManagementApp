@@ -8,6 +8,7 @@ using BussinessManagementApp.DataAccess.Interfaces;
 using BussinessManagementApp.Entities;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace BussinesManagementApp.Bussines.Services
 {
@@ -21,23 +22,37 @@ namespace BussinesManagementApp.Bussines.Services
             _mapper = mapper;
         }
 
-        public async Task<IResponse<List<WarehouseProductListDto>>> GetIncludedAll(bool allPropertyInclude=false)
+        public Type ElementType { get; }
+        public Expression Expression { get; }
+        public IQueryProvider Provider { get; }
+
+        public async Task<IResponse<List<WarehouseProductListDto>>> GetIncludedAll(bool allPropertyInclude = false)
         {
-            var data = !allPropertyInclude ? await _uow.GetRepository<WarehouseProduct>().GetQueryable().Include(x => x.Product).ToListAsync():
-                await _uow.GetRepository<WarehouseProduct>().GetQueryable().Include(x => x.Product).ThenInclude(x=>x.Supplier).ToListAsync()
+            var data = !allPropertyInclude ? await _uow.GetRepository<WarehouseProduct>().GetQueryable().Include(x => x.Product).AsNoTracking().ToListAsync():
+                await _uow.GetRepository<WarehouseProduct>().GetQueryable().Include(x => x.Product).ThenInclude(x=>x.Supplier).AsNoTracking().ToListAsync()
             ;
             if (data != null)
                 return new Response<List<WarehouseProductListDto>>(ResponseType.Success, _mapper.Map<List<WarehouseProductListDto>>(data));
-            return new Response<List<WarehouseProductListDto>>(ResponseType.NotFound, "Bulunamadı", null);
+            return new Response<List<WarehouseProductListDto>>(ResponseType.NotFound, "Bulunamadı.", null);
             
+        }
+
+        public async Task<IResponse<List<WarehouseProductListDto>>> GetIncludedAll(Expression<Func<WarehouseProduct, bool>> filter, bool allPropertyInclude = false)
+        {
+            var data = !allPropertyInclude ? await _uow.GetRepository<WarehouseProduct>().GetQueryable().Where(x => x.IsActive).Include(x => x.Product).AsNoTracking().ToListAsync() :
+    await _uow.GetRepository<WarehouseProduct>().GetQueryable().Where(x=>x.IsActive == true).Include(x => x.Product).ThenInclude(x => x.Supplier).AsNoTracking().ToListAsync()
+;
+            if (data != null)
+                return new Response<List<WarehouseProductListDto>>(ResponseType.Success, _mapper.Map<List<WarehouseProductListDto>>(data));
+            return new Response<List<WarehouseProductListDto>>(ResponseType.NotFound, "Bulunamadı.", null);
         }
 
         public async Task<IResponse<WarehouseProductListDto>> GetIncludedById(int id , bool allPropertyInclude = false)
         {
-            var data = !allPropertyInclude ? await _uow.GetRepository<WarehouseProduct>().GetQueryable().Where(x=>x.Id == id).Include(x => x.Product).FirstOrDefaultAsync() : await _uow.GetRepository<WarehouseProduct>().GetQueryable().Where(x => x.Id == id).Include(x => x.Product).ThenInclude(x=>x.Supplier).FirstOrDefaultAsync();
+            var data = !allPropertyInclude ? await _uow.GetRepository<WarehouseProduct>().GetQueryable().Where(x=>x.Id == id && x.IsActive==true).Include(x => x.Product).AsNoTracking().FirstOrDefaultAsync() : await _uow.GetRepository<WarehouseProduct>().GetQueryable().Where(x => x.Id == id && x.IsActive == true).Include(x => x.Product).ThenInclude(x=>x.Supplier).AsNoTracking().FirstOrDefaultAsync();
             if (data != null)
                 return new Response<WarehouseProductListDto>(ResponseType.Success, _mapper.Map<WarehouseProductListDto>(data));
-            return new Response<WarehouseProductListDto>(ResponseType.NotFound, "Bulunamadı", null);
+            return new Response<WarehouseProductListDto>(ResponseType.NotFound, "Bulunamadı.", null);
         }
     }
 }

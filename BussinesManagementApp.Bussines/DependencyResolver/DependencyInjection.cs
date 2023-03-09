@@ -85,6 +85,7 @@ namespace BussinesManagementApp.Bussines.DependencyResolver
             services.AddScoped<IProductService,ProductService>();
             services.AddScoped<ISupplierOrderService , SupplierOrderService>();
             services.AddScoped<IWarehouseProductService , WarehouseProductService>();
+            services.AddScoped<ICustomerOrderService , CustomerOrderService>();
         }
     }
 }

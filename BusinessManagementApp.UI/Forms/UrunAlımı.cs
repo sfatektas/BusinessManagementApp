@@ -5,15 +5,6 @@ using BusinessManagementApp.UI.Interfaces;
 using BussinesManagementApp.Bussines.Interfaces;
 using BussinesManagementApp.Bussines.Services;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using BussinesManagementApp.Dtos;
 using BusinessManagementApp.Common.Consts;
 using AutoMapper;
@@ -136,7 +127,7 @@ namespace BusinessManagementApp.UI.Forms
         private void UnitPrice_txt_KeyPress(object sender, KeyPressEventArgs e)
         {
             HelperMethods.IsOkPriceFormat(ref sender, e);
-            if (!char.IsControl(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !e.Handled) // handle yapısı !handle olarak kullanılmalı.
             {
                 UnitPrice = UnitPrice_txt.Text + e.KeyChar.ToString() == "" ? 0 : double.Parse(UnitPrice_txt.Text + e.KeyChar.ToString());
             }
@@ -146,13 +137,13 @@ namespace BusinessManagementApp.UI.Forms
         private void Amount_txt_KeyPress(object sender, KeyPressEventArgs e)
         {
             HelperMethods.IsOkNumberFormat(ref sender, e);
-            if (!char.IsControl(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !e.Handled)
             {
                 Amount = Amount_txt.Text + e.KeyChar.ToString() == "" ? 0 : int.Parse(Amount_txt.Text + e.KeyChar.ToString());
             }
             RefreshTotalPrice();
         }
-        public async Task AddSupplierOrderAndWarehouseProduct()
+        public async Task AddSupplierOrderAndWarehouseProduct()//TODO servise ayrı bir method yapılım 3 işlemin tracking durumu aynı anda işlenmeli.
         {
             var response = await _supplierOrderService.CreateAsync(new SupplierOrderCreateDto() // Tedarikçi siparişi 
             {

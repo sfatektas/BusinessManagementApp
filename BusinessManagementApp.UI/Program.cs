@@ -28,6 +28,7 @@ namespace BusinessManagementApp.UI
         public static IServiceProvider ServiceProvider { get; private set; }
         static IHostBuilder CreateHostBuilder()
         {
+            // TODO seed data eklenecek.
             return Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
                 {
@@ -49,6 +50,7 @@ namespace BusinessManagementApp.UI
                     services.AddTransient<MusteriEkle>();
                     services.AddTransient<SiparisIslemleri>();
                     services.AddTransient<OnSiprarisDetay>();
+                    services.AddTransient<RaporOlustur>();
 
                     services.DependencyExtension();
                 });

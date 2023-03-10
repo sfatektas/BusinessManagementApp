@@ -1,5 +1,7 @@
-﻿using BusinessManagementApp.UI.Helpers;
+﻿using BusinessManagementApp.Common.Enums;
+using BusinessManagementApp.UI.Helpers;
 using BusinessManagementApp.UI.Helpers.Models;
+using BusinessManagementApp.UI.Interfaces;
 using BussinesManagementApp.Bussines.Interfaces;
 using BussinesManagementApp.Dtos;
 using System;
@@ -14,10 +16,13 @@ using System.Windows.Forms;
 
 namespace BusinessManagementApp.UI.Forms
 {
-    public partial class OnSiprarisDetay : Form
+    public partial class OnSiprarisDetay : Form 
     {
         readonly ICustomerOrderService _customerOrderService;
         public CustomerOrderDataGridModel _customerOrderDataGridModel;
+
+        public SiparisIslemleri _prev { get; set; }
+
         public OnSiprarisDetay(ICustomerOrderService customerOrderService)
         {
             _customerOrderService = customerOrderService;
@@ -26,8 +31,20 @@ namespace BusinessManagementApp.UI.Forms
         }
         public async Task ComplatePreOrder()
         {
-           var response = await _customerOrderService.ComplatePreOrderAndUpdateWarehouse(_customerOrderDataGridModel.Id);
-            MessageBox.Show(response.Message);
+            try
+            {
+                var response = await _customerOrderService.ComplatePreOrderAndUpdateWarehouse(_customerOrderDataGridModel.Id);
+                if (response.ResponseType == ResponseType.Success)
+                    await _prev.AllProduct(); // İşlem onaylanırsa bekleyen siparişleri güncelle
+                MessageBox.Show(response.Message);
+
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+
         }
         private void PreOrderComplate_btn_Click(object sender, EventArgs e)
         {

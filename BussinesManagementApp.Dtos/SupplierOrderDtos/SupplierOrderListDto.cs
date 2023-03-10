@@ -19,5 +19,7 @@ namespace BussinesManagementApp.Dtos
         public int MoneyTypeId { get; set; }
         public MoneyTypeListDto MoneyType { get; set; }
         public DateTime Date { get; set; }
+        public bool IsActive { get; set; }
+
     }
 }

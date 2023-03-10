@@ -91,5 +91,10 @@ namespace BusinessManagementApp.UI.Forms
             _serviceProvider.GetRequiredService<UrunAlımı>();
             this.Close();
         }
+
+        private void AddNewSupplier_btn_Click(object sender, EventArgs e)
+        {
+            _serviceProvider.GetRequiredService<TedarikciEkle>();
+        }
     }
 }

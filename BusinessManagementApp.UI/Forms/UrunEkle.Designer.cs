@@ -75,6 +75,7 @@
             this.AddNewSupplier_btn.TabIndex = 3;
             this.AddNewSupplier_btn.Text = "Yeni Tedarikçi Ekle";
             this.AddNewSupplier_btn.UseVisualStyleBackColor = true;
+            this.AddNewSupplier_btn.Click += new System.EventHandler(this.AddNewSupplier_btn_Click);
             // 
             // Cancel_btn
             // 

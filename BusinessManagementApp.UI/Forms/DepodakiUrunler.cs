@@ -57,7 +57,6 @@ namespace BusinessManagementApp.UI.Forms
             Task warehouseProducts = AllProduct();
         }
 
-
         private void TurnBack_btn_Click(object sender, EventArgs e)
         {
             _prev.Show();
@@ -69,7 +68,19 @@ namespace BusinessManagementApp.UI.Forms
             var Productid =(int)(sender as DataGridView).Rows[e.RowIndex].Cells[0].Value;
             var formdepodakiurundetay = _serviceProvider.GetRequiredService<DepodakiUrunDetay>(); 
             formdepodakiurundetay.ProductId = Productid;
-            Task detayLoad = formdepodakiurundetay.GetData(); //müq
+            Task detayLoad = formdepodakiurundetay.GetData(); 
+        }
+
+        private void SellProduct_btn_Click(object sender, EventArgs e)
+        {
+            var urunSatform = _serviceProvider.GetRequiredService<UrunSat>();
+            urunSatform._prev = this;
+            this.Close();
+        }
+
+        private void find_btn_Click(object sender, EventArgs e)
+        {
+            //TODO Ürün id değerine göre getirme işlemei
         }
     }
 }

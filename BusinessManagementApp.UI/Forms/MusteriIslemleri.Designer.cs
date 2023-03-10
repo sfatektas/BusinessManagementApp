@@ -161,7 +161,6 @@
             this.label3.Size = new System.Drawing.Size(52, 20);
             this.label3.TabIndex = 1;
             this.label3.Text = "TelNo ";
-            this.label3.TextChanged += new System.EventHandler(this.label3_TextChanged);
             // 
             // label2
             // 
@@ -212,7 +211,6 @@
             this.companyNameAdd_txt.Name = "companyNameAdd_txt";
             this.companyNameAdd_txt.Size = new System.Drawing.Size(125, 27);
             this.companyNameAdd_txt.TabIndex = 0;
-            this.companyNameAdd_txt.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // TaxNoAdd_txt
             // 
@@ -360,7 +358,6 @@
             this.label17.Size = new System.Drawing.Size(52, 20);
             this.label17.TabIndex = 1;
             this.label17.Text = "TelNo ";
-            this.label17.TextChanged += new System.EventHandler(this.label3_TextChanged);
             // 
             // label20
             // 

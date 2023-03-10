@@ -13,5 +13,7 @@ namespace BussinesManagementApp.Dtos
         public int ProductId { get; set; }
         public ProductListDto Product { get; set; }
         public int Amount { get; set; }
+        public bool IsActive { get; set; }
+
     }
 }

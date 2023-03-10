@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BussinesManagementApp.Dtos;
+using BussinesManagementApp.Dtos.ReportDtos;
 using BussinessManagementApp.Entities;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace BussinesManagementApp.Bussines.Mapper.AutoMapper
             CreateMap<CustomerOrder, CustomerOrderListDto>().ReverseMap();
             CreateMap<CustomerOrder, CustomerOrderUpdateDto>().ReverseMap();
             CreateMap<CustomerOrderListDto, CustomerOrderUpdateDto>().ReverseMap();
+            CreateMap<CustomerOrder, ReportDataForCustomer>().ForMember(d => d.ProductName, s => s.MapFrom(s => s.Product.Name));
         }
     }
 }

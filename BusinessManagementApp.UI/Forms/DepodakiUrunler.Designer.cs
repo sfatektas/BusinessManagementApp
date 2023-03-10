@@ -30,12 +30,11 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.TurnBack_btn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button3 = new System.Windows.Forms.Button();
+            this.SellProduct_btn = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.find_btn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -44,7 +43,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(207, 7);
+            this.label1.Location = new System.Drawing.Point(181, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(183, 29);
             this.label1.TabIndex = 7;
@@ -52,7 +51,7 @@
             // 
             // TurnBack_btn
             // 
-            this.TurnBack_btn.Location = new System.Drawing.Point(434, 379);
+            this.TurnBack_btn.Location = new System.Drawing.Point(313, 358);
             this.TurnBack_btn.Name = "TurnBack_btn";
             this.TurnBack_btn.Size = new System.Drawing.Size(119, 43);
             this.TurnBack_btn.TabIndex = 5;
@@ -60,19 +59,10 @@
             this.TurnBack_btn.UseVisualStyleBackColor = true;
             this.TurnBack_btn.Click += new System.EventHandler(this.TurnBack_btn_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(75, 379);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 43);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Ana Sayfa";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(75, 122);
+            this.dataGridView1.Location = new System.Drawing.Point(42, 112);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
@@ -80,14 +70,15 @@
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
-            // button3
+            // SellProduct_btn
             // 
-            this.button3.Location = new System.Drawing.Point(254, 379);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(119, 43);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Ürün Sat";
-            this.button3.UseVisualStyleBackColor = true;
+            this.SellProduct_btn.Location = new System.Drawing.Point(79, 358);
+            this.SellProduct_btn.Name = "SellProduct_btn";
+            this.SellProduct_btn.Size = new System.Drawing.Size(119, 43);
+            this.SellProduct_btn.TabIndex = 6;
+            this.SellProduct_btn.Text = "Ürün Sat";
+            this.SellProduct_btn.UseVisualStyleBackColor = true;
+            this.SellProduct_btn.Click += new System.EventHandler(this.SellProduct_btn_Click);
             // 
             // textBox1
             // 
@@ -105,19 +96,20 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Ürün ID";
             // 
-            // button4
+            // find_btn
             // 
-            this.button4.Location = new System.Drawing.Point(331, 57);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(78, 31);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "Bul";
-            this.button4.UseVisualStyleBackColor = true;
+            this.find_btn.Location = new System.Drawing.Point(331, 57);
+            this.find_btn.Name = "find_btn";
+            this.find_btn.Size = new System.Drawing.Size(78, 31);
+            this.find_btn.TabIndex = 6;
+            this.find_btn.Text = "Bul";
+            this.find_btn.UseVisualStyleBackColor = true;
+            this.find_btn.Click += new System.EventHandler(this.find_btn_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(75, 332);
+            this.label3.Location = new System.Drawing.Point(42, 322);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(411, 20);
             this.label3.TabIndex = 9;
@@ -127,15 +119,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 450);
+            this.ClientSize = new System.Drawing.Size(535, 423);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TurnBack_btn);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.SellProduct_btn);
+            this.Controls.Add(this.find_btn);
             this.Controls.Add(this.dataGridView1);
             this.Name = "DepodakiUrunler";
             this.Text = "Güncel Stok";
@@ -150,12 +141,11 @@
 
         private Label label1;
         private Button TurnBack_btn;
-        private Button button1;
         private DataGridView dataGridView1;
-        private Button button3;
+        private Button SellProduct_btn;
         private TextBox textBox1;
         private Label label2;
-        private Button button4;
+        private Button find_btn;
         private Label label3;
     }
 }

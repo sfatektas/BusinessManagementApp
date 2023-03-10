@@ -44,9 +44,9 @@
             this.comboboxUpdate = new System.Windows.Forms.ComboBox();
             this.TelNoSearchBtnUpdate_btn = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.Update_btn = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.LogisticCompany_txt = new System.Windows.Forms.TextBox();
+            this.LogisticCompanyUpdate_txt = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.emailUpdate_txt = new System.Windows.Forms.TextBox();
             this.contactnameupdate_txt = new System.Windows.Forms.TextBox();
@@ -215,9 +215,9 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button3);
+            this.groupBox4.Controls.Add(this.Update_btn);
             this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.LogisticCompany_txt);
+            this.groupBox4.Controls.Add(this.LogisticCompanyUpdate_txt);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.emailUpdate_txt);
             this.groupBox4.Controls.Add(this.contactnameupdate_txt);
@@ -233,15 +233,16 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
             // 
-            // button3
+            // Update_btn
             // 
-            this.button3.Location = new System.Drawing.Point(541, 147);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(115, 33);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Güncelle";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Enter += new System.EventHandler(this.Ekle);
+            this.Update_btn.Location = new System.Drawing.Point(541, 147);
+            this.Update_btn.Name = "Update_btn";
+            this.Update_btn.Size = new System.Drawing.Size(115, 33);
+            this.Update_btn.TabIndex = 2;
+            this.Update_btn.Text = "Güncelle";
+            this.Update_btn.UseVisualStyleBackColor = true;
+            this.Update_btn.Click += new System.EventHandler(this.Update_btn_Click);
+            this.Update_btn.Enter += new System.EventHandler(this.Ekle);
             // 
             // label11
             // 
@@ -252,12 +253,12 @@
             this.label11.TabIndex = 1;
             this.label11.Text = "Şirket Bilgisi:";
             // 
-            // LogisticCompany_txt
+            // LogisticCompanyUpdate_txt
             // 
-            this.LogisticCompany_txt.Location = new System.Drawing.Point(183, 140);
-            this.LogisticCompany_txt.Name = "LogisticCompany_txt";
-            this.LogisticCompany_txt.Size = new System.Drawing.Size(169, 27);
-            this.LogisticCompany_txt.TabIndex = 0;
+            this.LogisticCompanyUpdate_txt.Location = new System.Drawing.Point(183, 140);
+            this.LogisticCompanyUpdate_txt.Name = "LogisticCompanyUpdate_txt";
+            this.LogisticCompanyUpdate_txt.Size = new System.Drawing.Size(169, 27);
+            this.LogisticCompanyUpdate_txt.TabIndex = 0;
             // 
             // label7
             // 
@@ -407,14 +408,14 @@
         private Button SupplierAdd_btn;
         private GroupBox groupBox3;
         private GroupBox groupBox4;
-        private Button button3;
+        private Button Update_btn;
         private Label label7;
         private Label label8;
         private Label label9;
         private Label label10;
         private Label label11;
         private TextBox emailUpdate_txt;
-        private TextBox LogisticCompany_txt;
+        private TextBox LogisticCompanyUpdate_txt;
         private TextBox contactnameupdate_txt;
         private TextBox telnoupdate_txt;
         private TextBox companyInfoupdate_txt;

@@ -1,6 +1,7 @@
 ﻿using BussinessManagementApp.DataAccess.Configurations;
 using BussinessManagementApp.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -36,6 +37,10 @@ namespace BussinessManagementApp.DataAccess.Contexts
             modelBuilder.ApplyConfiguration(new SupplierConfiguration());
             modelBuilder.ApplyConfiguration(new SupplierOrderConfiguration());
             modelBuilder.ApplyConfiguration(new WarehouseProductConfiguration());
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.LogTo(Console.WriteLine, LogLevel.Warning);
         }
     }
 }

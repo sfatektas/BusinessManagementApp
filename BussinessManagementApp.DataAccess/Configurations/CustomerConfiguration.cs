@@ -15,8 +15,10 @@ namespace BussinessManagementApp.DataAccess.Configurations
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Email).IsRequired();
-            builder.HasAlternateKey(x => x.Email);//Email ve Telefon numaraları müşteriler için uniq olmalı
-            builder.HasAlternateKey(x => x.TelNo);
+            //builder.HasAlternateKey(x => x.Email);//Email ve Telefon numaraları müşteriler için uniq olmalı
+            //builder.HasAlternateKey(x => x.TelNo);
+            builder.HasIndex(x => new { x.Email });
+            builder.HasIndex(x => x.TelNo);
             builder.Property(x => x.CustomerTypeId).IsRequired();
             builder.Property(x => x.CominicatePersonName).IsRequired();
             builder.Property(x => x.TelNo).IsRequired();

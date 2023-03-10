@@ -33,7 +33,7 @@ namespace BussinessManagementApp.DataAccess.Repositories
 
         public async Task<List<T>> GetAllAsync()
         {
-            var list = await _context.Set<T>().ToListAsync();
+            var list = await _context.Set<T>().AsNoTracking().ToListAsync();
             return list;
         }
 
@@ -56,8 +56,7 @@ namespace BussinessManagementApp.DataAccess.Repositories
 
         public void Update(T updated)
         {
-            _context.Update(updated);
-            //_context.Entry(unchanged).CurrentValues.SetValues(updated);
+            _context.Set<T>().Update(updated);
         }
         public IQueryable<T> GetQueryable()
         {

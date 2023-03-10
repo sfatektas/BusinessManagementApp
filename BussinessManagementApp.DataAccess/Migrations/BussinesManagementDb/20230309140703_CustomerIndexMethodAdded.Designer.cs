@@ -4,6 +4,7 @@ using BussinessManagementApp.DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDb
 {
     [DbContext(typeof(BussinesManagementDbContext))]
-    partial class BussinesManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230309140703_CustomerIndexMethodAdded")]
+    partial class CustomerIndexMethodAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -259,7 +261,7 @@ namespace BussinessManagementApp.DataAccess.Migrations.BussinesManagementDb
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TelNo");
+                    b.HasAlternateKey("TelNo");
 
                     b.ToTable("Suppliers");
                 });

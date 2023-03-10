@@ -26,23 +26,14 @@ namespace BusinessManagementApp.UI.Forms
         private CustomerUpdateDto willUpdateDto;
         readonly IServiceProvider _serviceProvider;
         public ICustomerService _customerService;
+
         public MusteriIslemleri(ICustomerService customerService, IMapper mapper, IServiceProvider serviceProvider)
         {
             _customerService = customerService;
-            InitializeComponent();
-            this.Show();
             _mapper = mapper;
             _serviceProvider = serviceProvider;
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_TextChanged(object sender, EventArgs e)
-        {
-
+            InitializeComponent();
+            this.Show();
         }
         public async Task RefReshCombobox()
         {
@@ -75,6 +66,12 @@ namespace BusinessManagementApp.UI.Forms
                 HelperMethods.DisableTextBox(new List<TextBox>() { TaxNoAdd_txt, companyNameAdd_txt, TradeRegisterNoAdd_txt });
             }
         }
+        public async Task TaskAddCustomerAndRefreshCmbx()
+        {
+            await AddCustomer();
+            await RefReshCombobox();
+
+        }
         public async Task AddCustomer()
         {
             if (HelperMethods.IsNotNull(new List<TextBox> { CominicationNameAdd_txt, EmailAdd_txt, TelNoAdd_txt }) && (int)comboBoxAdd_customerTypes.SelectedValue != 0)
@@ -101,9 +98,9 @@ namespace BusinessManagementApp.UI.Forms
         }
         private void CustomerAdd_btn_Click(object sender, EventArgs e)
         {
-
-            Task customerAdd = AddCustomer();
-            Task refreshCombobox = RefReshCombobox();
+            Task taskaddcustomer = TaskAddCustomerAndRefreshCmbx();
+            //Task customerAdd = AddCustomer();
+            //Task refreshCombobox = RefReshCombobox();
         }
 
         private void comboBoxFindUpdate_SelectionChangeCommitted(object sender, EventArgs e)
@@ -139,7 +136,7 @@ namespace BusinessManagementApp.UI.Forms
         private void return_btn_Click(object sender, EventArgs e)
         {
             _prev.Show();
-            this.Dispose();
+            this.Close();
         }
 
         private void CustomerUpdate_Btn_Click(object sender, EventArgs e)
@@ -147,7 +144,7 @@ namespace BusinessManagementApp.UI.Forms
             willUpdateDto.CominicatePersonName = contactPersonNameUpdate_txt.Text;
             willUpdateDto.Email = emailUpdate_txt.Text;
             willUpdateDto.TelNo = telnoUpdate_txt.Text;
-            if(willUpdateDto.CustomerTypeId == (int )CustomerType.Corporate) {
+            if(willUpdateDto.CustomerTypeId == (int)CustomerType.Corporate) {
                 willUpdateDto.CompanyName = companyNameUpdate_txt.Text;
                 willUpdateDto.TaxNo = taxnoUpdate_txt.Text;
                 willUpdateDto.TradeRegisterNumber = TradeRegNoUpdate_txt.Text;

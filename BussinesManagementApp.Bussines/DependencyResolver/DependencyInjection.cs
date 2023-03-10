@@ -16,6 +16,8 @@ using BussinesManagementApp.Bussines.Mapper.AutoMapper;
 using BussinessManagementApp.DataAccess.Interfaces;
 using BussinessManagementApp.DataAccess.UnitOfWork;
 using BussinesManagementApp.Bussines.Interfaces;
+using BussinesManagementApp.Dtos.ReportDtos;
+using BussinesManagementApp.Bussines.Validations.FluentValidation.ReportModelValidations;
 
 namespace BussinesManagementApp.Bussines.DependencyResolver
 {
@@ -75,6 +77,9 @@ namespace BussinesManagementApp.Bussines.DependencyResolver
             //Warehouse
             services.AddTransient<IValidator<WarehouseProductCreateDto>, WarehouseProductCreateDtoValidator>();
             services.AddTransient<IValidator<WarehouseProductUpdateDto>, WarehouseProductUpdateDtoValidator>();
+            // ReportModel
+            services.AddTransient<IValidator<ReportQueryDto>, ReportQueryDtoValidator>();
+
 
             //DI
             services.AddScoped<IUow, Uow>();
@@ -86,6 +91,7 @@ namespace BussinesManagementApp.Bussines.DependencyResolver
             services.AddScoped<ISupplierOrderService , SupplierOrderService>();
             services.AddScoped<IWarehouseProductService , WarehouseProductService>();
             services.AddScoped<ICustomerOrderService , CustomerOrderService>();
+            services.AddScoped<IReportService , ReportService>();
         }
     }
 }

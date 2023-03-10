@@ -22,6 +22,5 @@ namespace BussinesManagementApp.Dtos
         public OrderStatusTypeListDto OrderStatusType { get; set; }
         public DateTime Date { get; set; }
         public bool IsActive { get; set; }
-
     }
 }

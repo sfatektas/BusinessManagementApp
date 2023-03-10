@@ -96,7 +96,7 @@ namespace BussinesManagementApp.Bussines.Services
             return new Response(ResponseType.Success, "İlgili Veri Başarı ile silindi.");
         }
 
-        public async Task<IResponse<UpdateDto>> UpdateAsync(UpdateDto dto)
+        public virtual async Task<IResponse<UpdateDto>> UpdateAsync(UpdateDto dto)
         {
             var result = await _updateValidator.ValidateAsync(dto);
             if (result.IsValid)

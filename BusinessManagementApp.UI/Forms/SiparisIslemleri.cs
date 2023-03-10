@@ -40,10 +40,6 @@ namespace BusinessManagementApp.UI.Forms
             this.Close();
         }
 
-        private void SiparisIslemleri_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            _prev.Close(); //it's working
-        }
         public List<CustomerOrderDataGridModel> ChangeModelType(List<CustomerOrderListDto> CustomerOrderLists)
         {
             list = new List<CustomerOrderDataGridModel>();
@@ -66,23 +62,32 @@ namespace BusinessManagementApp.UI.Forms
         }
         public async Task AllProduct()
         {
-            var response = await _customerOrderService.GetIncludedAll(x=>x.IsActive == true && x.OrderStatusTypeId == (int)OrderStatusType.PreOrder,true);
-            response.Data.OrderByDescending(x => x.Date);
-            if (response.Data != null)
+            try
             {
-                dataGridView1.DataSource = ChangeModelType(response.Data);
-                dataGridView1.Columns[0].HeaderText = "Sipariş Id";
-                dataGridView1.Columns[1].HeaderText = "Müşteri Adı";
-                dataGridView1.Columns[2].HeaderText = "Ürün Adı";
-                dataGridView1.Columns[3].HeaderText = "Ürün Miktarı";
-                dataGridView1.Columns[4].HeaderText = "Ürün Birim Fiyatı(TL)";
-                dataGridView1.Columns[5].HeaderText = "Toplam Kdv Tutarı(TL)";
-                dataGridView1.Columns[6].HeaderText = "Toplam Tutar(TL)";
-                dataGridView1.Columns[7].HeaderText = "Sipariş Durumu";
-                dataGridView1.Columns[8].HeaderText = "Sipariş Tarihi";
+                var response = await _customerOrderService.GetIncludedAll(x => x.IsActive == true && x.OrderStatusTypeId == (int)OrderStatusType.PreOrder, true);
+                response.Data.OrderByDescending(x => x.Date);
+                if (response.Data != null)
+                {
+                    dataGridView1.DataSource = ChangeModelType(response.Data);
+                    dataGridView1.Columns[0].HeaderText = "Sipariş Id";
+                    dataGridView1.Columns[1].HeaderText = "Müşteri Adı";
+                    dataGridView1.Columns[2].HeaderText = "Ürün Adı";
+                    dataGridView1.Columns[3].HeaderText = "Ürün Miktarı";
+                    dataGridView1.Columns[4].HeaderText = "Ürün Birim Fiyatı(TL)";
+                    dataGridView1.Columns[5].HeaderText = "Toplam Kdv Tutarı(TL)";
+                    dataGridView1.Columns[6].HeaderText = "Toplam Tutar(TL)";
+                    dataGridView1.Columns[7].HeaderText = "Sipariş Durumu";
+                    dataGridView1.Columns[8].HeaderText = "Sipariş Tarihi";
+                }
+                dataGridView1.ReadOnly = true;
+                //dataGridView1.ForeColor= Color.Yellow;
             }
-            dataGridView1.ReadOnly = true;
-            //dataGridView1.ForeColor= Color.Yellow;
+            catch (Exception e)
+            {
+
+                throw;
+            }
+
         }
 
         private void SiparisIslemleri_Load(object sender, EventArgs e)
@@ -95,7 +100,7 @@ namespace BusinessManagementApp.UI.Forms
             var orderId = (int)(sender as DataGridView).Rows[e.RowIndex].Cells[0].Value;
             var formonSiprarisDetay = _serviceProvider.GetRequiredService<OnSiprarisDetay>();
             formonSiprarisDetay._customerOrderDataGridModel = list.FirstOrDefault(x=>x.Id == orderId);
-            formonSiprarisDetay.BindData(); //müq
+            formonSiprarisDetay.BindData(); 
         }
     }
 }

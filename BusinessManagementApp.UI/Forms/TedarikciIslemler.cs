@@ -11,7 +11,7 @@ namespace BusinessManagementApp.UI.Forms
     {
         public Form _prev { get; set; }
         readonly ISupplierService _supplierService;
-
+        SupplierUpdateDto _supplierUpdateDto = new();
         public TedarikciIslemler(ISupplierService supplierService) //TODO service implemente ediceleck
         {
             _supplierService = supplierService;
@@ -21,7 +21,7 @@ namespace BusinessManagementApp.UI.Forms
 
         public async Task ComboboxItemLoad()
         {
-            var response = await _supplierService.GetAllAsync(x=>x.IsActive ==true);
+            var response = await _supplierService.GetAllAsync(x => x.IsActive == true);
             if (response.ResponseType == ResponseType.Success)
             {
                 var items = new List<ComboboxModel>() { };
@@ -35,7 +35,7 @@ namespace BusinessManagementApp.UI.Forms
         }
         private void TedarikciIslemler_Load(object sender, EventArgs e)
         {
-            groupBox4.Visible= false;
+            groupBox4.Visible = false;
             Task ItemLoad = ComboboxItemLoad();
         }
 
@@ -61,37 +61,39 @@ namespace BusinessManagementApp.UI.Forms
             });
             if (response.ResponseType == ResponseType.ValidationError)
             {
-
                 HelperMethods.ShowErrors(response.ValidationErrors);
                 return;
             }
             MessageBox.Show(response.Message);
         }
-        public async Task UpdateTxtBind(int id = 0 , string telno ="")
+        public async Task UpdateTxtBind(int id = 0, string telno = "")
         {
             if (id != 0)
             {
                 var response = await _supplierService.GetByIdAsync(id);
+                _supplierUpdateDto.Id = response.Data.Id;
+
                 if (response.ResponseType == ResponseType.Success)
                 {
                     companyInfoupdate_txt.Text = response.Data.Info;
                     contactnameupdate_txt.Text = response.Data.CominicatePersonName;
                     telnoupdate_txt.Text = response.Data.TelNo;
                     emailUpdate_txt.Text = response.Data.Email;
-                    LogisticCompany_txt.Text = response.Data.LogisticsCompany;
+                    LogisticCompanyUpdate_txt.Text = response.Data.LogisticsCompany;
                 }
             }
             else
             {
-                var response2 = await _supplierService.GetByFilterAsync(x=>x.TelNo == telno);
+                var response2 = await _supplierService.GetByFilterAsync(x => x.TelNo == telno);
+                _supplierUpdateDto.Id = response2.Data.Id;
                 if (response2.ResponseType == ResponseType.Success)
                 {
-                   var data =  response2.Data;
+                    var data = response2.Data;
                     companyInfoupdate_txt.Text = data.Info;
                     contactnameupdate_txt.Text = data.CominicatePersonName;
                     telnoupdate_txt.Text = data.TelNo;
                     emailUpdate_txt.Text = data.Email;
-                    LogisticCompany_txt.Text = data.LogisticsCompany;
+                    LogisticCompanyUpdate_txt.Text = data.LogisticsCompany;
                 }
             }
 
@@ -118,6 +120,28 @@ namespace BusinessManagementApp.UI.Forms
         {
             _prev.Show();
             this.Close();
+        }
+        public async Task UpdateSupplier()
+        {
+            var response = await _supplierService.UpdateAsync(new SupplierUpdateDto
+            {
+                Id = _supplierUpdateDto.Id,
+                TelNo = telnoupdate_txt.Text,
+                CominicatePersonName = contactnameupdate_txt.Text,
+                Email = emailUpdate_txt.Text,
+                Info = companyInfoupdate_txt.Text,
+                LogisticsCompany = LogisticCompanyUpdate_txt.Text,
+                IsActive = true
+            }) ;
+            if (response.ResponseType == ResponseType.ValidationError)
+            {
+                HelperMethods.ShowErrors(response.ValidationErrors);
+            }
+            MessageBox.Show(response.Message);
+        }
+        private void Update_btn_Click(object sender, EventArgs e)
+        {
+            Task updateData = UpdateSupplier();
         }
     }
 }

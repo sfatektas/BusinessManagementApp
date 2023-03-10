@@ -143,49 +143,29 @@ namespace BusinessManagementApp.UI.Forms
             }
             RefreshTotalPrice();
         }
-        public async Task AddSupplierOrderAndWarehouseProduct()//TODO servise ayrı bir method yapılım 3 işlemin tracking durumu aynı anda işlenmeli.
+        public async Task AddSupplierOrderAndWarehouseProduct()
         {
-            var response = await _supplierOrderService.CreateAsync(new SupplierOrderCreateDto() // Tedarikçi siparişi 
+            try
             {
-                Amount = this.Amount,
-                MoneyTypeId = (int)MoneyTypeCombobox.SelectedValue,
-                ProductId = (int)SelectProductCombobox.SelectedValue,
-                TotalPrice = double.Parse(TotalPrice_txt.Text),
-                UnitPrice = this.UnitPrice
-            });
-
-            if (response.ResponseType == ResponseType.ValidationError)
-                HelperMethods.ShowErrors(response.ValidationErrors);
-            else if (response.ResponseType == ResponseType.Success)
-            {
-                var ProductResponse = await _productService.GetByIdAsync(response.Data.ProductId);
-
-                ProductResponse.Data.UnitPrice = ProductResponse.Data.UnitPrice == 0 ? this.UnitPrice * 1.25 : this.UnitPrice; // varsayılan olarak %25 değerini atıyorum. daha önceden bir fiyat değişimi yapılmadıysa
-
-                var responseProduct = await _productService.UpdateAsync(_mapper.Map<ProductUpdateDto>(ProductResponse.Data));
-                
-                if (responseProduct.ResponseType == ResponseType.Success)
+                var response = await _supplierOrderService.AddSupplierOrderAndWarehouseProductUpdate(new SupplierOrderCreateDto() // Tedarikçi siparişi 
                 {
-                    var ResponseWarehouseProductExist = await _warehouseService.GetByIdAsync(response.Data.ProductId); // Bu ürünün depoda daha önceden olma durumu ? 
-                    if (ResponseWarehouseProductExist.Data != null)
-                    {
-                        ResponseWarehouseProductExist.Data.Amount += this.Amount; //ürünün depodaki miktarını arttırıyorum.
-
-                        var warehouseproductUpdate = await _warehouseService.UpdateAsync(_mapper.Map<WarehouseProductUpdateDto>(ResponseWarehouseProductExist.Data));
-                        if (warehouseproductUpdate.ResponseType != ResponseType.Success)
-                            MessageBox.Show("Ürün stoğu güncellenirken bir hata oluştu.");
-                    }
-                    else
-                    {
-                        var responseWarehouseAdd = await _warehouseService.CreateAsync(new() { Amount = this.Amount, ProductId = response.Data.ProductId });
-                        if (responseWarehouseAdd.ResponseType == ResponseType.Success)
-                        {
-                            MessageBox.Show(responseWarehouseAdd.Message);
-                        }
-                    }
+                    Amount = this.Amount,
+                    MoneyTypeId = (int)MoneyTypeCombobox.SelectedValue,
+                    ProductId = (int)SelectProductCombobox.SelectedValue,
+                    TotalPrice = double.Parse(TotalPrice_txt.Text),
+                    UnitPrice = this.UnitPrice
+                });
+                if (response.ResponseType == ResponseType.ValidationError)
+                {
+                    HelperMethods.ShowErrors(response.ValidationErrors);
                 }
+                MessageBox.Show(response.Message);
             }
-            MessageBox.Show(response.Message);
+            catch (Exception e)
+            {
+
+                throw;
+            }
 
         }
         private void AddProductOrder_btn_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
-﻿using BussinesManagementApp.Dtos;
+﻿using BusinessManagementApp.Common.Interfaces;
+using BussinesManagementApp.Dtos;
 using BussinessManagementApp.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace BussinesManagementApp.Bussines.Interfaces
 {
     public interface ISupplierOrderService : IService<SupplierOrderCreateDto,SupplierOrderUpdateDto,SupplierOrderListDto,SupplierOrder>
     {
+        public Task<IResponse<SupplierOrderCreateDto>> AddSupplierOrderAndWarehouseProductUpdate(SupplierOrderCreateDto dto);
 
     }
 }

@@ -16,5 +16,7 @@ namespace BussinesManagementApp.Dtos
         public string Email { get; set; }
         public string LogisticsCompany { get; set; }
         public List<ProductListDto> Products { get; set; }
+        public bool IsActive { get; set; }
+
     }
 }

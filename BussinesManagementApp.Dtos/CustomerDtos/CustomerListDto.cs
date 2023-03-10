@@ -21,5 +21,7 @@ namespace BussinesManagementApp.Dtos
         public string TaxNo { get; set; }
         public string TradeRegisterNumber { get; set; }
 
+        public bool IsActive { get; set; }
+
     }
 }

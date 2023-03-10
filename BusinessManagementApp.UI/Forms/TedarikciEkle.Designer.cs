@@ -28,19 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Close_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // Close_btn
+            // 
+            this.Close_btn.Location = new System.Drawing.Point(244, 196);
+            this.Close_btn.Name = "Close_btn";
+            this.Close_btn.Size = new System.Drawing.Size(115, 44);
+            this.Close_btn.TabIndex = 0;
+            this.Close_btn.Text = "Kapat";
+            this.Close_btn.UseVisualStyleBackColor = true;
             // 
             // TedarikciEkle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(620, 286);
+            this.Controls.Add(this.Close_btn);
             this.Name = "TedarikciEkle";
-            this.Text = "TedarikciEkle";
+            this.Text = "Tedarikçi Ekle";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private Button Close_btn;
     }
 }

@@ -8,12 +8,7 @@ using BussinessManagementApp.DataAccess.Interfaces;
 using BussinessManagementApp.Entities;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BussinesManagementApp.Bussines.Services
 {
@@ -29,7 +24,7 @@ namespace BussinesManagementApp.Bussines.Services
 
         public async Task<IResponse<List<ProductListDto>>> GetIncludedAll(bool ıncludeall = false)
         {
-            var data = await _uow.GetRepository<Product>().GetQueryable().Include(x => x.Supplier).ToListAsync();
+            var data = await _uow.GetRepository<Product>().GetQueryable().Include(x => x.Supplier).AsNoTracking().ToListAsync();
             if(data!=null)
                 return new Response<List<ProductListDto>>(ResponseType.Success,_mapper.Map<List<ProductListDto>>(data));
             return new Response<List<ProductListDto>>(ResponseType.NotFound, null);
@@ -37,7 +32,7 @@ namespace BussinesManagementApp.Bussines.Services
 
         public async Task<IResponse<List<ProductListDto>>> GetIncludedAll(Expression<Func<Product, bool>> filter, bool allPropertyInclude = false)
         {
-            var data = await _uow.GetRepository<Product>().GetQueryable().Where(x=>x.IsActive == true).Include(x => x.Supplier).ToListAsync();
+            var data = await _uow.GetRepository<Product>().GetQueryable().Where(x=>x.IsActive == true).Include(x => x.Supplier).AsNoTracking().ToListAsync();
             if (data != null)
                 return new Response<List<ProductListDto>>(ResponseType.Success, _mapper.Map<List<ProductListDto>>(data));
             return new Response<List<ProductListDto>>(ResponseType.NotFound, null);
@@ -45,7 +40,7 @@ namespace BussinesManagementApp.Bussines.Services
 
         public async Task<IResponse<ProductListDto>> GetIncludedById(int id, bool ıncludeall = false)
         {
-            var data = await _uow.GetRepository<Product>().GetQueryable().Where(x=>x.Id == id).Include(x => x.Supplier).FirstOrDefaultAsync();
+            var data = await _uow.GetRepository<Product>().GetQueryable().Where(x=>x.Id == id).Include(x => x.Supplier).AsNoTracking().FirstOrDefaultAsync();
             if (data != null)
                 return new Response<ProductListDto>(ResponseType.Success, _mapper.Map<ProductListDto>(data));
             return new Response<ProductListDto>(ResponseType.NotFound, null);

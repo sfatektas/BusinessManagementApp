@@ -106,9 +106,12 @@ namespace BussinesManagementApp.Bussines.Services
         {
             var data = !allPropertyInclude ? await _uow.GetRepository<CustomerOrder>().GetQueryable().Where(filter).Include(x => x.Product).AsNoTracking().ToListAsync() :
    await _uow.GetRepository<CustomerOrder>().GetQueryable().Where(filter).Include(x => x.Product).Include(x=>x.Customer).AsNoTracking().ToListAsync()
-;
+;// burda orderstatus modelini projeye include ettiğimde hata alıyorum****
             if (data != null)
+            {
+                var mappeddata = _mapper.Map<List<CustomerOrderListDto>>(data);
                 return new Response<List<CustomerOrderListDto>>(ResponseType.Success, _mapper.Map<List<CustomerOrderListDto>>(data));
+            }
             return new Response<List<CustomerOrderListDto>>(ResponseType.NotFound, "Bulunamadı.", null);
         }
 

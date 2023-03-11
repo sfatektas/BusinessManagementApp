@@ -12,12 +12,13 @@ namespace BussinesManagementApp.Dtos.ReportDtos
         public string CominicatePersonName { get; set; }
         public string ProductName { get; set; }
         public double UnitPrice { get; set; }
+        public int Amount { get; set; }
         public double KdvPrice { get; set; }
         public double TotalPrice { get; set; }
 
         public int OrderStatusTypeId { get; set; }
         public string OrderStatus { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
 
     }
 }

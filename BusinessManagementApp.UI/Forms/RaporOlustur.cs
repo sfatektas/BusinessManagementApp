@@ -124,36 +124,58 @@ namespace BusinessManagementApp.UI.Forms
                 HelperMethods.ShowErrors(response.ValidationErrors);
             else if (response.ResponseType == ResponseType.Success)
             {
-                MessageBox.Show(response.Message);
+                try
+                {
+                    ExcelHelpers instance = new();
+                    bool isok = instance.CreateExcelFile(ReportType.CustomerBased,response.Data);
+                    //instance.BindDataToExcelFormatCustomerReport(response.Data);
+                    //instance.SaveExcelFiles();
+                    if(isok)
+                        MessageBox.Show("Rapor Oluşturuldu");
+                    else
+                         MessageBox.Show("Bir sorun oluştu");
+                }
+                catch (Exception e)
+                {
+
+                    throw;
+                }
+
             }
             else
                 MessageBox.Show(response.Message);
         }
         private void createReport_btn_Click(object sender, EventArgs e)
         {
-            //_reportCreateDto.ReportTypeId = (int)ReportType_cbx.SelectedValue;
-            //_reportCreateDto.TimeRangeTypeId = (int)timerange_cbx.SelectedValue;
-            //switch (timerange_cbx.SelectedValue)
-            //{
-            //    case (int)TimeRangeType.OneMonth:
-            //        _reportCreateDto.Month = 1;
-            //        break;
-            //    case (int)TimeRangeType.ThreeMonth:
-            //        _reportCreateDto.Month = 3;
-            //        break;
-            //    case (int)TimeRangeType.SixMonth:
-            //        _reportCreateDto.Month = 6;
-            //        break;
-            //    case (int)TimeRangeType.OneYear:
-            //        _reportCreateDto.Month = 12;
-            //        break;
+            _reportCreateDto.ReportTypeId = (int)ReportType_cbx.SelectedValue;
+            _reportCreateDto.TimeRangeTypeId = (int)timerange_cbx.SelectedValue;
+            switch (timerange_cbx.SelectedValue)
+            {
+                case (int)TimeRangeType.OneMonth:
+                    _reportCreateDto.Month = 1;
+                    break;
+                case (int)TimeRangeType.ThreeMonth:
+                    _reportCreateDto.Month = 3;
+                    break;
+                case (int)TimeRangeType.SixMonth:
+                    _reportCreateDto.Month = 6;
+                    break;
+                case (int)TimeRangeType.OneYear:
+                    _reportCreateDto.Month = 12;
+                    break;
 
-            //    default:
-            //        break;
-            //}
-            //Task createReport = CustomerReportCreate(_reportCreateDto);
+                default:
+                    break;
+            }
+            Task createReport = CustomerReportCreate(_reportCreateDto);
 
-            ExcelHelpers.CreateExcelFile(new());
+            //ExcelHelpers.CreateExcelFile(new());
+        }
+
+        private void return_btn_Click(object sender, EventArgs e)
+        {
+            _prev.Show();
+            this.Close();
         }
     }
 }

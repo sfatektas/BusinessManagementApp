@@ -49,13 +49,14 @@ namespace BussinesManagementApp.Bussines.Services
                         new ReportDataForCustomer
                         {
                             CominicatePersonName = item.Customer.CominicatePersonName ,
-                            Date= item.Date,
+                            Date= item.Date.ToString("dddd, dd MMMM yyyy")+" "+item.Date.ToString("HH:mm"),
                             KdvPrice= item.KdvPrice,
                             OrderStatus = item.OrderStatusTypeId ==(int)OrderStatusType.PreOrder ? "Ön Sipariş":"Tamamlandı",
                             OrderStatusTypeId= item.OrderStatusTypeId,
                             ProductName = item.Product.Name,
                             TotalPrice= item.TotalPrice,
                             UnitPrice= item.UnitPrice,
+                            Amount = item.Amount
                         }
                     );
                 }

@@ -157,6 +157,7 @@
             this.return_btn.TabIndex = 4;
             this.return_btn.Text = "Geri Dön";
             this.return_btn.UseVisualStyleBackColor = true;
+            this.return_btn.Click += new System.EventHandler(this.return_btn_Click);
             // 
             // productGroupBox
             // 

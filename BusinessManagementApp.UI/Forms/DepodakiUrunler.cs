@@ -1,4 +1,6 @@
-﻿using BusinessManagementApp.UI.Helpers.Models;
+﻿using BusinessManagementApp.Common.Enums;
+using BusinessManagementApp.UI.Helpers;
+using BusinessManagementApp.UI.Helpers.Models;
 using BusinessManagementApp.UI.Interfaces;
 using BussinesManagementApp.Bussines.Interfaces;
 using BussinesManagementApp.Dtos;
@@ -75,12 +77,43 @@ namespace BusinessManagementApp.UI.Forms
         {
             var urunSatform = _serviceProvider.GetRequiredService<UrunSat>();
             urunSatform._prev = this;
-            this.Close();
+            this.Hide();
         }
-
+        public async Task FindProduct(int id)
+        {
+            var response =await _warehouseService.GetIncludedByFilter(x => x.Id == id);
+            if (response.ResponseType == ResponseType.Success)
+            {
+                    dataGridView1.DataSource = ChangeModelType(new() { response.Data });
+                    dataGridView1.Columns[0].HeaderText = "Ürün Id";
+                    dataGridView1.Columns[1].HeaderText = "Ürün Adı";
+                    dataGridView1.Columns[2].HeaderText = "Ürün Miktarı";
+            }
+            else
+            {
+                dataGridView1.Rows.Clear();
+                MessageBox.Show("Bu id değerine sahip bir veri bulunmamaktadır.");
+            }
+            dataGridView1.ReadOnly = true;
+        }
         private void find_btn_Click(object sender, EventArgs e)
         {
-            //TODO Ürün id değerine göre getirme işlemei
+
+            //var response = _warehouseService.GetIncludedByFilter(x=>x.ProductId==)
+            try
+            {
+                int id = int.Parse(Find_txtbox.Text);
+                Task find = FindProduct(id);
+            }
+            catch 
+            {
+                MessageBox.Show($"Id : değeri maksimum {int.MaxValue} değerine eşit olabilir.");
+            }
+        }
+
+        private void Find_txtbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            HelperMethods.IsOkNumberFormat(ref sender, e);
         }
     }
 }

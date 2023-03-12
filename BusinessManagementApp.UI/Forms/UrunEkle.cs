@@ -88,7 +88,6 @@ namespace BusinessManagementApp.UI.Forms
 
         private void Cancel_btn_Click(object sender, EventArgs e)
         {
-            _serviceProvider.GetRequiredService<UrunAlımı>();
             this.Close();
         }
 

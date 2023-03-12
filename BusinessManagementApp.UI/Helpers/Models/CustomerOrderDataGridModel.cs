@@ -20,6 +20,7 @@ namespace BusinessManagementApp.UI.Helpers.Models
         public double TotalKdvPrice { get; set; }
 
         public double TotalPrice { get; set; }
+        public int OrderStatusId { get; set; }
 
         public string OrderStatus { get; set; }
         public DateTime Date { get; set; }

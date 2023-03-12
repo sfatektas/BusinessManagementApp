@@ -37,12 +37,11 @@ namespace BusinessManagementApp.UI.Forms
                 if (response.ResponseType == ResponseType.Success)
                     await _prev.AllProduct(); // İşlem onaylanırsa bekleyen siparişleri güncelle
                 MessageBox.Show(response.Message);
-
+                //TODO ön sipariş geçerken stoktaki ürünün miktarı azalıyor ürünü tamamlayınca gene miktar azalıyor ??
             }
             catch (Exception e)
             {
-
-                throw;
+                MessageBox.Show("Hata durumu : "+e.Message);
             }
 
         }
@@ -52,18 +51,22 @@ namespace BusinessManagementApp.UI.Forms
         }
         public void BindData()
         {
+            if(_customerOrderDataGridModel.OrderStatusId == (int)OrderStatusType.Complated)
+                PreOrderComplate_btn.Enabled = false;
             Amount_txt.Text = _customerOrderDataGridModel.Amount.ToString();
             CustomerName_txt.Text = _customerOrderDataGridModel.CustomerName;
             Date_txt.Text = _customerOrderDataGridModel.Date.ToString();
             KdvPrice_txt.Text = _customerOrderDataGridModel.TotalKdvPrice.GetStringMoneyFormat();
             SiparisTuru_txt.Text = _customerOrderDataGridModel.OrderStatus;
             TotalPrice_txt.Text = _customerOrderDataGridModel.TotalPrice.GetStringMoneyFormat();
-            UnitPrice_txt.Text = _customerOrderDataGridModel.TotalPrice.GetStringMoneyFormat();
+            UnitPrice_txt.Text = _customerOrderDataGridModel.UnitPrice.GetStringMoneyFormat();
             UrunAdı_txt.Text = _customerOrderDataGridModel.ProductName.ToString();
         }
 
         private void close_BTN_Click(object sender, EventArgs e)
         {
+            if(_prev!=null)
+                _prev.Show();
             this.Close();
         }
     }

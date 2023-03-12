@@ -17,6 +17,7 @@ namespace BussinesManagementApp.Bussines.Validations.FluentValidation.SupplierOr
             RuleFor(x=>x.Amount).GreaterThan(0);
             RuleFor(x=>x.MoneyTypeId).NotEqual(0);
             RuleFor(x => x.TotalPrice).GreaterThan(0);
+            RuleFor(x => x.MoneyTypeValue).GreaterThan(0);
         }
     }
 }

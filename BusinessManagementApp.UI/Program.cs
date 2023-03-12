@@ -1,8 +1,10 @@
 using BusinessManagementApp.UI.Forms;
 using BussinesManagementApp.Bussines.DependencyResolver;
 using BussinesManagementApp.Bussines.Services;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Configuration;
 
 namespace BusinessManagementApp.UI
 {
@@ -51,9 +53,17 @@ namespace BusinessManagementApp.UI
                     services.AddTransient<SiparisIslemleri>();
                     services.AddTransient<OnSiprarisDetay>();
                     services.AddTransient<RaporOlustur>();
+                    services.AddTransient<LastOrders>();
 
-                    services.DependencyExtension();
+                    services.DependencyExtension(GetConfig.GetDbConnectionString());
                 });
+        }
+        public class GetConfig
+        {
+            public static string GetDbConnectionString()
+            {
+                return System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
+            }
         }
     }
 }

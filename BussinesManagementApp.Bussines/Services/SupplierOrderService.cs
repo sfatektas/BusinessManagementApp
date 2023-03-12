@@ -2,6 +2,7 @@
 using BusinessManagementApp.Common;
 using BusinessManagementApp.Common.Enums;
 using BusinessManagementApp.Common.Interfaces;
+using BussinesManagementApp.Bussines.Helpers.Extension;
 using BussinesManagementApp.Bussines.Interfaces;
 using BussinesManagementApp.Dtos;
 using BussinessManagementApp.DataAccess.Interfaces;
@@ -45,7 +46,7 @@ namespace BussinesManagementApp.Bussines.Services
                 else
                 {
                     var productData = await _uow.GetRepository<Product>().GetByFilterAsync(x=>x.Id == dto.ProductId && x.IsActive == true); 
-                    productData.UnitPrice = productData.UnitPrice == 0 ? dto.UnitPrice * 1.25 : productData.UnitPrice;   // burda yapılan işlem ürün ilk defa tedarik ediliyor ise satış fiyatı default olarak %25 karlı fiyat olarak hesaplanacaktır. Eğer daha önceden bir fiyatı bellirlenmiş ise o fiyat kalacaktır.
+                    productData.UnitPrice = productData.UnitPrice == 0 ? dto.UnitPrice * 1.25 * dto.MoneyTypeValue : productData.UnitPrice;   // burda yapılan işlem ürün ilk defa tedarik ediliyor ise satış fiyatı default olarak %25 karlı fiyat olarak hesaplanacaktır. Eğer daha önceden bir fiyatı bellirlenmiş ise o fiyat kalacaktır. Ve Para Birimi TL ürendinden çevrilip kar hesaplanacak
                      _uow.GetRepository<Product>().Update(productData);
                     await _uow.GetRepository<WarehouseProduct>().CreateAsync(new()
                     {
@@ -57,7 +58,7 @@ namespace BussinesManagementApp.Bussines.Services
                 }
 
             }
-            return new Response<SupplierOrderCreateDto>(ResponseType.ValidationError,dto);
+            return new Response<SupplierOrderCreateDto>(ResponseType.ValidationError,dto,result.GetValidationErrors());
         }
     }
 }

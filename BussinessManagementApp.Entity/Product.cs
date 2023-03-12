@@ -12,7 +12,7 @@ namespace BussinessManagementApp.Entities
         public string Name { get; set; }
         public string Origin { get; set; }
 
-        [ForeignKey("Supplier")]
+        //[ForeignKey("Supplier")]
         public int SupplierId { get; set; }
         public Supplier Supplier { get; set; }
         public double UnitPrice { get; set; }

@@ -10,6 +10,5 @@ namespace BusinessManagementApp.Common.Enums
     {
         CustomerBased = 1,
         ProductBased = 2,
-        General = 3,
     }
 }

@@ -348,6 +348,7 @@
             this.TelnoUpdateSearch_txt.Name = "TelnoUpdateSearch_txt";
             this.TelnoUpdateSearch_txt.Size = new System.Drawing.Size(151, 27);
             this.TelnoUpdateSearch_txt.TabIndex = 0;
+            this.TelnoUpdateSearch_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TelnoUpdateSearch_txt_KeyPress);
             // 
             // button6
             // 

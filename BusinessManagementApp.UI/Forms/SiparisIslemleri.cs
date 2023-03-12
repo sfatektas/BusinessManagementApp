@@ -40,7 +40,7 @@ namespace BusinessManagementApp.UI.Forms
             this.Close();
         }
 
-        public List<CustomerOrderDataGridModel> ChangeModelType(List<CustomerOrderListDto> CustomerOrderLists)
+        public  List<CustomerOrderDataGridModel> ChangeModelType(List<CustomerOrderListDto> CustomerOrderLists)
         {
             list = new List<CustomerOrderDataGridModel>();
             foreach (var item in CustomerOrderLists)
@@ -97,10 +97,11 @@ namespace BusinessManagementApp.UI.Forms
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var orderId = (int)(sender as DataGridView).Rows[e.RowIndex].Cells[0].Value;
+            var orderId = (int)(sender as DataGridView).Rows[e.RowIndex].Cells[0].Value; // Detayı görülmek istenen verinin ıd değerini alıyoruz.
             var formonSiprarisDetay = _serviceProvider.GetRequiredService<OnSiprarisDetay>();
-            formonSiprarisDetay._customerOrderDataGridModel = list.FirstOrDefault(x=>x.Id == orderId);
-            formonSiprarisDetay.BindData(); 
+            formonSiprarisDetay._customerOrderDataGridModel = list.FirstOrDefault(x=>x.Id == orderId); // tüm detay verilerini çekiyoruz.
+            formonSiprarisDetay.BindData();
+            formonSiprarisDetay._prev = this;
         }
     }
 }

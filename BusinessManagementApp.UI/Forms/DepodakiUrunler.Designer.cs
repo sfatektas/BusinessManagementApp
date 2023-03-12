@@ -32,7 +32,7 @@
             this.TurnBack_btn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.SellProduct_btn = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Find_txtbox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.find_btn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -80,12 +80,13 @@
             this.SellProduct_btn.UseVisualStyleBackColor = true;
             this.SellProduct_btn.Click += new System.EventHandler(this.SellProduct_btn_Click);
             // 
-            // textBox1
+            // Find_txtbox
             // 
-            this.textBox1.Location = new System.Drawing.Point(181, 59);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 27);
-            this.textBox1.TabIndex = 8;
+            this.Find_txtbox.Location = new System.Drawing.Point(181, 59);
+            this.Find_txtbox.Name = "Find_txtbox";
+            this.Find_txtbox.Size = new System.Drawing.Size(125, 27);
+            this.Find_txtbox.TabIndex = 8;
+            this.Find_txtbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Find_txtbox_KeyPress);
             // 
             // label2
             // 
@@ -122,7 +123,7 @@
             this.ClientSize = new System.Drawing.Size(535, 423);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Find_txtbox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TurnBack_btn);
             this.Controls.Add(this.SellProduct_btn);
@@ -143,7 +144,7 @@
         private Button TurnBack_btn;
         private DataGridView dataGridView1;
         private Button SellProduct_btn;
-        private TextBox textBox1;
+        private TextBox Find_txtbox;
         private Label label2;
         private Button find_btn;
         private Label label3;

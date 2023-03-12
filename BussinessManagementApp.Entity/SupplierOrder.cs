@@ -15,9 +15,10 @@ namespace BussinessManagementApp.Entities
         public double UnitPrice { get; set; }
         public int Amount { get; set; }
         public double TotalPrice { get; set; }
-        
+
         [ForeignKey("MoneyType")]
         public int MoneyTypeId { get; set; }
+        public double MoneyTypeValue { get; set; } // Ürünün alınan tarihdeki Dolar, Euro değeri 
         public MoneyType MoneyType { get; set; }
         public DateTime Date { get; set; }
 

@@ -14,11 +14,11 @@ namespace BussinesManagementApp.Bussines.Validations.FluentValidation.CustomerVa
         public CustomerCreateDtoValidator()
         {
             RuleFor(x => x.Email).NotEmpty().EmailAddress();
-            RuleFor(x => x.TelNo).NotEmpty();
+            RuleFor(x => x.TelNo).NotEmpty().Matches("^[0-9]*$").WithMessage("Telefon numarası sadece sayı formatında olmalı.");
             RuleFor(x => x.CominicatePersonName).NotEmpty();
             RuleFor(x => x.CustomerTypeId).NotEqual(0);
-            RuleFor(x => x.TradeRegisterNumber).NotEmpty().When(x => x.CustomerTypeId != (int)CustomerType.Single);
-            RuleFor(x => x.TaxNo).NotEmpty().When(x => x.CustomerTypeId != (int)CustomerType.Single);
+            RuleFor(x => x.TradeRegisterNumber).NotEmpty().When(x => x.CustomerTypeId != (int)CustomerType.Single).Matches("^[0-9]*$").WithMessage("Sicil numarası sadece sayı formatında olmalı.");
+            RuleFor(x => x.TaxNo).NotEmpty().When(x => x.CustomerTypeId != (int)CustomerType.Single).Matches("^[0-9]*$").WithMessage("Vergi numarası sadece sayı formatında olmalı.");
             RuleFor(x => x.CompanyName).NotEmpty().When(x => x.CustomerTypeId != (int)CustomerType.Single);
         }
     }

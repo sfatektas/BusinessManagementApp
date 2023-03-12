@@ -14,7 +14,7 @@ namespace BussinesManagementApp.Bussines.Validations.FluentValidation.SupplierVa
         {
             RuleFor(x=>x.Email).NotEmpty().EmailAddress();
             RuleFor(x=>x.Info).NotEmpty();
-            RuleFor(x=>x.TelNo).NotEmpty();
+            RuleFor(x=>x.TelNo).NotEmpty().Matches("^[0-9]*$").WithMessage("Telefon numarası sadece sayı formatında olmalı."); ;
             RuleFor(x=>x.LogisticsCompany).NotEmpty();
             RuleFor(x=>x.CominicatePersonName).NotEmpty();
         }

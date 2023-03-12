@@ -23,7 +23,8 @@ namespace BusinessManagementApp.UI.Forms
             this.Show();
         }
 
-        public Form _prev { get; set; }
+        public Form _prev { get; set; } // bir önceki formun referansını tutuyorum
+
 
         private void UrunIslemleri_Load(object sender, EventArgs e)
         {
@@ -60,6 +61,7 @@ namespace BusinessManagementApp.UI.Forms
             var response = await _proudctService.GetByFilterAsync(x=>x.Id==productId);
             if (response.ResponseType == ResponseType.Success)
             {
+                groupBox3.Visible = true; // ilgili ürün var ise görünür yap
                 _productUpdateDto = _mapper.Map<ProductUpdateDto>(response.Data); // seçilen ıd ye ait datayı local değişkende tutuyorum
 
                 SelectSupplierUpdate_cbmx.SelectedValue = response.Data.SupplierId;
@@ -67,6 +69,8 @@ namespace BusinessManagementApp.UI.Forms
                 UpdateProductName_txt.Text = response.Data.Name;
                 UnitPriceUpdate_txt.Text = response.Data.UnitPrice.ToString();
             }
+            else
+                MessageBox.Show("Bu id değerine sahip ürün bulunmamaktadır.");
         }
 
         private void return_btn_Click(object sender, EventArgs e)
@@ -147,7 +151,6 @@ namespace BusinessManagementApp.UI.Forms
             try
             {
                 Task binddata = GetByIdProductToBindTextBox(int.Parse(SelectProuductUpdate_txt.Text));
-                groupBox3.Visible = true;
             }
             catch (Exception)
             {

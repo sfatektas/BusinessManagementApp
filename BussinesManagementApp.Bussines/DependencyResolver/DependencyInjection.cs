@@ -23,9 +23,10 @@ namespace BussinesManagementApp.Bussines.DependencyResolver
 {
     public static class DependencyInjection
     {
-        public static void DependencyExtension(this IServiceCollection services)
+        public static void DependencyExtension(this IServiceCollection services ,string appconfigdbConnectionString)
         {
-            services.AddDbContext<BussinesManagementDbContext>(x => x.UseSqlServer("server=.;Database=BussinesManagementDb; integrated security=true;")); //TODO appconfig 
+            services.AddDbContext<BussinesManagementDbContext>(x => { 
+                x.UseSqlServer(/*appconfigdbConnectionString*/"server=.;Database=BussinesManagementDb; integrated security=true;"); },ServiceLifetime.Transient); //TODO appconfig 
 
             //sanal server ile bahsedilen kavramın detylandırılmasını iste !
 
@@ -49,6 +50,7 @@ namespace BussinesManagementApp.Bussines.DependencyResolver
             
             services.AddAutoMapper(conf =>
             {
+                conf.AllowNullCollections = true;
                 conf.AddProfile(new CustomerProfile());
                 conf.AddProfile(new CustomerOrderProfile());
                 conf.AddProfile(new OtherEntitesProfile());
@@ -82,15 +84,15 @@ namespace BussinesManagementApp.Bussines.DependencyResolver
 
 
             //DI
-            services.AddScoped<IUow, Uow>();
+            services.AddTransient<IUow, Uow>();
             //services
             services.AddScoped<IdentityService>();
-            services.AddScoped<ISupplierService,SupplierService>();
-            services.AddScoped<ICustomerService,CustomerService>();
-            services.AddScoped<IProductService,ProductService>();
+            services.AddTransient<ISupplierService,SupplierService>();
+            services.AddTransient<ICustomerService,CustomerService>();
+            services.AddTransient<IProductService,ProductService>();
             services.AddScoped<ISupplierOrderService , SupplierOrderService>();
-            services.AddScoped<IWarehouseProductService , WarehouseProductService>();
-            services.AddScoped<ICustomerOrderService , CustomerOrderService>();
+            services.AddTransient<IWarehouseProductService , WarehouseProductService>();
+            services.AddTransient<ICustomerOrderService , CustomerOrderService>();
             services.AddScoped<IReportService , ReportService>();
         }
     }

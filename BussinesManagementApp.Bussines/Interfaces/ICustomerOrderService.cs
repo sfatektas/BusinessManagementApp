@@ -16,5 +16,7 @@ namespace BussinesManagementApp.Bussines.Interfaces
 
         Task<IResponse> ComplatePreOrderAndUpdateWarehouse(int CustomerOrderId);
 
+        Task<IResponse<List<CustomerOrderListDto>>> GetIncludeAllAndLastTenRow();
+
     }
 }

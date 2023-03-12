@@ -16,6 +16,7 @@ namespace BusinessManagementApp.UI.Forms
         readonly IServiceProvider _serviceProvider;
         readonly ICustomerOrderService _customerOrderService;
         readonly CustomerOrderCreateDto _customerOrderCreateDto = new();
+
         Dictionary<int,int> warehouseProductkeyValuePair = new Dictionary<int,int>();
 
         public Form _prev
@@ -132,7 +133,18 @@ namespace BusinessManagementApp.UI.Forms
             {
                 //Todo backspace geldiğinde textboxu güncelle
                 if (e.KeyChar != '\b')
-                    this.Amount = Amount_txt.Text + e.KeyChar.ToString() == "" ? 0 : int.Parse(Amount_txt.Text + e.KeyChar.ToString());
+                {
+                    try
+                    {
+                        this.Amount = Amount_txt.Text + e.KeyChar.ToString() == "" ? 0 : int.Parse(Amount_txt.Text + e.KeyChar.ToString());
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Miktar alanı uygun formatta değil");
+                    }
+
+                }
+
             }
             RefreshTotalPrice();
         }
@@ -181,7 +193,10 @@ namespace BusinessManagementApp.UI.Forms
         }
         private void ComplateOrder_btn_Click(object sender, EventArgs e)
         {
-            Task addOrder = AddOrder();
+            if (HelperMethods.AreYouSure())
+            {
+                Task addOrder = AddOrder();
+            }
         }
 
         private void SelectCustomerCombobox_SelectionChangeCommitted(object sender, EventArgs e)
@@ -197,8 +212,11 @@ namespace BusinessManagementApp.UI.Forms
 
         private void PreOrder_btn_Click(object sender, EventArgs e)
         {
-            _customerOrderCreateDto.OrderStatusTypeId = (int)OrderStatusType.PreOrder;
-            Task addOrder = AddOrder();
+            if (HelperMethods.AreYouSure())
+            {
+                _customerOrderCreateDto.OrderStatusTypeId = (int)OrderStatusType.PreOrder;
+                Task addOrder = AddOrder();
+            }
         }
     }
 }

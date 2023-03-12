@@ -31,6 +31,5 @@ namespace BussinesManagementApp.Bussines.Interfaces
 
         Task<IResponse<UpdateDto>> UpdateAsync(UpdateDto dto);
 
-
     }
 }

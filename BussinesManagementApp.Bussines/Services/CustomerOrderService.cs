@@ -92,6 +92,15 @@ namespace BussinesManagementApp.Bussines.Services
             return new Response(ResponseType.NotFound , "Bu ürün ID'sine sahip aktif bir ön sipariş bulunmamaktadır. ");
         }
 
+        public async Task<IResponse<List<CustomerOrderListDto>>> GetIncludeAllAndLastTenRow()
+        {
+            var data = await _uow.GetRepository<CustomerOrder>().GetQueryable().Include(x => x.Customer).Include(x => x.Product).OrderByDescending(x=>x.Id).Take(10).AsNoTracking().ToListAsync();
+            if(data != null)
+                return new Response<List<CustomerOrderListDto>>(ResponseType.Success, _mapper.Map<List<CustomerOrderListDto>>(data));
+            return new Response<List<CustomerOrderListDto>>(ResponseType.NotFound, "Kayıt Bulunamadı.", null);
+
+        }
+
         public async Task<IResponse<List<CustomerOrderListDto>>> GetIncludedAll(bool allPropertyInclude = false)
         {
             var data = !allPropertyInclude ? await _uow.GetRepository<CustomerOrder>().GetQueryable().Include(x => x.Customer).Include(x=>x.Product).AsNoTracking().ToListAsync() :
@@ -106,7 +115,7 @@ namespace BussinesManagementApp.Bussines.Services
         {
             var data = !allPropertyInclude ? await _uow.GetRepository<CustomerOrder>().GetQueryable().Where(filter).Include(x => x.Product).AsNoTracking().ToListAsync() :
    await _uow.GetRepository<CustomerOrder>().GetQueryable().Where(filter).Include(x => x.Product).Include(x=>x.Customer).AsNoTracking().ToListAsync()
-;// burda orderstatus modelini projeye include ettiğimde hata alıyorum****
+;// burda orderstatus modelini methoda include ettiğimde hata alıyorum****
             if (data != null)
             {
                 var mappeddata = _mapper.Map<List<CustomerOrderListDto>>(data);

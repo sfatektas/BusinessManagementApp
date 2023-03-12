@@ -2,6 +2,7 @@
 using BusinessManagementApp.Common.Consts;
 using BusinessManagementApp.Common.Enums;
 using BusinessManagementApp.UI.Helpers.Models;
+using BussinesManagementApp.Dtos;
 using BussinesManagementApp.Dtos.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -66,6 +67,7 @@ namespace BusinessManagementApp.UI.Helpers
         public static void BindToComboboxMoneyTypeAndValues(List<ComboBox> comboBoxes)
         {
             var items = new List<ComboboxModel>();
+            items.Add(new ComboboxModel { Text = "Seçiniz.", Value = 0 });
             items.Add(new ComboboxModel { Text = "TL", Value = (int)MoneyType.TL });
             items.Add(new ComboboxModel { Text = "Euro", Value = (int)MoneyType.Euro });
             items.Add(new ComboboxModel { Text = "Dolar" ,Value = (int)MoneyType.Dolar });
@@ -94,7 +96,7 @@ namespace BusinessManagementApp.UI.Helpers
         }
         public static void IsOkNumberFormat(ref object sender, KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar)&&!char.IsControl(e.KeyChar) && e.KeyChar!='\b')
+            if (!char.IsDigit(e.KeyChar)&&!char.IsControl(e.KeyChar) && e.KeyChar != '\b' )
             {
                 e.Handled = true;
             }
@@ -108,6 +110,70 @@ namespace BusinessManagementApp.UI.Helpers
         public static string GetStringMoneyFormat(this double value)
         {
             return value.ToString("0.##");
+        }
+        public static int ParseWithError(string value)
+        {
+            try
+            {
+                if(value == "")
+                {
+                    MessageBox.Show("Boş değer");
+                    return 0;
+                }
+                else
+                return int.Parse(value.ToString());
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Sayı Formatı uygun değil");
+                return 0;
+            }
+        }
+        public static double doubleParseWithError(string value)
+        {
+            try
+            {
+                if (value == "")
+                {
+                    MessageBox.Show("Boş değer");
+                    return 0;
+                }
+                else
+                    return double.Parse(value.ToString());
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Sayı Formatı uygun değil");
+                return 0;
+            }
+        }
+        public static bool AreYouSure()
+        {
+            if (MessageBox.Show("Emin misiniz?", "Onay", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                return true;
+            else
+                return false;
+        }
+        public static List<CustomerOrderDataGridModel> ChangeModelTypeToCustomerOrderDataGridModel(List<CustomerOrderListDto> CustomerOrderLists)
+        {
+            List<CustomerOrderDataGridModel> list = new List<CustomerOrderDataGridModel>();
+            foreach (var item in CustomerOrderLists)
+            {
+                list.Add(new()
+                {
+                    Id = item.Id,
+                    Amount = item.Amount,
+                    CustomerName = item.Customer.CominicatePersonName + " -- " + item.Customer.CompanyName,
+                    Date = item.Date,
+                    OrderStatus = item.OrderStatusTypeId == (int)OrderStatusType.Complated ? "Tamamlandı": "Ön Sipariş",
+                    OrderStatusId = item.OrderStatusTypeId,
+                    ProductName = item.Product.Name,
+                    TotalKdvPrice = item.KdvPrice.GetDoubleMoneyFormat(),
+                    TotalPrice = item.TotalPrice.GetDoubleMoneyFormat(),
+                    UnitPrice = item.UnitPrice.GetDoubleMoneyFormat()
+                });
+            }
+            return list;
         }
     }
 }

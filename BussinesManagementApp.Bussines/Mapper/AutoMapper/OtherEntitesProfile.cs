@@ -13,9 +13,9 @@ namespace BussinesManagementApp.Bussines.Mapper.AutoMapper
     {
         public OtherEntitesProfile()
         {
-            CreateMap<MoneyType , MoneyTypeListDto>();
-            CreateMap<CustomerType , CustomerTypeListDto >();
-            CreateMap<OrderStatusType, OrderStatusTypeListDto>();
+            CreateMap<MoneyType , MoneyTypeListDto>().ReverseMap();
+            CreateMap<CustomerType , CustomerTypeListDto >().ReverseMap();
+            CreateMap<OrderStatusType, OrderStatusTypeListDto>().ReverseMap();
         }
     }
 }

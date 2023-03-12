@@ -77,7 +77,7 @@ namespace BusinessManagementApp.UI.Forms
         {
             var urunekleform = _serviceProvider.GetRequiredService<UrunEkle>();
             urunekleform._prev = this;
-            this.Close();
+            //this.Close();
         }
         public async Task GetDataWithInclude(int id)
         {
@@ -102,13 +102,13 @@ namespace BusinessManagementApp.UI.Forms
             switch ((int)MoneyTypeCombobox.SelectedValue)
             {
                 case (int)MoneyType.TL:
-                    MoneyMultiplier = MoneyValues.TL;
+                    MoneyMultiplier = 1;
                     break;
                 case (int)MoneyType.Dolar:
-                    MoneyMultiplier = MoneyValues.Dolar;
+                    MoneyMultiplier = MoneyValuesProvider.Dolar;
                     break;
                 case (int)MoneyType.Euro:
-                    MoneyMultiplier = MoneyValues.Euro;
+                    MoneyMultiplier = MoneyValuesProvider.Euro;
                     break;
                 default:
                     break;
@@ -139,7 +139,15 @@ namespace BusinessManagementApp.UI.Forms
             HelperMethods.IsOkNumberFormat(ref sender, e);
             if (!char.IsControl(e.KeyChar) && !e.Handled)
             {
-                Amount = Amount_txt.Text + e.KeyChar.ToString() == "" ? 0 : int.Parse(Amount_txt.Text + e.KeyChar.ToString());
+                try
+                {
+                    Amount = Amount_txt.Text + e.KeyChar.ToString() == "" ? 0 : int.Parse(Amount_txt.Text + e.KeyChar.ToString());
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Miktar alanı istenilen formatta değil.");
+                }
             }
             RefreshTotalPrice();
         }
@@ -152,18 +160,20 @@ namespace BusinessManagementApp.UI.Forms
                     Amount = this.Amount,
                     MoneyTypeId = (int)MoneyTypeCombobox.SelectedValue,
                     ProductId = (int)SelectProductCombobox.SelectedValue,
-                    TotalPrice = double.Parse(TotalPrice_txt.Text),
-                    UnitPrice = this.UnitPrice
+                    TotalPrice = HelperMethods.doubleParseWithError(TotalPrice_txt.Text),
+                    UnitPrice = this.UnitPrice,
+                    MoneyTypeValue = MoneyMultiplier
                 });
                 if (response.ResponseType == ResponseType.ValidationError)
                 {
                     HelperMethods.ShowErrors(response.ValidationErrors);
                 }
-                MessageBox.Show(response.Message);
+                else
+                    MessageBox.Show(response.Message);
             }
             catch (Exception e)
             {
-
+                MessageBox.Show("Bir sorun oluştu : "+e.Message);
                 throw;
             }
 

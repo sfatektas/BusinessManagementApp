@@ -6,6 +6,9 @@ namespace BussinesManagementApp.Bussines.Interfaces
 {
     public interface IReportService
     {
-        public Task<IResponse<ReportResultModel<ReportDataForCustomer,ReportLastResultForCustomer>>> GetReportResultModelForCustomer(ReportQueryDto dto);
+        public Task<IResponse<ReportResultModel<ReportDataForCustomer, ReportLastResultForCustomer>>> GetReportResultModelForCustomer(ReportQueryDto dto);
+        public  Task<IResponse<ReportResultModel<ReportDataForProduct, ReportLastResultForProduct>>> GetReportResultModelForProduct(ReportQueryDto dto);
+
+
     }
 }

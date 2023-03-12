@@ -10,7 +10,7 @@ namespace BussinesManagementApp.Dtos.ReportDtos
     public class ReportResultModel<ReportDataModel,ReportLastResultModel> where ReportDataModel : IReportData 
         where ReportLastResultModel: IReportLastResult
     {
-        public List<ReportDataModel> ReportData { get; set; }
+        public ReportDataModel ReportData { get; set; }
 
         public ReportLastResultModel ReportLastResult { get; set; }
 

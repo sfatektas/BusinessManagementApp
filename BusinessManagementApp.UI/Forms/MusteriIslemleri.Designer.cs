@@ -128,9 +128,9 @@
             // comboBoxAdd_customerTypes
             // 
             this.comboBoxAdd_customerTypes.FormattingEnabled = true;
-            this.comboBoxAdd_customerTypes.Location = new System.Drawing.Point(165, 45);
+            this.comboBoxAdd_customerTypes.Location = new System.Drawing.Point(162, 48);
             this.comboBoxAdd_customerTypes.Name = "comboBoxAdd_customerTypes";
-            this.comboBoxAdd_customerTypes.Size = new System.Drawing.Size(135, 28);
+            this.comboBoxAdd_customerTypes.Size = new System.Drawing.Size(170, 28);
             this.comboBoxAdd_customerTypes.TabIndex = 3;
             this.comboBoxAdd_customerTypes.SelectionChangeCommitted += new System.EventHandler(this.comboBoxAdd_customerTypes_SelectionChangeCommitted);
             // 
@@ -370,10 +370,13 @@
             // 
             // comboBoxFindUpdate
             // 
+            this.comboBoxFindUpdate.DropDownHeight = 150;
             this.comboBoxFindUpdate.FormattingEnabled = true;
+            this.comboBoxFindUpdate.IntegralHeight = false;
             this.comboBoxFindUpdate.Location = new System.Drawing.Point(161, 33);
+            this.comboBoxFindUpdate.MaximumSize = new System.Drawing.Size(200, 0);
             this.comboBoxFindUpdate.Name = "comboBoxFindUpdate";
-            this.comboBoxFindUpdate.Size = new System.Drawing.Size(135, 28);
+            this.comboBoxFindUpdate.Size = new System.Drawing.Size(170, 28);
             this.comboBoxFindUpdate.TabIndex = 3;
             this.comboBoxFindUpdate.SelectionChangeCommitted += new System.EventHandler(this.comboBoxFindUpdate_SelectionChangeCommitted);
             // 

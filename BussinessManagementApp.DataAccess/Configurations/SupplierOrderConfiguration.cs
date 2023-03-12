@@ -16,6 +16,7 @@ namespace BussinessManagementApp.DataAccess.Configurations
             builder.HasKey(x => x.Id);
             builder.Property(x=>x.Amount).IsRequired();
             builder.Property(x => x.Date).HasDefaultValueSql("getdate()");//alınan siparişin tarihi ekstra eklenmedikçe default olarak şuanki tarih olsun 
+            builder.Property(x=>x.MoneyTypeValue).IsRequired();
             builder.Property(x => x.MoneyTypeId).IsRequired();
             builder.Property(x => x.ProductId).IsRequired();
             builder.Property(x => x.TotalPrice).IsRequired();

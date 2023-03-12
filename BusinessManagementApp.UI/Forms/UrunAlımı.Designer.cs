@@ -76,7 +76,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(749, 419);
+            this.groupBox1.Size = new System.Drawing.Size(906, 419);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ürün Alım İşlemi";
@@ -85,7 +85,7 @@
             // MoneyTypeCombobox
             // 
             this.MoneyTypeCombobox.FormattingEnabled = true;
-            this.MoneyTypeCombobox.Location = new System.Drawing.Point(588, 142);
+            this.MoneyTypeCombobox.Location = new System.Drawing.Point(696, 141);
             this.MoneyTypeCombobox.Name = "MoneyTypeCombobox";
             this.MoneyTypeCombobox.Size = new System.Drawing.Size(140, 28);
             this.MoneyTypeCombobox.TabIndex = 4;
@@ -96,13 +96,13 @@
             this.SelectProductCombobox.FormattingEnabled = true;
             this.SelectProductCombobox.Location = new System.Drawing.Point(153, 47);
             this.SelectProductCombobox.Name = "SelectProductCombobox";
-            this.SelectProductCombobox.Size = new System.Drawing.Size(140, 28);
+            this.SelectProductCombobox.Size = new System.Drawing.Size(176, 28);
             this.SelectProductCombobox.TabIndex = 4;
             this.SelectProductCombobox.SelectionChangeCommitted += new System.EventHandler(this.SelectProductCombobox_SelectionChangeCommitted);
             // 
             // AddNewProduct_btn
             // 
-            this.AddNewProduct_btn.Location = new System.Drawing.Point(309, 41);
+            this.AddNewProduct_btn.Location = new System.Drawing.Point(356, 41);
             this.AddNewProduct_btn.Name = "AddNewProduct_btn";
             this.AddNewProduct_btn.Size = new System.Drawing.Size(127, 38);
             this.AddNewProduct_btn.TabIndex = 3;
@@ -112,7 +112,7 @@
             // 
             // AddProductOrder_btn
             // 
-            this.AddProductOrder_btn.Location = new System.Drawing.Point(183, 353);
+            this.AddProductOrder_btn.Location = new System.Drawing.Point(237, 355);
             this.AddProductOrder_btn.Name = "AddProductOrder_btn";
             this.AddProductOrder_btn.Size = new System.Drawing.Size(146, 47);
             this.AddProductOrder_btn.TabIndex = 3;
@@ -122,7 +122,7 @@
             // 
             // return_btn
             // 
-            this.return_btn.Location = new System.Drawing.Point(437, 353);
+            this.return_btn.Location = new System.Drawing.Point(491, 355);
             this.return_btn.Name = "return_btn";
             this.return_btn.Size = new System.Drawing.Size(108, 47);
             this.return_btn.TabIndex = 3;
@@ -133,7 +133,7 @@
             // TotalPrice_txt
             // 
             this.TotalPrice_txt.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TotalPrice_txt.Location = new System.Drawing.Point(507, 219);
+            this.TotalPrice_txt.Location = new System.Drawing.Point(561, 221);
             this.TotalPrice_txt.Multiline = true;
             this.TotalPrice_txt.Name = "TotalPrice_txt";
             this.TotalPrice_txt.Size = new System.Drawing.Size(221, 61);
@@ -141,9 +141,9 @@
             // 
             // UnitPrice_txt
             // 
-            this.UnitPrice_txt.Location = new System.Drawing.Point(588, 90);
+            this.UnitPrice_txt.Location = new System.Drawing.Point(696, 89);
             this.UnitPrice_txt.Name = "UnitPrice_txt";
-            this.UnitPrice_txt.Size = new System.Drawing.Size(125, 27);
+            this.UnitPrice_txt.Size = new System.Drawing.Size(140, 27);
             this.UnitPrice_txt.TabIndex = 1;
             this.UnitPrice_txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UnitPrice_txt_KeyDown);
             this.UnitPrice_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UnitPrice_txt_KeyPress);
@@ -158,7 +158,7 @@
             // MoneyValues_txt
             // 
             this.MoneyValues_txt.AutoSize = true;
-            this.MoneyValues_txt.Location = new System.Drawing.Point(615, 180);
+            this.MoneyValues_txt.Location = new System.Drawing.Point(723, 179);
             this.MoneyValues_txt.Name = "MoneyValues_txt";
             this.MoneyValues_txt.Size = new System.Drawing.Size(86, 20);
             this.MoneyValues_txt.TabIndex = 0;
@@ -168,7 +168,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(267, 230);
+            this.label8.Location = new System.Drawing.Point(321, 232);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(216, 38);
             this.label8.TabIndex = 0;
@@ -177,7 +177,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(469, 145);
+            this.label5.Location = new System.Drawing.Point(577, 144);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 20);
             this.label5.TabIndex = 0;
@@ -186,7 +186,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(88, 315);
+            this.label10.Location = new System.Drawing.Point(142, 317);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(395, 20);
             this.label10.TabIndex = 0;
@@ -195,7 +195,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(52, 295);
+            this.label9.Location = new System.Drawing.Point(106, 297);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(648, 20);
             this.label9.TabIndex = 0;
@@ -205,7 +205,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(462, 97);
+            this.label4.Location = new System.Drawing.Point(570, 96);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 20);
             this.label4.TabIndex = 0;
@@ -213,9 +213,9 @@
             // 
             // Amount_txt
             // 
-            this.Amount_txt.Location = new System.Drawing.Point(153, 173);
+            this.Amount_txt.Location = new System.Drawing.Point(158, 175);
             this.Amount_txt.Name = "Amount_txt";
-            this.Amount_txt.Size = new System.Drawing.Size(125, 27);
+            this.Amount_txt.Size = new System.Drawing.Size(140, 27);
             this.Amount_txt.TabIndex = 1;
             this.Amount_txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Amount_txt_KeyDown);
             this.Amount_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Amount_txt_KeyPress);
@@ -240,15 +240,15 @@
             // 
             // ProductName_txt
             // 
-            this.ProductName_txt.Location = new System.Drawing.Point(588, 38);
+            this.ProductName_txt.Location = new System.Drawing.Point(696, 37);
             this.ProductName_txt.Name = "ProductName_txt";
-            this.ProductName_txt.Size = new System.Drawing.Size(125, 27);
+            this.ProductName_txt.Size = new System.Drawing.Size(140, 27);
             this.ProductName_txt.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(478, 45);
+            this.label3.Location = new System.Drawing.Point(586, 44);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 20);
             this.label3.TabIndex = 0;
@@ -267,7 +267,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(775, 443);
+            this.ClientSize = new System.Drawing.Size(930, 443);
             this.Controls.Add(this.groupBox1);
             this.Name = "UrunAlımı";
             this.Text = "Ürün Alımı";

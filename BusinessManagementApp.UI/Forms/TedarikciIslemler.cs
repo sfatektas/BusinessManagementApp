@@ -11,10 +11,12 @@ namespace BusinessManagementApp.UI.Forms
     {
         public Form _prev { get; set; }
         readonly ISupplierService _supplierService;
+        readonly ISupplierService _supplierService2; // yeni bir nesne örneğini context aynı id değerin track ettiği için oluşturuyorum. 
         SupplierUpdateDto _supplierUpdateDto = new();
-        public TedarikciIslemler(ISupplierService supplierService) //TODO service implemente ediceleck
+        public TedarikciIslemler(ISupplierService supplierService, ISupplierService supplierService2) //TODO service implemente ediceleck
         {
             _supplierService = supplierService;
+            _supplierService2 = supplierService2;
             InitializeComponent();
             this.Show();
         }
@@ -41,13 +43,13 @@ namespace BusinessManagementApp.UI.Forms
 
         private void Ekle(object sender, EventArgs e)
         {
-
+           
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             _prev.Show();
-            this.Dispose();
+            this.Close();
         }
         public async Task AddSupplier()
         {
@@ -85,9 +87,9 @@ namespace BusinessManagementApp.UI.Forms
             else
             {
                 var response2 = await _supplierService.GetByFilterAsync(x => x.TelNo == telno);
-                _supplierUpdateDto.Id = response2.Data.Id;
                 if (response2.ResponseType == ResponseType.Success)
                 {
+                    _supplierUpdateDto.Id = response2.Data.Id;
                     var data = response2.Data;
                     companyInfoupdate_txt.Text = data.Info;
                     contactnameupdate_txt.Text = data.CominicatePersonName;
@@ -95,14 +97,16 @@ namespace BusinessManagementApp.UI.Forms
                     emailUpdate_txt.Text = data.Email;
                     LogisticCompanyUpdate_txt.Text = data.LogisticsCompany;
                 }
+                else
+                    MessageBox.Show("Bu Telefon numarasına ait kayıt bulunamadı");
             }
-
         }
         private void SupplierAdd_btn_Click(object sender, EventArgs e)
         {
             Task addSupplier = AddSupplier();
 
         }
+        //TODO ID find txt alanları kontrol edilecek.
 
         private void comboboxUpdate_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -123,7 +127,7 @@ namespace BusinessManagementApp.UI.Forms
         }
         public async Task UpdateSupplier()
         {
-            var response = await _supplierService.UpdateAsync(new SupplierUpdateDto
+            var response = await _supplierService2.UpdateAsync(new SupplierUpdateDto
             {
                 Id = _supplierUpdateDto.Id,
                 TelNo = telnoupdate_txt.Text,
@@ -142,6 +146,11 @@ namespace BusinessManagementApp.UI.Forms
         private void Update_btn_Click(object sender, EventArgs e)
         {
             Task updateData = UpdateSupplier();
+        }
+
+        private void TelnoUpdateSearch_txt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            HelperMethods.IsOkNumberFormat(ref sender ,e );
         }
     }
 }

@@ -26,12 +26,14 @@ namespace BusinessManagementApp.UI.Forms
         private CustomerUpdateDto willUpdateDto;
         readonly IServiceProvider _serviceProvider;
         public ICustomerService _customerService;
+        public ICustomerService _customerService2; // Update İşlemi için yeni bir nesne örneği üzerinden hareket ediyorum 
 
-        public MusteriIslemleri(ICustomerService customerService, IMapper mapper, IServiceProvider serviceProvider)
+        public MusteriIslemleri(ICustomerService customerService, IMapper mapper, IServiceProvider serviceProvider, ICustomerService customerService2)
         {
             _customerService = customerService;
             _mapper = mapper;
             _serviceProvider = serviceProvider;
+            _customerService2 = customerService2;
             InitializeComponent();
             this.Show();
         }
@@ -98,13 +100,17 @@ namespace BusinessManagementApp.UI.Forms
         }
         private void CustomerAdd_btn_Click(object sender, EventArgs e)
         {
-            Task taskaddcustomer = TaskAddCustomerAndRefreshCmbx();
+            if (HelperMethods.AreYouSure())
+            {
+                Task taskaddcustomer = TaskAddCustomerAndRefreshCmbx();
+            }
             //Task customerAdd = AddCustomer();
             //Task refreshCombobox = RefReshCombobox();
         }
 
         private void comboBoxFindUpdate_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            HelperMethods.ClearTextBox(new() { emailUpdate_txt, contactPersonNameUpdate_txt, companyNameUpdate_txt, taxnoUpdate_txt, TradeRegNoUpdate_txt, telnoUpdate_txt });
             Task bindingData = bindTxtData();
             groupBoxUpdate.Enabled = true;
 
@@ -115,22 +121,28 @@ namespace BusinessManagementApp.UI.Forms
             var response = (telno =="")
                 ? await _customerService.GetByFilterAsync(x => x.Id == (int)comboBoxFindUpdate.SelectedValue) 
                 : await _customerService.GetByFilterAsync(x=>x.TelNo == telno);
-            willUpdateDto = _mapper.Map<CustomerUpdateDto>(response.Data);
-
-            contactPersonNameUpdate_txt.Text = response.Data.CominicatePersonName;
-            emailUpdate_txt.Text = response.Data.Email;
-            telnoUpdate_txt.Text = response.Data.TelNo;
-
-            if (response.Data.CustomerTypeId == (int)CustomerType.Single)
+            if (response.ResponseType == ResponseType.Success)
             {
-                HelperMethods.DisableTextBox(new List<TextBox> { companyNameUpdate_txt, TradeRegNoUpdate_txt, taxnoUpdate_txt });
+                groupBoxUpdate.Enabled = true; // Eğer bir data bulunursa groupbox enable yap
+                willUpdateDto = _mapper.Map<CustomerUpdateDto>(response.Data);
+
+                contactPersonNameUpdate_txt.Text = response.Data.CominicatePersonName;
+                emailUpdate_txt.Text = response.Data.Email;
+                telnoUpdate_txt.Text = response.Data.TelNo;
+
+                if (response.Data.CustomerTypeId == (int)CustomerType.Single)
+                {
+                    HelperMethods.DisableTextBox(new List<TextBox> { companyNameUpdate_txt, TradeRegNoUpdate_txt, taxnoUpdate_txt });
+                }
+                else
+                {
+                    companyNameUpdate_txt.Text = response.Data.CompanyName;
+                    taxnoUpdate_txt.Text = response.Data.TaxNo;
+                    TradeRegNoUpdate_txt.Text = response.Data.TradeRegisterNumber;
+                }
             }
             else
-            {
-                companyNameUpdate_txt.Text = response.Data.CompanyName;
-                taxnoUpdate_txt.Text = response.Data.TaxNo;
-                TradeRegNoUpdate_txt.Text = response.Data.TradeRegisterNumber;
-            }
+                MessageBox.Show("Bu bilgilere ait bir kayıt bulunmamaktadır.");
         }
 
         private void return_btn_Click(object sender, EventArgs e)
@@ -141,29 +153,35 @@ namespace BusinessManagementApp.UI.Forms
 
         private void CustomerUpdate_Btn_Click(object sender, EventArgs e)
         {
-            willUpdateDto.CominicatePersonName = contactPersonNameUpdate_txt.Text;
-            willUpdateDto.Email = emailUpdate_txt.Text;
-            willUpdateDto.TelNo = telnoUpdate_txt.Text;
-            if(willUpdateDto.CustomerTypeId == (int)CustomerType.Corporate) {
-                willUpdateDto.CompanyName = companyNameUpdate_txt.Text;
-                willUpdateDto.TaxNo = taxnoUpdate_txt.Text;
-                willUpdateDto.TradeRegisterNumber = TradeRegNoUpdate_txt.Text;
+            if (HelperMethods.AreYouSure())
+            {
+                willUpdateDto.CominicatePersonName = contactPersonNameUpdate_txt.Text;
+                willUpdateDto.Email = emailUpdate_txt.Text;
+                willUpdateDto.TelNo = telnoUpdate_txt.Text;
+                if (willUpdateDto.CustomerTypeId == (int)CustomerType.Corporate)
+                {
+                    willUpdateDto.CompanyName = companyNameUpdate_txt.Text;
+                    willUpdateDto.TaxNo = taxnoUpdate_txt.Text;
+                    willUpdateDto.TradeRegisterNumber = TradeRegNoUpdate_txt.Text;
+                }
+                Task update = UpdateData();
             }
-            Task update = UpdateData();
         }
         public async Task UpdateData()
         {
-            var response = await _customerService.UpdateAsync(willUpdateDto);
+            var response = await _customerService2.UpdateAsync(willUpdateDto);
             if (response.ResponseType == ResponseType.ValidationError)
             {
                 HelperMethods.ShowErrors(response.ValidationErrors);
             }
-            MessageBox.Show(response.Message);
+            else
+                MessageBox.Show(response.Message);
 
         }
 
         private void UpdateCustomerFind_txt_Click(object sender, EventArgs e)
         {
+            HelperMethods.ClearTextBox(new() { emailUpdate_txt, contactPersonNameUpdate_txt, companyNameUpdate_txt, taxnoUpdate_txt, TradeRegNoUpdate_txt,telnoUpdate_txt });
             Task FindDto = bindTxtData(UpdateTelno_txt.Text);
         }
 

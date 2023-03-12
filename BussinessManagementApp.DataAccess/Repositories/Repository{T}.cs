@@ -56,7 +56,8 @@ namespace BussinessManagementApp.DataAccess.Repositories
 
         public void Update(T updated)
         {
-            _context.Set<T>().Update(updated);
+            //_context.Set<T>().Update(updated);
+            _context.Entry<T>(updated).State = EntityState.Modified; // Sorunumu bu yapı çözdü .
         }
         public IQueryable<T> GetQueryable()
         {

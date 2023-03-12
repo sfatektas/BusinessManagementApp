@@ -86,7 +86,10 @@ namespace BusinessManagementApp.UI.Forms
         }
         private void CustomerAdd_btn_Click(object sender, EventArgs e)
         {
-            Task addcustomer = AddCustomer();
+            if (HelperMethods.AreYouSure())
+            {
+                Task addcustomer = AddCustomer();
+            }
         }
     }
 }

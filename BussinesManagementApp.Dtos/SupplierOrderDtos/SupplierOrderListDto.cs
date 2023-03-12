@@ -18,7 +18,11 @@ namespace BussinesManagementApp.Dtos
         public double TotalPrice { get; set; }
         public int MoneyTypeId { get; set; }
         public MoneyTypeListDto MoneyType { get; set; }
+
+        public double MoneyTypeValue { get; set; }
         public DateTime Date { get; set; }
+
+        public string DateString { get; set; } // Raporlama yaparken map işleminde kulllandım.
         public bool IsActive { get; set; }
 
     }

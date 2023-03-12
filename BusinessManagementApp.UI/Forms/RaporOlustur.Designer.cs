@@ -33,7 +33,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.timerange_cbx = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.createReport_btn = new System.Windows.Forms.Button();
@@ -47,11 +46,11 @@
             this.SelectedProduct_txt = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.CustomerGroupBox = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.CustomerFind_btn = new System.Windows.Forms.Button();
+            this.CustomerFind_txt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.SelectedCustomer_txt = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.customerSelect_cbx = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
@@ -97,7 +96,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.ReportType_cbx);
@@ -109,20 +107,10 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rapor Türü Seç";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(347, 97);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(567, 20);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Genel Rapor: İlgili zaman aralığında alınan , satılan ürünleri ve ciro verilerini" +
-    " raporlar.";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(347, 58);
+            this.label5.Location = new System.Drawing.Point(347, 90);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(588, 20);
             this.label5.TabIndex = 2;
@@ -132,7 +120,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(347, 23);
+            this.label4.Location = new System.Drawing.Point(347, 43);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(575, 20);
             this.label4.TabIndex = 2;
@@ -183,6 +171,7 @@
             this.productFind_btn.TabIndex = 2;
             this.productFind_btn.Text = "Bul";
             this.productFind_btn.UseVisualStyleBackColor = true;
+            this.productFind_btn.Click += new System.EventHandler(this.productFind_btn_Click);
             // 
             // ProductFind_txt
             // 
@@ -238,11 +227,11 @@
             // 
             // CustomerGroupBox
             // 
-            this.CustomerGroupBox.Controls.Add(this.button3);
-            this.CustomerGroupBox.Controls.Add(this.textBox2);
+            this.CustomerGroupBox.Controls.Add(this.CustomerFind_btn);
+            this.CustomerGroupBox.Controls.Add(this.CustomerFind_txt);
             this.CustomerGroupBox.Controls.Add(this.label9);
             this.CustomerGroupBox.Controls.Add(this.label12);
-            this.CustomerGroupBox.Controls.Add(this.label10);
+            this.CustomerGroupBox.Controls.Add(this.SelectedCustomer_txt);
             this.CustomerGroupBox.Controls.Add(this.label11);
             this.CustomerGroupBox.Controls.Add(this.customerSelect_cbx);
             this.CustomerGroupBox.Location = new System.Drawing.Point(493, 167);
@@ -252,21 +241,22 @@
             this.CustomerGroupBox.TabStop = false;
             this.CustomerGroupBox.Text = "Müşteri Seç";
             // 
-            // button3
+            // CustomerFind_btn
             // 
-            this.button3.Location = new System.Drawing.Point(347, 68);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(94, 29);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Bul";
-            this.button3.UseVisualStyleBackColor = true;
+            this.CustomerFind_btn.Location = new System.Drawing.Point(347, 68);
+            this.CustomerFind_btn.Name = "CustomerFind_btn";
+            this.CustomerFind_btn.Size = new System.Drawing.Size(94, 29);
+            this.CustomerFind_btn.TabIndex = 2;
+            this.CustomerFind_btn.Text = "Bul";
+            this.CustomerFind_btn.UseVisualStyleBackColor = true;
+            this.CustomerFind_btn.Click += new System.EventHandler(this.CustomerFind_btn_Click);
             // 
-            // textBox2
+            // CustomerFind_txt
             // 
-            this.textBox2.Location = new System.Drawing.Point(332, 25);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(125, 27);
-            this.textBox2.TabIndex = 0;
+            this.CustomerFind_txt.Location = new System.Drawing.Point(332, 25);
+            this.CustomerFind_txt.Name = "CustomerFind_txt";
+            this.CustomerFind_txt.Size = new System.Drawing.Size(125, 27);
+            this.CustomerFind_txt.TabIndex = 0;
             // 
             // label9
             // 
@@ -286,14 +276,14 @@
             this.label12.TabIndex = 1;
             this.label12.Text = "Seç";
             // 
-            // label10
+            // SelectedCustomer_txt
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(196, 101);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(21, 20);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "....";
+            this.SelectedCustomer_txt.AutoSize = true;
+            this.SelectedCustomer_txt.Location = new System.Drawing.Point(196, 101);
+            this.SelectedCustomer_txt.Name = "SelectedCustomer_txt";
+            this.SelectedCustomer_txt.Size = new System.Drawing.Size(21, 20);
+            this.SelectedCustomer_txt.TabIndex = 1;
+            this.SelectedCustomer_txt.Text = "....";
             // 
             // label11
             // 
@@ -347,7 +337,6 @@
         private ComboBox timerange_cbx;
         private GroupBox groupBox1;
         private Label label4;
-        private Label label6;
         private Label label5;
         private Button createReport_btn;
         private Button return_btn;
@@ -360,11 +349,11 @@
         private Label SelectedProduct_txt;
         private Label label8;
         private GroupBox CustomerGroupBox;
-        private Button button3;
-        private TextBox textBox2;
+        private Button CustomerFind_btn;
+        private TextBox CustomerFind_txt;
         private Label label9;
         private Label label12;
-        private Label label10;
+        private Label SelectedCustomer_txt;
         private Label label11;
         private ComboBox customerSelect_cbx;
     }

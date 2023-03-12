@@ -38,10 +38,12 @@
             this.PreOreder_btn = new System.Windows.Forms.Button();
             this.ProductSell_btn = new System.Windows.Forms.Button();
             this.WarehouseProduct_btn = new System.Windows.Forms.Button();
+            this.LastOrder_btn = new System.Windows.Forms.Button();
             this.ProductEdit_btn = new System.Windows.Forms.Button();
             this.ProductTaken = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -91,20 +93,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(229, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 22);
+            this.label1.Size = new System.Drawing.Size(152, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Müşteri İşlemleri";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.Location = new System.Drawing.Point(25, 49);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(154, 22);
+            this.label6.Size = new System.Drawing.Size(168, 25);
             this.label6.TabIndex = 1;
             this.label6.Text = "Tedarikçi İşlemleri";
             // 
@@ -113,19 +115,21 @@
             this.groupBox2.Controls.Add(this.PreOreder_btn);
             this.groupBox2.Controls.Add(this.ProductSell_btn);
             this.groupBox2.Controls.Add(this.WarehouseProduct_btn);
+            this.groupBox2.Controls.Add(this.LastOrder_btn);
             this.groupBox2.Controls.Add(this.ProductEdit_btn);
             this.groupBox2.Controls.Add(this.ProductTaken);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Location = new System.Drawing.Point(426, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(544, 484);
+            this.groupBox2.Size = new System.Drawing.Size(639, 484);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ürün Alım - Satım - Düzeltme İşlemleri";
+            this.groupBox2.Text = "Ürün Alım - Satım - Düzeltme -Sipariş  İşlemleri";
             // 
             // PreOreder_btn
             // 
@@ -141,7 +145,7 @@
             // ProductSell_btn
             // 
             this.ProductSell_btn.Image = ((System.Drawing.Image)(resources.GetObject("ProductSell_btn.Image")));
-            this.ProductSell_btn.Location = new System.Drawing.Point(373, 83);
+            this.ProductSell_btn.Location = new System.Drawing.Point(470, 82);
             this.ProductSell_btn.Name = "ProductSell_btn";
             this.ProductSell_btn.Size = new System.Drawing.Size(136, 86);
             this.ProductSell_btn.TabIndex = 0;
@@ -152,7 +156,7 @@
             // WarehouseProduct_btn
             // 
             this.WarehouseProduct_btn.Image = ((System.Drawing.Image)(resources.GetObject("WarehouseProduct_btn.Image")));
-            this.WarehouseProduct_btn.Location = new System.Drawing.Point(373, 371);
+            this.WarehouseProduct_btn.Location = new System.Drawing.Point(458, 371);
             this.WarehouseProduct_btn.Name = "WarehouseProduct_btn";
             this.WarehouseProduct_btn.Size = new System.Drawing.Size(136, 88);
             this.WarehouseProduct_btn.TabIndex = 0;
@@ -160,10 +164,20 @@
             this.WarehouseProduct_btn.UseVisualStyleBackColor = true;
             this.WarehouseProduct_btn.Click += new System.EventHandler(this.WarehouseProduct_btn_Click);
             // 
+            // LastOrder_btn
+            // 
+            this.LastOrder_btn.Image = ((System.Drawing.Image)(resources.GetObject("LastOrder_btn.Image")));
+            this.LastOrder_btn.Location = new System.Drawing.Point(273, 264);
+            this.LastOrder_btn.Name = "LastOrder_btn";
+            this.LastOrder_btn.Size = new System.Drawing.Size(127, 90);
+            this.LastOrder_btn.TabIndex = 0;
+            this.LastOrder_btn.UseVisualStyleBackColor = true;
+            this.LastOrder_btn.Click += new System.EventHandler(this.LastOrder_btn_Click);
+            // 
             // ProductEdit_btn
             // 
             this.ProductEdit_btn.Image = ((System.Drawing.Image)(resources.GetObject("ProductEdit_btn.Image")));
-            this.ProductEdit_btn.Location = new System.Drawing.Point(211, 209);
+            this.ProductEdit_btn.Location = new System.Drawing.Point(273, 85);
             this.ProductEdit_btn.Name = "ProductEdit_btn";
             this.ProductEdit_btn.Size = new System.Drawing.Size(127, 90);
             this.ProductEdit_btn.TabIndex = 0;
@@ -185,50 +199,60 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(373, 323);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(458, 323);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(138, 22);
+            this.label3.Size = new System.Drawing.Size(150, 25);
             this.label3.TabIndex = 1;
             this.label3.Text = "Stoktaki Ürünler";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(17, 330);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(231, 22);
+            this.label4.Size = new System.Drawing.Size(254, 25);
             this.label4.TabIndex = 1;
             this.label4.Text = "Sipariş İşlemleri(Ön Sipariş)";
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(265, 222);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(151, 27);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Son 10 Satış";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(394, 47);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(491, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 22);
+            this.label2.Size = new System.Drawing.Size(103, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Ürün Satış";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(211, 163);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(258, 49);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(143, 22);
+            this.label10.Size = new System.Drawing.Size(158, 25);
             this.label10.TabIndex = 1;
             this.label10.Text = "Ürün Düzenleme";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.Location = new System.Drawing.Point(72, 49);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(92, 22);
+            this.label7.Size = new System.Drawing.Size(101, 25);
             this.label7.TabIndex = 1;
             this.label7.Text = "Ürün Alımı";
             // 
@@ -257,10 +281,10 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label9.Location = new System.Drawing.Point(139, 78);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(122, 22);
+            this.label9.Size = new System.Drawing.Size(132, 25);
             this.label9.TabIndex = 1;
             this.label9.Text = "Rapor Oluştur";
             // 
@@ -268,7 +292,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(982, 508);
+            this.ClientSize = new System.Drawing.Size(1077, 508);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
@@ -305,5 +329,7 @@
         private Label label3;
         private Button PreOreder_btn;
         private Label label4;
+        private Button LastOrder_btn;
+        private Label label5;
     }
 }

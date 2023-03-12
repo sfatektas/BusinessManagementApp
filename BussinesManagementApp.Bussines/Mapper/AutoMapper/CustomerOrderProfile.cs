@@ -16,9 +16,10 @@ namespace BussinesManagementApp.Bussines.Mapper.AutoMapper
         {
             CreateMap<CustomerOrder, CustomerOrderCreateDto>().ReverseMap();
             CreateMap<CustomerOrder, CustomerOrderListDto>().ReverseMap();
+            CreateMap<CustomerOrder, CustomerOrderListDto>().ForMember(x=>x.DateString , opt=>opt.MapFrom(src=>src.Date.ToString()));
             CreateMap<CustomerOrder, CustomerOrderUpdateDto>().ReverseMap();
             CreateMap<CustomerOrderListDto, CustomerOrderUpdateDto>().ReverseMap();
-            CreateMap<CustomerOrder, ReportDataForCustomer>().ForMember(d => d.ProductName, s => s.MapFrom(s => s.Product.Name));
+            CreateMap<CustomerOrder, CustomerViewReportModel>().ForMember(d => d.ProductName, s => s.MapFrom(s => s.Product.Name));
         }
     }
 }

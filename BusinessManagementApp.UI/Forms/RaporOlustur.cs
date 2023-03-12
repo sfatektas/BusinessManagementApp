@@ -63,7 +63,6 @@ namespace BusinessManagementApp.UI.Forms
             var ReportTyperitems = new List<ComboboxModel>() {
                 new(){ Text = "Müşteri Bazlı", Value = (int)ReportType.CustomerBased},
                 new(){ Text = "Ürün Bazlı", Value = (int)ReportType.ProductBased},
-                new(){ Text = "Genel", Value = (int)ReportType.General},
             };
             var TimeRangeTypeItems = new List<ComboboxModel>()
             {
@@ -94,7 +93,7 @@ namespace BusinessManagementApp.UI.Forms
         public async Task WriteCustomerTxt()
         {
             var response = await _customerService.GetByFilterAsync(x => x.Id == (int)customerSelect_cbx.SelectedValue);
-            SelectedProduct_txt.Text = response.Data.CominicatePersonName + " -- "+response.Data.CompanyName;
+            SelectedCustomer_txt.Text = response.Data.CominicatePersonName + " -- "+response.Data.CompanyName;
             _reportCreateDto.CustomerId = response.Data.Id;
         }
         private void productSelect_cbx_SelectionChangeCommitted(object sender, EventArgs e)
@@ -111,6 +110,16 @@ namespace BusinessManagementApp.UI.Forms
         private void ReportType_cbx_SelectionChangeCommitted(object sender, EventArgs e)
         {
             _reportCreateDto.ReportTypeId = (int)ReportType_cbx.SelectedValue;
+            CustomerGroupBox.Enabled = true;
+            productGroupBox.Enabled = true;
+            if ((int)ReportType_cbx.SelectedValue == (int)ReportType.ProductBased)
+            {
+                CustomerGroupBox.Enabled = false;
+            }
+            else if ((int)ReportType_cbx.SelectedValue == (int)ReportType.CustomerBased)
+            {
+                productGroupBox.Enabled = false;
+            }
         }
 
         private void timerange_cbx_SelectionChangeCommitted(object sender, EventArgs e)
@@ -128,22 +137,51 @@ namespace BusinessManagementApp.UI.Forms
                 {
                     ExcelHelpers instance = new();
                     bool isok = instance.CreateExcelFile(ReportType.CustomerBased,response.Data);
-                    //instance.BindDataToExcelFormatCustomerReport(response.Data);
-                    //instance.SaveExcelFiles();
                     if(isok)
                         MessageBox.Show("Rapor Oluşturuldu");
                     else
-                         MessageBox.Show("Bir sorun oluştu");
+                         MessageBox.Show("Rapor Oluşturulurken bir hata ile karşılaşıldı.");
                 }
                 catch (Exception e)
                 {
-
-                    throw;
+                    MessageBox.Show($"Bir sorun oluştu :{e.Message}");
                 }
-
             }
             else
                 MessageBox.Show(response.Message);
+        }
+        public async Task ProductReportCreate(ReportQueryDto dto)
+        {
+            try
+            {
+                var response = await _reportService.GetReportResultModelForProduct(dto);
+                if (response.ResponseType == ResponseType.ValidationError)
+                    HelperMethods.ShowErrors(response.ValidationErrors);
+                else if (response.ResponseType == ResponseType.Success)
+                {
+                    try
+                    {
+                        ExcelHelpers instance = new();
+                        bool isok = instance.CreateExcelFile(ReportType.ProductBased, productreportResultModel: response.Data);
+                        if (isok)
+                            MessageBox.Show("Rapor Oluşturuldu");
+                        else
+                            MessageBox.Show("Rapor Oluşturulurken bir hata ile karşılaşıldı.");
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show($"Bir sorun oluştu :{e.Message}");
+                    }
+                }
+                else
+                    MessageBox.Show(response.Message);
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+            
         }
         private void createReport_btn_Click(object sender, EventArgs e)
         {
@@ -163,19 +201,35 @@ namespace BusinessManagementApp.UI.Forms
                 case (int)TimeRangeType.OneYear:
                     _reportCreateDto.Month = 12;
                     break;
-
                 default:
                     break;
             }
-            Task createReport = CustomerReportCreate(_reportCreateDto);
-
-            //ExcelHelpers.CreateExcelFile(new());
+            if (_reportCreateDto.ReportTypeId == (int)ReportType.CustomerBased)
+            {
+                Task createCustomerReport = CustomerReportCreate(_reportCreateDto);
+            }
+            else
+            {
+                Task ProductReport = ProductReportCreate(_reportCreateDto);
+            }
         }
 
         private void return_btn_Click(object sender, EventArgs e)
         {
             _prev.Show();
             this.Close();
+        }
+
+        private void productFind_btn_Click(object sender, EventArgs e)
+        {
+            productSelect_cbx.SelectedValue = HelperMethods.ParseWithError(ProductFind_txt.Text);
+            SelectedProduct_txt.Text = productSelect_cbx.Text;
+        }
+
+        private void CustomerFind_btn_Click(object sender, EventArgs e)
+        {
+            customerSelect_cbx.SelectedValue = HelperMethods.ParseWithError(CustomerFind_txt.Text);
+            SelectedCustomer_txt.Text = customerSelect_cbx.Text;
         }
     }
 }

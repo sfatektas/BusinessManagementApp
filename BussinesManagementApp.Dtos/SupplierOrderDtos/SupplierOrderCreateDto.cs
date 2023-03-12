@@ -14,5 +14,6 @@ namespace BussinesManagementApp.Dtos
         public int Amount { get; set; }
         public double TotalPrice { get; set; }
         public int MoneyTypeId { get; set; }
+        public double MoneyTypeValue { get; set; } // Ürünün alınan tarihdeki Dolar, Euro değeri 
     }
 }

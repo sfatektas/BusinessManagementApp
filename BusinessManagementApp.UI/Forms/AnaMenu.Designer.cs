@@ -62,7 +62,6 @@
             this.SupplierTransactionBtn.Name = "SupplierTransactionBtn";
             this.SupplierTransactionBtn.Size = new System.Drawing.Size(128, 86);
             this.SupplierTransactionBtn.TabIndex = 0;
-            this.SupplierTransactionBtn.Text = "button1";
             this.SupplierTransactionBtn.UseVisualStyleBackColor = true;
             this.SupplierTransactionBtn.Click += new System.EventHandler(this.SupplierTransactions_btn);
             // 
@@ -86,7 +85,6 @@
             this.CustomerTransactionsBtn.Name = "CustomerTransactionsBtn";
             this.CustomerTransactionsBtn.Size = new System.Drawing.Size(128, 86);
             this.CustomerTransactionsBtn.TabIndex = 0;
-            this.CustomerTransactionsBtn.Text = "button1";
             this.CustomerTransactionsBtn.UseVisualStyleBackColor = true;
             this.CustomerTransactionsBtn.Click += new System.EventHandler(this.CustomerTransactionsBtn_Click);
             // 
@@ -138,7 +136,6 @@
             this.PreOreder_btn.Name = "PreOreder_btn";
             this.PreOreder_btn.Size = new System.Drawing.Size(136, 86);
             this.PreOreder_btn.TabIndex = 0;
-            this.PreOreder_btn.Text = "PreOrder_Btn";
             this.PreOreder_btn.UseVisualStyleBackColor = true;
             this.PreOreder_btn.Click += new System.EventHandler(this.PreOreder_btn_Click);
             // 
@@ -149,7 +146,6 @@
             this.ProductSell_btn.Name = "ProductSell_btn";
             this.ProductSell_btn.Size = new System.Drawing.Size(136, 86);
             this.ProductSell_btn.TabIndex = 0;
-            this.ProductSell_btn.Text = "button1";
             this.ProductSell_btn.UseVisualStyleBackColor = true;
             this.ProductSell_btn.Click += new System.EventHandler(this.ProductSell_btn_Click);
             // 
@@ -160,7 +156,6 @@
             this.WarehouseProduct_btn.Name = "WarehouseProduct_btn";
             this.WarehouseProduct_btn.Size = new System.Drawing.Size(136, 88);
             this.WarehouseProduct_btn.TabIndex = 0;
-            this.WarehouseProduct_btn.Text = "button1";
             this.WarehouseProduct_btn.UseVisualStyleBackColor = true;
             this.WarehouseProduct_btn.Click += new System.EventHandler(this.WarehouseProduct_btn_Click);
             // 
@@ -181,7 +176,6 @@
             this.ProductEdit_btn.Name = "ProductEdit_btn";
             this.ProductEdit_btn.Size = new System.Drawing.Size(127, 90);
             this.ProductEdit_btn.TabIndex = 0;
-            this.ProductEdit_btn.Text = "button1";
             this.ProductEdit_btn.UseVisualStyleBackColor = true;
             this.ProductEdit_btn.Click += new System.EventHandler(this.ProductEdit_btn_Click);
             // 
@@ -192,7 +186,6 @@
             this.ProductTaken.Name = "ProductTaken";
             this.ProductTaken.Size = new System.Drawing.Size(127, 89);
             this.ProductTaken.TabIndex = 0;
-            this.ProductTaken.Text = "button1";
             this.ProductTaken.UseVisualStyleBackColor = true;
             this.ProductTaken.Click += new System.EventHandler(this.ProductTaken_Click);
             // 
@@ -272,9 +265,8 @@
             this.CreateReport_Btn.Image = ((System.Drawing.Image)(resources.GetObject("CreateReport_Btn.Image")));
             this.CreateReport_Btn.Location = new System.Drawing.Point(127, 117);
             this.CreateReport_Btn.Name = "CreateReport_Btn";
-            this.CreateReport_Btn.Size = new System.Drawing.Size(141, 85);
+            this.CreateReport_Btn.Size = new System.Drawing.Size(144, 85);
             this.CreateReport_Btn.TabIndex = 0;
-            this.CreateReport_Btn.Text = "button1";
             this.CreateReport_Btn.UseVisualStyleBackColor = true;
             this.CreateReport_Btn.Click += new System.EventHandler(this.CreateReport_Btn_Click);
             // 
@@ -298,6 +290,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "AnaMenu";
             this.Text = "Ana Menu";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AnaMenu_FormClosed);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

@@ -87,17 +87,19 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(21, 24);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(773, 563);
+            this.groupBox1.Size = new System.Drawing.Size(844, 563);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ürün Satım İşlemi";
             // 
             // SelectCustomerCombobox
             // 
+            this.SelectCustomerCombobox.DropDownHeight = 150;
             this.SelectCustomerCombobox.FormattingEnabled = true;
+            this.SelectCustomerCombobox.IntegralHeight = false;
             this.SelectCustomerCombobox.Location = new System.Drawing.Point(124, 172);
             this.SelectCustomerCombobox.Name = "SelectCustomerCombobox";
-            this.SelectCustomerCombobox.Size = new System.Drawing.Size(140, 28);
+            this.SelectCustomerCombobox.Size = new System.Drawing.Size(173, 28);
             this.SelectCustomerCombobox.TabIndex = 5;
             this.SelectCustomerCombobox.SelectionChangeCommitted += new System.EventHandler(this.SelectCustomerCombobox_SelectionChangeCommitted);
             // 
@@ -111,7 +113,7 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(27, 26);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(724, 125);
+            this.groupBox2.Size = new System.Drawing.Size(793, 125);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Seç";
@@ -172,16 +174,17 @@
             // 
             // UpdateProductUnitPrice_btn
             // 
-            this.UpdateProductUnitPrice_btn.Location = new System.Drawing.Point(556, 182);
+            this.UpdateProductUnitPrice_btn.Location = new System.Drawing.Point(616, 182);
             this.UpdateProductUnitPrice_btn.Name = "UpdateProductUnitPrice_btn";
             this.UpdateProductUnitPrice_btn.Size = new System.Drawing.Size(147, 29);
             this.UpdateProductUnitPrice_btn.TabIndex = 3;
             this.UpdateProductUnitPrice_btn.Text = "Ürün Fiyat Güncelle";
             this.UpdateProductUnitPrice_btn.UseVisualStyleBackColor = true;
+            this.UpdateProductUnitPrice_btn.Click += new System.EventHandler(this.UpdateProductUnitPrice_btn_Click);
             // 
             // AddNewCustomer_btn
             // 
-            this.AddNewCustomer_btn.Location = new System.Drawing.Point(272, 172);
+            this.AddNewCustomer_btn.Location = new System.Drawing.Point(318, 171);
             this.AddNewCustomer_btn.Name = "AddNewCustomer_btn";
             this.AddNewCustomer_btn.Size = new System.Drawing.Size(138, 29);
             this.AddNewCustomer_btn.TabIndex = 3;
@@ -200,7 +203,7 @@
             // 
             // PreOrder_btn
             // 
-            this.PreOrder_btn.Location = new System.Drawing.Point(312, 483);
+            this.PreOrder_btn.Location = new System.Drawing.Point(365, 484);
             this.PreOrder_btn.Name = "PreOrder_btn";
             this.PreOrder_btn.Size = new System.Drawing.Size(146, 55);
             this.PreOrder_btn.TabIndex = 3;
@@ -211,7 +214,7 @@
             // ComplateOrder_btn
             // 
             this.ComplateOrder_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComplateOrder_btn.Location = new System.Drawing.Point(126, 483);
+            this.ComplateOrder_btn.Location = new System.Drawing.Point(179, 484);
             this.ComplateOrder_btn.Name = "ComplateOrder_btn";
             this.ComplateOrder_btn.Size = new System.Drawing.Size(151, 55);
             this.ComplateOrder_btn.TabIndex = 3;
@@ -221,7 +224,7 @@
             // 
             // return_btn
             // 
-            this.return_btn.Location = new System.Drawing.Point(497, 483);
+            this.return_btn.Location = new System.Drawing.Point(550, 484);
             this.return_btn.Name = "return_btn";
             this.return_btn.Size = new System.Drawing.Size(128, 55);
             this.return_btn.TabIndex = 3;
@@ -232,7 +235,7 @@
             // TotalPrice_txt
             // 
             this.TotalPrice_txt.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TotalPrice_txt.Location = new System.Drawing.Point(416, 400);
+            this.TotalPrice_txt.Location = new System.Drawing.Point(469, 401);
             this.TotalPrice_txt.Multiline = true;
             this.TotalPrice_txt.Name = "TotalPrice_txt";
             this.TotalPrice_txt.Size = new System.Drawing.Size(160, 49);
@@ -241,7 +244,7 @@
             // UnitPrice_txt
             // 
             this.UnitPrice_txt.Enabled = false;
-            this.UnitPrice_txt.Location = new System.Drawing.Point(578, 227);
+            this.UnitPrice_txt.Location = new System.Drawing.Point(638, 227);
             this.UnitPrice_txt.Name = "UnitPrice_txt";
             this.UnitPrice_txt.Size = new System.Drawing.Size(125, 27);
             this.UnitPrice_txt.TabIndex = 1;
@@ -258,7 +261,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(193, 412);
+            this.label8.Location = new System.Drawing.Point(246, 413);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(210, 37);
             this.label8.TabIndex = 0;
@@ -293,7 +296,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(457, 234);
+            this.label4.Location = new System.Drawing.Point(517, 234);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(112, 20);
             this.label4.TabIndex = 0;
@@ -302,7 +305,7 @@
             // UnitTotalPrice_txt
             // 
             this.UnitTotalPrice_txt.Enabled = false;
-            this.UnitTotalPrice_txt.Location = new System.Drawing.Point(578, 285);
+            this.UnitTotalPrice_txt.Location = new System.Drawing.Point(638, 285);
             this.UnitTotalPrice_txt.Name = "UnitTotalPrice_txt";
             this.UnitTotalPrice_txt.Size = new System.Drawing.Size(125, 27);
             this.UnitTotalPrice_txt.TabIndex = 1;
@@ -310,7 +313,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(455, 347);
+            this.label5.Location = new System.Drawing.Point(515, 347);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(114, 20);
             this.label5.TabIndex = 0;
@@ -319,7 +322,7 @@
             // KdvPrice_txt
             // 
             this.KdvPrice_txt.Enabled = false;
-            this.KdvPrice_txt.Location = new System.Drawing.Point(578, 347);
+            this.KdvPrice_txt.Location = new System.Drawing.Point(638, 347);
             this.KdvPrice_txt.Name = "KdvPrice_txt";
             this.KdvPrice_txt.Size = new System.Drawing.Size(125, 27);
             this.KdvPrice_txt.TabIndex = 1;
@@ -327,7 +330,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(408, 285);
+            this.label7.Location = new System.Drawing.Point(468, 285);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(161, 20);
             this.label7.TabIndex = 0;
@@ -354,7 +357,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(809, 599);
+            this.ClientSize = new System.Drawing.Size(892, 599);
             this.Controls.Add(this.groupBox1);
             this.Name = "UrunSat";
             this.Text = "Urun Sat";

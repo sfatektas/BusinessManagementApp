@@ -17,25 +17,15 @@ namespace BusinessManagementApp.UI
             InitializeComponent();
 
         }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-
-        }
         public async Task Login(string username , string password)
         {
-            var user = new BussinessManagementApp.Entities.IdentityEntities.AppUser()
-            {
-                UserName = "Admin",
-                Email = "admin@gmail.com"
-            };
-            //password Admin123
             var response = await _identityService.LoginCheck(new AppUserLoginModel { Username = username, Password = password });
             if (response.ResponseType == ResponseType.Success)
             {
                 //logic 
                 MessageBox.Show("Giriş Başarılı");
                 var form = _serviceProvider.GetRequiredService<AnaMenu>();
+                form._prev = this;
                 this.Hide();
             }
             else

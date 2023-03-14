@@ -13,7 +13,7 @@ namespace BussinesManagementApp.Dtos
         public string Name { get; set; }
         public string Origin { get; set; }
         public int SupplierId { get; set; }
-        public SupplierListDto Supplier { get; set; }
+        //public SupplierListDto Supplier { get; set; }
         public double UnitPrice { get; set; }
         public bool IsActive { get; set; }
     }

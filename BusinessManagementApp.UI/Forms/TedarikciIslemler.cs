@@ -66,7 +66,12 @@ namespace BusinessManagementApp.UI.Forms
                 HelperMethods.ShowErrors(response.ValidationErrors);
                 return;
             }
-            MessageBox.Show(response.Message);
+            else
+            {
+                MessageBox.Show(response.Message);
+                await ComboboxItemLoad();
+            }
+
         }
         public async Task UpdateTxtBind(int id = 0, string telno = "")
         {
@@ -141,7 +146,8 @@ namespace BusinessManagementApp.UI.Forms
             {
                 HelperMethods.ShowErrors(response.ValidationErrors);
             }
-            MessageBox.Show(response.Message);
+            else
+                MessageBox.Show(response.Message);
         }
         private void Update_btn_Click(object sender, EventArgs e)
         {

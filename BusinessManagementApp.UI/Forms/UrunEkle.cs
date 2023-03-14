@@ -17,7 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace BusinessManagementApp.UI.Forms
 {
-    public partial class UrunEkle : Form ,INodeable
+    public partial class UrunEkle : Form
     {
         readonly ISupplierService _supplierService;
         readonly IProductService _productService;
@@ -31,7 +31,7 @@ namespace BusinessManagementApp.UI.Forms
             this.Show();
         }
 
-        public Form _prev { get; set; }
+        public UrunAlımı _prev { get; set; }
 
         public async Task ComboboxItemLoad()
         {
@@ -71,6 +71,7 @@ namespace BusinessManagementApp.UI.Forms
                 {
                     MessageBox.Show(response.Message);
                     HelperMethods.ClearTextBox(new() { AddProductName_txt, AddOrigin_txt });
+                    await _prev.ComboboxItemLoad();
                 }
             }
             else
@@ -93,7 +94,8 @@ namespace BusinessManagementApp.UI.Forms
 
         private void AddNewSupplier_btn_Click(object sender, EventArgs e)
         {
-            _serviceProvider.GetRequiredService<TedarikciEkle>();
+            var tedarikciEkleForm = _serviceProvider.GetRequiredService<TedarikciEkle>();
+            tedarikciEkleForm._prev= this;
         }
     }
 }

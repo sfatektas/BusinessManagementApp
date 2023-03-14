@@ -1,6 +1,10 @@
 using BusinessManagementApp.UI.Forms;
 using BussinesManagementApp.Bussines.DependencyResolver;
+using BussinesManagementApp.Bussines.Helpers;
+using BussinesManagementApp.Bussines.Interfaces;
 using BussinesManagementApp.Bussines.Services;
+using BussinessManagementApp.Entities.IdentityEntities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,18 +28,20 @@ namespace BusinessManagementApp.UI
             var host = CreateHostBuilder().Build();
             ServiceProvider = host.Services;
 
-            //Application.Run(ServiceProvider.GetRequiredService<Giris>()); // TODO iþlemler yapýldýktan sonra açýlacak.
-            Application.Run(ServiceProvider.GetRequiredService<AnaMenu>());
+            //Task addData = SeedData.EnsurePopulated(ServiceProvider); // DB yapýsýna tohum data ekliyorum.
+
+            Application.Run(ServiceProvider.GetRequiredService<Giris>()); // TODO iþlemler yapýldýktan sonra açýlacak.
+            //Application.Run(ServiceProvider.GetRequiredService<AnaMenu>());
         }
+
         public static IServiceProvider ServiceProvider { get; private set; }
         static IHostBuilder CreateHostBuilder()
         {
+
             // TODO seed data eklenecek.
             return Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
                 {
-                    //services.AddTransient<IHelloService, HelloService>();
-
                     //Forms DI
                     services.AddTransient<Giris>();
                     services.AddTransient<AnaMenu>();
@@ -54,8 +60,10 @@ namespace BusinessManagementApp.UI
                     services.AddTransient<OnSiprarisDetay>();
                     services.AddTransient<RaporOlustur>();
                     services.AddTransient<LastOrders>();
+                    services.AddTransient<UrunGuncelle>();
 
-                    services.DependencyExtension(GetConfig.GetDbConnectionString());
+                    services.DependencyExtension(GetConfig.GetDbConnectionString(),GetConfig.GetIdentityDbConnectionString());
+                    // Connection String verilerini app.config üzerinden aldým.
                 });
         }
         public class GetConfig
@@ -63,6 +71,10 @@ namespace BusinessManagementApp.UI
             public static string GetDbConnectionString()
             {
                 return System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
+            }
+            public static string GetIdentityDbConnectionString()
+            {
+                return System.Configuration.ConfigurationManager.AppSettings["IdentityConnectionString"];
             }
         }
     }

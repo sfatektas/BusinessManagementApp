@@ -5,6 +5,7 @@ using BusinessManagementApp.UI.Interfaces;
 using BussinesManagementApp.Bussines.Interfaces;
 using BussinesManagementApp.Dtos;
 using AutoMapper;
+using System;
 
 namespace BusinessManagementApp.UI.Forms
 {
@@ -137,7 +138,14 @@ namespace BusinessManagementApp.UI.Forms
         }
         private void ProductAdd__Click(object sender, EventArgs e)
         {
-            Task ProductAdd = AddProduct();
+            try
+            {
+                Task ProductAdd = AddProduct();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Hata :"+ exception.Message);
+            }
         }
 
         private void SelectProductUpdateCombobox_SelectionChangeCommitted(object sender, EventArgs e)

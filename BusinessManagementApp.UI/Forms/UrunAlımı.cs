@@ -40,6 +40,8 @@ namespace BusinessManagementApp.UI.Forms
         public async Task ComboboxItemLoad()
         {
             //Money Values 
+            await MoneyValuesProvider.GetValues(); // Api ile çekilen para değerlerinin api ile değerlerini çekiyorum
+
             HelperMethods.BindToComboboxMoneyTypeAndValues(new() { MoneyTypeCombobox });
             //
             var response = await _productService.GetAllAsync(x => x.IsActive == true);
@@ -53,11 +55,6 @@ namespace BusinessManagementApp.UI.Forms
                 HelperMethods.ComboboxListBindToCombobox(items, new List<ComboBox>() { SelectProductCombobox });
             }
         }
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void UrunAlımı_Load(object sender, EventArgs e)
         {
             Task comboboxBind = ComboboxItemLoad();

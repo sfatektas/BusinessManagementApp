@@ -93,7 +93,10 @@ namespace BusinessManagementApp.UI.Forms
                     HelperMethods.ShowErrors(response.ValidationErrors);
                 }
                 else
+                {
                     MessageBox.Show(response.Message);
+                    await RefReshCombobox();
+                }
             }
             else
                 MessageBox.Show("Gerekli alanları seçiniz/doldurunuz.");

@@ -16,6 +16,7 @@ namespace BusinessManagementApp.UI.Forms
         readonly IServiceProvider _serviceProvider;
         readonly ICustomerOrderService _customerOrderService;
         readonly CustomerOrderCreateDto _customerOrderCreateDto = new();
+        private int willUpdateProductId;
 
         Dictionary<int,int> warehouseProductkeyValuePair = new Dictionary<int,int>();
 
@@ -50,7 +51,7 @@ namespace BusinessManagementApp.UI.Forms
                 var items = new List<ComboboxModel>() { };
                 foreach (var item in response.Data)
                 {
-                    items.Add(new() { Text = item.CominicatePersonName, Value = item.Id });
+                    items.Add(new() { Text = item.CominicatePersonName + " -- " + item.CompanyName, Value = item.Id });
                 }
                 HelperMethods.ComboboxListBindToCombobox(items, new List<ComboBox>() { SelectCustomerCombobox });
             }
@@ -95,6 +96,7 @@ namespace BusinessManagementApp.UI.Forms
                 var response = await _warehouseProductService.GetIncludedById(WarehouseproductId);
                 if (response.ResponseType == ResponseType.Success)
                 {
+                    willUpdateProductId = response.Data.ProductId; // Ürün güncelleme işlemi yapılırsa eğer ürünün ıd değerini tutuyorum
                     AmountLabel.Text = response.Data.Amount.ToString();
                     ProductName_txt.Text = response.Data.Product.Name;
                     UnitPrice_txt.Text = response.Data.Product.UnitPrice.ToString();
@@ -114,7 +116,7 @@ namespace BusinessManagementApp.UI.Forms
         {
             if (FindProduct_txt.Text != "")
             {
-                int productId = int.Parse(FindProduct_txt.Text);
+                int productId = HelperMethods.ParseWithError(FindProduct_txt.Text);
                 Task bindItem = GetByIdProductToBindTextBox(productId);
                 RefreshTotalPrice();
             }
@@ -217,6 +219,14 @@ namespace BusinessManagementApp.UI.Forms
                 _customerOrderCreateDto.OrderStatusTypeId = (int)OrderStatusType.PreOrder;
                 Task addOrder = AddOrder();
             }
+        }
+
+        private void UpdateProductUnitPrice_btn_Click(object sender, EventArgs e)
+        {
+            var urunGuncelleForm = _serviceProvider.GetRequiredService<UrunGuncelle>();
+            urunGuncelleForm.WillUpdateProductID = willUpdateProductId;
+            urunGuncelleForm._prev = this;
+            Task finddata = urunGuncelleForm.FindData();
         }
     }
 }

@@ -1,24 +1,20 @@
 ﻿using BusinessManagementApp.UI.Forms;
+using BusinessManagementApp.UI.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace BusinessManagementApp.UI
 {
-    public partial class AnaMenu : Form
+    public partial class AnaMenu : Form, INodeable
     {
         readonly IServiceProvider _serviceProvider;
+
+        public Form _prev { get; set; }
+
         public AnaMenu(IServiceProvider serviceProvider)
         {
-            InitializeComponent();
             _serviceProvider = serviceProvider;
+            InitializeComponent();
+            this.Show();
         }
 
         private void CustomerTransactionsBtn_Click(object sender, EventArgs e)
@@ -81,6 +77,11 @@ namespace BusinessManagementApp.UI
         {
             var urunduzenlemeform = _serviceProvider.GetRequiredService<LastOrders>();
             urunduzenlemeform._prev = this;
+        }
+
+        private void AnaMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _prev.Close();
         }
     }
 }

@@ -18,19 +18,28 @@ using BussinessManagementApp.DataAccess.UnitOfWork;
 using BussinesManagementApp.Bussines.Interfaces;
 using BussinesManagementApp.Dtos.ReportDtos;
 using BussinesManagementApp.Bussines.Validations.FluentValidation.ReportModelValidations;
+using BussinesManagementApp.Bussines.Helpers;
 
 namespace BussinesManagementApp.Bussines.DependencyResolver
 {
     public static class DependencyInjection
     {
-        public static void DependencyExtension(this IServiceCollection services ,string appconfigdbConnectionString)
+        public static void DependencyExtension(this IServiceCollection services ,string ConnectionString , string IdentityConnectionString)
         {
-            services.AddDbContext<BussinesManagementDbContext>(x => { 
-                x.UseSqlServer(/*appconfigdbConnectionString*/"server=.;Database=BussinesManagementDb; integrated security=true;"); },ServiceLifetime.Transient); //TODO appconfig 
+
+            services.AddDbContext<BussinesManagementDbContext>(x => {
+                x.UseSqlServer(
+                    ConnectionString
+                    //"server=.;Database=BussinesManagementDb; integrated security=true;"
+                    //"server=sql.bsite.net\\MSSQL2016;Database=sfatektas2_BusinessManagementDb; User Id=sfatektas2_BusinessManagementDb;Password=Tr123456;"
+                    ); },ServiceLifetime.Transient); //TODO appconfig 
 
             //sanal server ile bahsedilen kavramın detylandırılmasını iste !
 
-            services.AddDbContext<IdentityDb>(x => x.UseSqlServer("server=.;Database=IdentityDb; integrated security=true;"));
+            services.AddDbContext<IdentityDb>(x => x.UseSqlServer(
+                //"server=.;Database=IdentityDb; integrated security=true;"
+                IdentityConnectionString
+                ));
             services.AddIdentity<AppUser, AppRole>(opt =>
             {
                 //password Options
@@ -90,7 +99,7 @@ namespace BussinesManagementApp.Bussines.DependencyResolver
             services.AddTransient<ISupplierService,SupplierService>();
             services.AddTransient<ICustomerService,CustomerService>();
             services.AddTransient<IProductService,ProductService>();
-            services.AddScoped<ISupplierOrderService , SupplierOrderService>();
+            services.AddTransient<ISupplierOrderService , SupplierOrderService>();
             services.AddTransient<IWarehouseProductService , WarehouseProductService>();
             services.AddTransient<ICustomerOrderService , CustomerOrderService>();
             services.AddScoped<IReportService , ReportService>();

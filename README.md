@@ -4,12 +4,12 @@
 * 3 tane yöneticinin ayrı ayrı oturum açabildiği bir uygulama
 
 
-![1_Ana Sayfa](https://github.com/sfatektas/BusinessManagementApp/assets/92727035/f1dba85d-3466-4298-badd-43cb67ccffd9)
-![2](https://github.com/sfatektas/BusinessManagementApp/assets/92727035/f4bf3f2d-7294-4f06-9b03-f14c04ab97d7)
-![3](https://github.com/sfatektas/BusinessManagementApp/assets/92727035/649ab2e5-8db0-4e6c-8db4-e006003b25a4)
-![4](https://github.com/sfatektas/BusinessManagementApp/assets/92727035/08e57f76-254a-4659-9172-5f8665bd7197)
-![5](https://github.com/sfatektas/BusinessManagementApp/assets/92727035/1f5bf767-2abe-4cd4-83eb-fc24b9c6d132)
-![6](https://github.com/sfatektas/BusinessManagementApp/assets/92727035/e8abc232-373d-4716-9f0e-21f969a2df10)
-![7](https://github.com/sfatektas/BusinessManagementApp/assets/92727035/7c328a46-6164-4e39-9814-7974d263b82a)
-![8](https://github.com/sfatektas/BusinessManagementApp/assets/92727035/38bae43d-8e5a-4ec4-b5a6-d8a5f0ea6fcd)
-![9](https://github.com/sfatektas/BusinessManagementApp/assets/92727035/84e4f425-800d-4ade-9678-b6b681c67cbf)
+![1_Ana Sayfa](https://github.com/sfatektas/BusinessManagementApp/assets/92727035/20c40a70-07cd-425a-be10-c7e9171d296b)
+![2](https://github.com/sfatektas/BusinessManagementApp/assets/92727035/debeae7e-3ead-43f5-91e4-cf935ff62c4f)
+![3](https://github.com/sfatektas/BusinessManagementApp/assets/92727035/851b9088-211b-4df2-97e8-0926fdec349d)
+![4](https://github.com/sfatektas/BusinessManagementApp/assets/92727035/c71ea302-c68e-4965-bea4-c06c5b01c7db)
+![5](https://github.com/sfatektas/BusinessManagementApp/assets/92727035/ea8827c9-0b36-4335-b499-3bf24d8c4da6)
+![6](https://github.com/sfatektas/BusinessManagementApp/assets/92727035/5b4775bb-87ee-4cc3-b2b7-9decfdd79aa7)
+![7](https://github.com/sfatektas/BusinessManagementApp/assets/92727035/e3ffe629-2a3f-498a-a44f-4743022d6d76)
+![8](https://github.com/sfatektas/BusinessManagementApp/assets/92727035/9845ca4c-f9f1-431c-beea-7242ea781b55)
+![9](https://github.com/sfatektas/BusinessManagementApp/assets/92727035/502883e1-735b-451d-ad4e-15f4141d7bbd)
